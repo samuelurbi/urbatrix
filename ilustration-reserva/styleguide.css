@@ -1,0 +1,73 @@
+:root {
+  --mont-semibold-font-family: "Mont", Helvetica;
+  --mont-semibold-font-weight: 600;
+  --mont-semibold-font-size: 12px;
+  --mont-semibold-letter-spacing: 0px;
+  --mont-semibold-line-height: normal;
+  --mont-semibold-font-style: normal;
+  --02-neutral-400: var(--06-foundations-neutral-gray-400);
+  --02-neutral-600: var(--06-foundations-neutral-gray-600);
+  --collection-1-primery-urbatrix: rgba(0, 180, 129, 1);
+  --06-foundations-neutral-slate-300: rgba(202, 207, 216, 1);
+  --06-foundations-neutral-gray-600: rgba(92, 92, 92, 1);
+  --06-foundations-neutral-slate-600: rgba(82, 88, 102, 1);
+  --06-foundations-neutral-gray-400: rgba(163, 163, 163, 1);
+  --06-foundations-neutral-slate-400: rgba(153, 160, 174, 1);
+  --01-tokens-text-sub-600: var(--02-neutral-600);
+  --theme-text-primary: var(--neutral-shade02-100);
+  --theme-text-fixed: var(--neutral-shade10-100);
+  --theme-text-secondary: var(--neutral-shade06-100);
+  --theme-text-tertiary: var(--neutral-shade07-100);
+  --theme-backgrounds-surface1: var(--neutral-shade09-100);
+  --colors-primary02: rgba(0, 166, 86, 1);
+  --neutral-shade02-100: rgba(27, 27, 27, 1);
+  --neutral-shade09-100: rgba(241, 241, 241, 1);
+  --neutral-shade10-100: rgba(253, 253, 253, 1);
+  --neutral-shade06-100: rgba(114, 114, 114, 1);
+  --neutral-shade07-100: rgba(168, 168, 168, 1);
+  --neutral-shade05-100: rgba(76, 76, 76, 1);
+}
+
+/*
+
+To enable a theme in your HTML, simply add one of the following data attributes to an HTML element, like so:
+
+<body data-02-neutral-mode="gray">
+    <!-- the rest of your content -->
+</body>
+
+You can apply the theme on any DOM node, not just the `body`
+
+*/
+
+[data-02-neutral-mode="gray"] {
+  --02-neutral-400: var(--06-foundations-neutral-gray-400);
+  --02-neutral-600: var(--06-foundations-neutral-gray-600);
+}
+
+[data-02-neutral-mode="slate"] {
+  --02-neutral-400: var(--06-foundations-neutral-slate-400);
+  --02-neutral-600: var(--06-foundations-neutral-slate-600);
+}
+
+[data-01-tokens-mode="light"] {
+  --01-tokens-text-sub-600: var(--02-neutral-600);
+}
+
+[data-01-tokens-mode="dark"] {
+  --01-tokens-text-sub-600: var(--02-neutral-400);
+}
+
+[data-theme-mode="light"] {
+  --theme-text-primary: var(--neutral-shade02-100);
+  --theme-text-secondary: var(--neutral-shade06-100);
+  --theme-text-tertiary: var(--neutral-shade07-100);
+  --theme-backgrounds-surface1: var(--neutral-shade09-100);
+}
+
+[data-theme-mode="dark"] {
+  --theme-text-primary: var(--neutral-shade09-100);
+  --theme-text-secondary: var(--neutral-shade07-100);
+  --theme-text-tertiary: var(--neutral-shade05-100);
+  --theme-backgrounds-surface1: var(--neutral-shade02-100);
+}

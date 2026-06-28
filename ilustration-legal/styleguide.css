@@ -1,0 +1,41 @@
+:root {
+  --mont-semibold-font-family: "Mont", Helvetica;
+  --mont-semibold-font-weight: 600;
+  --mont-semibold-font-size: 12px;
+  --mont-semibold-letter-spacing: 0px;
+  --mont-semibold-line-height: normal;
+  --mont-semibold-font-style: normal;
+  --collection-1-primery-urbatrix: rgba(0, 180, 129, 1);
+  --theme-text-primary: var(--neutral-shade02-100);
+  --theme-stroke-stroke-decor: rgba(217, 217, 217, 1);
+  --theme-text-secondary: var(--neutral-shade06-100);
+  --06-foundations-neutral-slate-100: rgba(242, 245, 248, 1);
+  --neutral-shade02-100: rgba(27, 27, 27, 1);
+  --neutral-shade09-100: rgba(241, 241, 241, 1);
+  --neutral-shade06-100: rgba(114, 114, 114, 1);
+  --neutral-shade07-100: rgba(168, 168, 168, 1);
+}
+
+/*
+
+To enable a theme in your HTML, simply add one of the following data attributes to an HTML element, like so:
+
+<body data-theme-mode="light">
+    <!-- the rest of your content -->
+</body>
+
+You can apply the theme on any DOM node, not just the `body`
+
+*/
+
+[data-theme-mode="light"] {
+  --theme-text-primary: var(--neutral-shade02-100);
+  --theme-stroke-stroke-decor: rgba(217, 217, 217, 1);
+  --theme-text-secondary: var(--neutral-shade06-100);
+}
+
+[data-theme-mode="dark"] {
+  --theme-text-primary: var(--neutral-shade09-100);
+  --theme-stroke-stroke-decor: rgba(217, 217, 217, 0.05);
+  --theme-text-secondary: var(--neutral-shade07-100);
+}

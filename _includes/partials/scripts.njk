@@ -1,0 +1,98 @@
+<script>
+{% raw %}
+      (() => {
+        const toggle = document.querySelector(".mobile-menu-toggle");
+        const panel = document.getElementById("mobile-menu");
+
+        if (!toggle || !panel) {
+          return;
+        }
+
+        const focusableSelector =
+          'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])';
+
+        const closeMenu = (returnFocus = false) => {
+          panel.hidden = true;
+          toggle.setAttribute("aria-expanded", "false");
+          // colapsar los subtabs desplegados
+          panel
+            .querySelectorAll(".mobile-menu-parent")
+            .forEach((b) => b.setAttribute("aria-expanded", "false"));
+          panel
+            .querySelectorAll(".mobile-menu-sub")
+            .forEach((s) => s.classList.remove("is-open"));
+          if (returnFocus) {
+            toggle.focus();
+          }
+        };
+
+        const openMenu = () => {
+          panel.hidden = false;
+          toggle.setAttribute("aria-expanded", "true");
+          const firstFocusable = panel.querySelector(focusableSelector);
+          if (firstFocusable instanceof HTMLElement) {
+            firstFocusable.focus();
+          }
+        };
+
+        toggle.addEventListener("click", () => {
+          if (panel.hidden) {
+            openMenu();
+          } else {
+            closeMenu(false);
+          }
+        });
+
+        document.addEventListener("keydown", (event) => {
+          if (event.key === "Escape" && !panel.hidden) {
+            event.preventDefault();
+            closeMenu(true);
+          }
+        });
+
+        document.addEventListener("click", (event) => {
+          if (panel.hidden) {
+            return;
+          }
+
+          if (!(event.target instanceof Node)) {
+            return;
+          }
+
+          if (!panel.contains(event.target) && !toggle.contains(event.target)) {
+            closeMenu(false);
+          }
+        });
+
+        panel.querySelectorAll("a").forEach((link) => {
+          link.addEventListener("click", () => closeMenu(false));
+        });
+
+        // Acordeón de subtabs (Producto / Soluciones): solo nombres.
+        const parents = panel.querySelectorAll(".mobile-menu-parent");
+        parents.forEach((btn) => {
+          const sub = document.getElementById(btn.getAttribute("aria-controls"));
+          btn.addEventListener("click", () => {
+            const willOpen = btn.getAttribute("aria-expanded") !== "true";
+            parents.forEach((other) => {
+              if (other !== btn) {
+                other.setAttribute("aria-expanded", "false");
+                const os = document.getElementById(
+                  other.getAttribute("aria-controls")
+                );
+                if (os) os.classList.remove("is-open");
+              }
+            });
+            btn.setAttribute("aria-expanded", willOpen ? "true" : "false");
+            if (sub) sub.classList.toggle("is-open", willOpen);
+          });
+        });
+
+        window.addEventListener("resize", () => {
+          if (window.innerWidth > 767 && !panel.hidden) {
+            closeMenu(false);
+          }
+        });
+      })();
+{% endraw %}
+</script>

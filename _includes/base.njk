@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>{{ title }}</title>
+    <meta name="description" content="{{ description }}" />
+    <meta name="theme-color" content="#00b481" />
+    <link rel="canonical" href="{{ page.url | canonicalUrl }}" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="512x512" href="/assets/favicon-ubratrix-min.png" />
+    <link rel="apple-touch-icon" href="/assets/favicon-ubratrix-min.png" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Urbatrix" />
+    <meta property="og:locale" content="es_ES" />
+    <meta property="og:title" content="{{ ogTitle or title }}" />
+    <meta property="og:description" content="{{ ogDescription or description }}" />
+    <meta property="og:url" content="{{ page.url | canonicalUrl }}" />
+    <meta property="og:image" content="/assets/dashboard---makai.png" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="{{ ogTitle or title }}" />
+    <meta name="twitter:description" content="{{ ogDescription or description }}" />
+    <meta name="twitter:image" content="/assets/dashboard---makai.png" />
+
+    <!-- Fuentes (preload de los pesos más usados) -->
+    <link rel="preload" href="/assets/fonts/MONT-REGULAR.woff" as="font" type="font/woff" crossorigin />
+    <link rel="preload" href="/assets/fonts/MONT-SEMIBOLD.woff" as="font" type="font/woff" crossorigin />
+
+    <link rel="stylesheet" href="/globals.css" />
+    <link rel="stylesheet" href="/styleguide.css" />
+    <link rel="stylesheet" href="/style.css" />
+    <link rel="stylesheet" href="/illustrations.css" />
+    <link rel="stylesheet" href="/cards.css" />
+
+    <!-- GSAP + ScrollTrigger (CDN) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+  </head>
+  <body>
+    <div class="main-homepage-anima">
+{% include "partials/header.njk" %}
+      <main class="body">
+{{ content | safe }}
+      </main>
+{% include "partials/footer.njk" %}
+    </div>
+{% include "partials/scripts.njk" %}
+    <script src="/script.js" defer></script>
+  </body>
+</html>

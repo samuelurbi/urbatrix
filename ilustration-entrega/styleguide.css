@@ -1,0 +1,9 @@
+:root {
+  --mont-semibold-font-family: "Mont", Helvetica;
+  --mont-semibold-font-weight: 600;
+  --mont-semibold-font-size: 12px;
+  --mont-semibold-letter-spacing: 0px;
+  --mont-semibold-line-height: normal;
+  --mont-semibold-font-style: normal;
+  --collection-1-primery-urbatrix: rgba(0, 180, 129, 1);
+}

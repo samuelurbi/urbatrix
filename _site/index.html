@@ -1,0 +1,1812 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Urbatrix — Vende tu desarrollo inmobiliario al mundo entero, sin fricción</title>
+    <meta name="description" content="Urbatrix es la plataforma inmobiliaria todo-en-uno: captación y CRM, reservas y pagos (Stripe y WhatsApp), capa legal bilingüe (CONFOTUR, fideicomiso Ley 189-11), seguimiento de obra y post-venta. Todo en una sola plataforma." />
+    <meta name="theme-color" content="#00b481" />
+    
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="512x512" href="/assets/favicon-ubratrix-min.png" />
+    <link rel="apple-touch-icon" href="/assets/favicon-ubratrix-min.png" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Urbatrix" />
+    <meta property="og:locale" content="es_ES" />
+    <meta property="og:title" content="Urbatrix — Todo el ciclo de venta inmobiliaria en una sola plataforma" />
+    <meta property="og:description" content="Captación, reservas y pagos, legal bilingüe, seguimiento de obra y post-venta. Vende tu desarrollo inmobiliario al mundo entero, sin fricción." />
+    <meta property="og:url" content="https://urbatrix.com/" />
+    <meta property="og:image" content="/assets/dashboard---makai.png" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Urbatrix — Todo el ciclo de venta inmobiliaria en una sola plataforma" />
+    <meta name="twitter:description" content="Captación, reservas y pagos, legal bilingüe, seguimiento de obra y post-venta. Vende tu desarrollo inmobiliario al mundo entero, sin fricción." />
+    <meta name="twitter:image" content="/assets/dashboard---makai.png" />
+
+    <!-- Fuentes (preload de los pesos más usados) -->
+    <link rel="preload" href="/assets/fonts/MONT-REGULAR.woff" as="font" type="font/woff" crossorigin />
+    <link rel="preload" href="/assets/fonts/MONT-SEMIBOLD.woff" as="font" type="font/woff" crossorigin />
+
+    <link rel="stylesheet" href="/globals.css" />
+    <link rel="stylesheet" href="/styleguide.css" />
+    <link rel="stylesheet" href="/style.css" />
+    <link rel="stylesheet" href="/illustrations.css" />
+    <link rel="stylesheet" href="/cards.css" />
+
+    <!-- GSAP + ScrollTrigger (CDN) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+  </head>
+  <body>
+    <div class="main-homepage-anima">
+      <header class="header">
+        <a href="#" class="header-logo" aria-label="Urbatrix inicio">
+          <img loading="lazy" decoding="async"
+            class="div-left"
+            src="/assets/div-left.svg"
+            alt="Urbatrix"
+          />
+          <img
+            class="header-iso"
+            src="/assets/isotipo-white.svg"
+            alt=""
+            aria-hidden="true"
+          />
+        </a>
+        <button
+          class="mobile-menu-toggle"
+          type="button"
+          aria-expanded="false"
+          aria-controls="mobile-menu"
+          aria-label="Abrir menú de navegación"
+        >
+          <span class="mobile-menu-toggle-icon" aria-hidden="true">
+            <span></span>
+            <span></span>
+            <span></span>
+          </span>
+        </button>
+        <nav class="div-menu-navbar" aria-label="Navegación principal">
+          <a href="#" class="navbar-brand" aria-label="Urbatrix inicio">
+            <img
+              class="navbar-brand-ico"
+              src="/assets/isotipo-white.svg"
+              alt="Urbatrix"
+            />
+          </a>
+          <span class="navbar-sep" aria-hidden="true"></span>
+          <div class="nav-items">
+            <a
+              href="#"
+              class="container-bg-active nav-item"
+              aria-label="Inicio"
+              aria-current="page"
+            >
+              <div class="icon-home">
+                <img loading="lazy" decoding="async"
+                  class="img"
+                  src="/assets/home-fill-1.svg"
+                  alt=""
+                  aria-hidden="true"
+                />
+              </div>
+            </a>
+            <div class="menu">
+            <button
+              class="tab nav-item"
+              type="button"
+              aria-haspopup="true"
+              aria-expanded="false"
+              data-mega="producto"
+              aria-controls="mega-producto"
+            >
+              <span class="text-wrapper">Producto</span>
+              <img loading="lazy" decoding="async"
+                class="img"
+                src="/assets/arrow-down-s-line-2.svg"
+                alt=""
+                aria-hidden="true"
+              />
+            </button>
+            <button
+              class="tab nav-item"
+              type="button"
+              aria-haspopup="true"
+              aria-expanded="false"
+              data-mega="soluciones"
+              aria-controls="mega-soluciones"
+            >
+              <span class="text-wrapper">Soluciones</span>
+              <img loading="lazy" decoding="async"
+                class="img"
+                src="/assets/arrow-down-s-line-2.svg"
+                alt=""
+                aria-hidden="true"
+              />
+            </button>
+            <a href="#" class="div-wrapper nav-item"
+              ><span class="text-wrapper">Casos de éxito</span></a
+            >
+            <a href="#" class="div-wrapper nav-item"
+              ><span class="text-wrapper">Precios</span></a
+            >
+            </div>
+          </div>
+          <span class="navbar-sep" aria-hidden="true"></span>
+          <a href="#" class="navbar-demo">Solicitar Demo</a>
+        </nav>
+
+        <!-- Mega menú: Producto (3 columnas × 2 filas) -->
+          <div
+            class="mega-menu mega-menu--producto"
+            id="mega-producto"
+            role="region"
+            aria-label="Producto"
+            hidden
+          >
+            <div class="mega-grid mega-grid--3">
+              <a href="#" class="mega-card">
+                <div class="mega-card__left">
+                  <img class="mega-card__icon" src="/assets/route-fill-1.svg" alt="" aria-hidden="true" />
+                </div>
+                <div class="mega-card__right">
+                  <span class="mega-card__title">Cómo funciona</span>
+                  <span class="mega-card__desc">De la inversión en marketing a la entrega de llaves.</span>
+                </div>
+              </a>
+              <a href="#" class="mega-card">
+                <div class="mega-card__left">
+                  <img class="mega-card__icon" src="/assets/megaphone-line-1.svg" alt="" aria-hidden="true" />
+                </div>
+                <div class="mega-card__right">
+                  <span class="mega-card__title">Captación y CRM</span>
+                  <span class="mega-card__desc">Cada lead calificado y asignado solo.</span>
+                </div>
+              </a>
+              <a href="#" class="mega-card">
+                <div class="mega-card__left">
+                  <img class="mega-card__icon" src="/assets/bank-card-line-1.svg" alt="" aria-hidden="true" />
+                </div>
+                <div class="mega-card__right">
+                  <span class="mega-card__title">Pagos y Reservas</span>
+                  <span class="mega-card__desc">Cobra reservas de cualquier país en minutos.</span>
+                </div>
+              </a>
+              <a href="#" class="mega-card">
+                <div class="mega-card__left">
+                  <img class="mega-card__icon" src="/assets/shield-user-fill-1.svg" alt="" aria-hidden="true" />
+                </div>
+                <div class="mega-card__right">
+                  <span class="mega-card__title">Capa Legal y Confianza</span>
+                  <span class="mega-card__desc">Contratos, CONFOTUR y fideicomiso integrados.</span>
+                </div>
+              </a>
+              <a href="#" class="mega-card">
+                <div class="mega-card__left">
+                  <img class="mega-card__icon" src="/assets/key-2-line-1.svg" alt="" aria-hidden="true" />
+                </div>
+                <div class="mega-card__right">
+                  <span class="mega-card__title">Post-venta y Entregas</span>
+                  <span class="mega-card__desc">Del cierre a las llaves y la renta.</span>
+                </div>
+              </a>
+              <a href="#" class="mega-card">
+                <div class="mega-card__left">
+                  <img class="mega-card__icon" src="/assets/stackshare-line-5.svg" alt="" aria-hidden="true" />
+                </div>
+                <div class="mega-card__right">
+                  <span class="mega-card__title">Portal de Brokers</span>
+                  <span class="mega-card__desc">Tu red vendiendo en la misma dirección.</span>
+                </div>
+              </a>
+            </div>
+          </div>
+
+          <!-- Mega menú: Soluciones (2 columnas) -->
+          <div
+            class="mega-menu mega-menu--soluciones"
+            id="mega-soluciones"
+            role="region"
+            aria-label="Soluciones"
+            hidden
+          >
+            <div class="mega-grid mega-grid--2">
+              <a href="#" class="mega-card">
+                <div class="mega-card__left">
+                  <img class="mega-card__icon" src="/assets/bank-fill-1.svg" alt="" aria-hidden="true" />
+                </div>
+                <div class="mega-card__right">
+                  <span class="mega-card__title">Para Desarrolladores</span>
+                  <span class="mega-card__desc">Urbatrix te da la infraestructura completa de venta que un proyecto de lujo internacional necesita.</span>
+                </div>
+              </a>
+              <a href="#" class="mega-card">
+                <div class="mega-card__left">
+                  <img class="mega-card__icon" src="/assets/home-fill-1.svg" alt="" aria-hidden="true" />
+                </div>
+                <div class="mega-card__right">
+                  <span class="mega-card__title">Para Compradores</span>
+                  <span class="mega-card__desc">Explora, reserva y firma online. Pagos seguros, contratos bilingües y un asesor real a un clic.</span>
+                </div>
+              </a>
+            </div>
+          </div>
+        <div class="div-right">
+          <a href="#" class="a-link-login"
+            ><span class="div">Iniciar Sesión</span></a
+          >
+          <a href="#" class="a-link-demo"
+            ><span class="text-wrapper-2">Solicitar Demo</span></a
+          >
+        </div>
+        <div class="mobile-menu-panel" id="mobile-menu" hidden>
+          <nav
+            class="mobile-menu-links"
+            aria-label="Navegación principal móvil"
+          >
+            <a href="#" class="mobile-menu-link" aria-current="page">Inicio</a>
+            <div class="mobile-menu-group">
+              <button
+                class="mobile-menu-link mobile-menu-parent"
+                type="button"
+                aria-expanded="false"
+                aria-controls="m-sub-producto"
+              >
+                <span>Producto</span>
+                <img loading="lazy" decoding="async"
+                  class="img"
+                  src="/assets/arrow-down-s-line-2.svg"
+                  alt=""
+                  aria-hidden="true"
+                />
+              </button>
+              <div class="mobile-menu-sub" id="m-sub-producto">
+                <a href="#" class="mobile-menu-sublink">Cómo funciona</a>
+                <a href="#" class="mobile-menu-sublink">Captación y CRM</a>
+                <a href="#" class="mobile-menu-sublink">Pagos y Reservas</a>
+                <a href="#" class="mobile-menu-sublink">Capa Legal y Confianza</a>
+                <a href="#" class="mobile-menu-sublink">Post-venta y Entregas</a>
+                <a href="#" class="mobile-menu-sublink">Portal de Brokers</a>
+              </div>
+            </div>
+            <div class="mobile-menu-group">
+              <button
+                class="mobile-menu-link mobile-menu-parent"
+                type="button"
+                aria-expanded="false"
+                aria-controls="m-sub-soluciones"
+              >
+                <span>Soluciones</span>
+                <img loading="lazy" decoding="async"
+                  class="img"
+                  src="/assets/arrow-down-s-line-2.svg"
+                  alt=""
+                  aria-hidden="true"
+                />
+              </button>
+              <div class="mobile-menu-sub" id="m-sub-soluciones">
+                <a href="#" class="mobile-menu-sublink">Para Desarrolladores</a>
+                <a href="#" class="mobile-menu-sublink">Para Compradores</a>
+              </div>
+            </div>
+            <a href="#" class="mobile-menu-link">Casos de éxito</a>
+            <a href="#" class="mobile-menu-link">Precios</a>
+          </nav>
+          <div class="mobile-menu-actions">
+            <a href="#" class="mobile-menu-login">Iniciar Sesión</a>
+            <a href="#" class="mobile-menu-demo">Solicitar Demo</a>
+          </div>
+        </div>
+      </header>
+
+      <main class="body">
+        <section class="hero" aria-labelledby="hero-title">
+          <div class="content-text">
+            <div class="badge">
+              <div class="text-wrapper-3">Plataforma Inmobiliaria</div>
+              <div class="all-in-one">
+                <div class="text-wrapper-4">TODO EN UNO</div>
+              </div>
+            </div>
+            <h1 id="hero-title" class="vende-tu-desarrollo">
+              Vende tu desarrollo inmobiliario al mundo entero, sin fricción
+            </h1>
+            <p class="analiza">
+              Analiza comportamientos humanos en tiempo real&nbsp;&nbsp;y
+              experiencias inmersivas que revelan insights únicos.
+            </p>
+            <div class="button-container">
+              <a href="#" class="button-secundary"
+                ><span class="text-wrapper-5">Ver planes y precios</span></a
+              >
+              <a href="#" class="demo"
+                ><span class="text-wrapper-2">Solicitar Demo</span></a
+              >
+            </div>
+          </div>
+          <div class="dashboard">
+            <div class="div-2">
+              <div class="features" aria-label="Beneficios principales">
+                <div class="card-feature">
+                  <div class="icon">
+                    <img loading="lazy" decoding="async"
+                      class="time-line"
+                      src="/assets/time-line-1.svg"
+                      alt=""
+                      aria-hidden="true"
+                    />
+                  </div>
+                  <div class="text-wrapper-6">Sin permanencia para empezar</div>
+                </div>
+                <div class="card-feature-2">
+                  <div class="img-wrapper">
+                    <img loading="lazy" decoding="async"
+                      class="img-2"
+                      src="/assets/route-fill-1.svg"
+                      alt=""
+                      aria-hidden="true"
+                    />
+                  </div>
+                  <div class="text-wrapper-6">Implementación guiada</div>
+                </div>
+                <div class="card-feature">
+                  <div class="img-wrapper">
+                    <img loading="lazy" decoding="async"
+                      class="img-2"
+                      src="/assets/translate-1.svg"
+                      alt=""
+                      aria-hidden="true"
+                    />
+                  </div>
+                  <div class="text-wrapper-6">Soporte bilingüe</div>
+                </div>
+              </div>
+              <div class="box-dashboard-wrap">
+                <div class="box-dashboard">
+                  <img loading="lazy" decoding="async"
+                    class="dashboard-makai"
+                    src="/assets/dashboard---makai.png"
+                    alt="Vista del panel principal de Urbatrix"
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="sub-container">
+              <div
+                class="container"
+                aria-label="Empresas que confían en Urbatrix"
+              >
+                <img loading="lazy" decoding="async"
+                  class="logo"
+                  src="/assets/logo.svg"
+                  alt="Logo cliente 1"
+                />
+                <img loading="lazy" decoding="async"
+                  class="line"
+                  src="/assets/line.svg"
+                  alt=""
+                  aria-hidden="true"
+                />
+                <img loading="lazy" decoding="async"
+                  class="logo"
+                  src="/assets/logo-1.svg"
+                  alt="Logo cliente 2"
+                />
+                <img loading="lazy" decoding="async"
+                  class="line"
+                  src="/assets/line-1.svg"
+                  alt=""
+                  aria-hidden="true"
+                />
+                <img loading="lazy" decoding="async"
+                  class="logo"
+                  src="/assets/logo-2.svg"
+                  alt="Logo cliente 3"
+                />
+                <img loading="lazy" decoding="async"
+                  class="line"
+                  src="/assets/line-2.svg"
+                  alt=""
+                  aria-hidden="true"
+                />
+                <img loading="lazy" decoding="async"
+                  class="logo"
+                  src="/assets/logo-3.svg"
+                  alt="Logo cliente 4"
+                />
+                <img loading="lazy" decoding="async"
+                  class="line"
+                  src="/assets/line-3.svg"
+                  alt=""
+                  aria-hidden="true"
+                />
+                <img loading="lazy" decoding="async"
+                  class="logo"
+                  src="/assets/logo-4.svg"
+                  alt="Logo cliente 5"
+                />
+                <img loading="lazy" decoding="async"
+                  class="line"
+                  src="/assets/line-4.svg"
+                  alt=""
+                  aria-hidden="true"
+                />
+                <img loading="lazy" decoding="async"
+                  class="logo"
+                  src="/assets/logo-5.svg"
+                  alt="Logo cliente 6"
+                />
+              </div>
+              <p class="text">
+                Tecnología que respalda desarrollos reales en el Caribe y más
+                allá.
+              </p>
+            </div>
+          </div>
+        </section>
+        <section
+          class="section-img"
+          aria-label="Visual del ecosistema Urbatrix"
+        >
+          <div class="ig-resp">
+          <div class="ig-diagram">
+            <img loading="lazy" decoding="async"
+              class="ig-line ig-line-2"
+              src="/assets/line-5.svg"
+              alt=""
+              aria-hidden="true"
+            />
+            <img loading="lazy" decoding="async"
+              class="ig-line ig-line-3"
+              src="/assets/line-6.svg"
+              alt=""
+              aria-hidden="true"
+            />
+            <img loading="lazy" decoding="async"
+              class="ig-line ig-line-4"
+              src="/assets/line-7.svg"
+              alt=""
+              aria-hidden="true"
+            />
+            <img loading="lazy" decoding="async"
+              class="ig-line ig-line-5"
+              src="/assets/line-8.svg"
+              alt=""
+              aria-hidden="true"
+            />
+            <div class="ig-node ig-node-key">
+              <img loading="lazy" decoding="async"
+                class="ig-icon"
+                src="/assets/key-2-line-1.svg"
+                alt=""
+                aria-hidden="true"
+              />
+            </div>
+            <div class="ig-node ig-node-chart">
+              <img loading="lazy" decoding="async"
+                class="ig-icon"
+                src="/assets/line-chart-line-1.svg"
+                alt=""
+                aria-hidden="true"
+              />
+            </div>
+            <div class="ig-node ig-node-card">
+              <img loading="lazy" decoding="async"
+                class="ig-icon"
+                src="/assets/bank-card-line-1.svg"
+                alt=""
+                aria-hidden="true"
+              />
+            </div>
+            <div class="ig-node ig-node-link">
+              <img loading="lazy" decoding="async"
+                class="ig-icon"
+                src="/assets/link-1.svg"
+                alt=""
+                aria-hidden="true"
+              />
+            </div>
+            <div class="ig-node ig-node-auction">
+              <img loading="lazy" decoding="async"
+                class="ig-icon"
+                src="/assets/auction-line-1.svg"
+                alt=""
+                aria-hidden="true"
+              />
+            </div>
+            <div class="ig-node ig-node-megaphone">
+              <img loading="lazy" decoding="async"
+                class="ig-icon"
+                src="/assets/megaphone-line-1.svg"
+                alt=""
+                aria-hidden="true"
+              />
+            </div>
+            <img loading="lazy" decoding="async"
+              class="ig-line ig-line-6"
+              src="/assets/line-9.svg"
+              alt=""
+              aria-hidden="true"
+            />
+            <img loading="lazy" decoding="async"
+              class="ig-line ig-line-7"
+              src="/assets/line-10.svg"
+              alt=""
+              aria-hidden="true"
+            />
+            <img loading="lazy" decoding="async"
+              class="ig-line ig-line-8"
+              src="/assets/line-11.svg"
+              alt=""
+              aria-hidden="true"
+            />
+            <img loading="lazy" decoding="async"
+              class="ig-line ig-line-9"
+              src="/assets/line-12.svg"
+              alt=""
+              aria-hidden="true"
+            />
+            <img loading="lazy" decoding="async"
+              class="ig-line ig-line-10"
+              src="/assets/line-13.svg"
+              alt=""
+              aria-hidden="true"
+            />
+            <img loading="lazy" decoding="async"
+              class="ig-line ig-line-11"
+              src="/assets/line-14.svg"
+              alt=""
+              aria-hidden="true"
+            />
+            <img loading="lazy" decoding="async"
+              class="ig-line ig-line-12"
+              src="/assets/line-15.svg"
+              alt=""
+              aria-hidden="true"
+            />
+            <img loading="lazy" decoding="async"
+              class="ig-line ig-line-13"
+              src="/assets/line-16.svg"
+              alt=""
+              aria-hidden="true"
+            />
+            <img loading="lazy" decoding="async"
+              class="ig-logo"
+              src="/assets/isotipo.svg"
+              alt="Isotipo de Urbatrix"
+            />
+            <div class="ig-fade ig-fade-l"></div>
+            <div class="ig-fade ig-fade-r"></div>
+          </div>
+          </div>
+        </section>
+        <section class="bento-features" aria-labelledby="ciclo-venta-title">
+          <div class="title">
+            <div class="badge-2">
+              <img loading="lazy" decoding="async"
+                class="stackshare-line"
+                src="/assets/stackshare-line-3.svg"
+                alt=""
+                aria-hidden="true"
+              />
+              <div class="text-wrapper-7">Herramienta todo en uno</div>
+            </div>
+            <h2 id="ciclo-venta-title" class="p">
+              Todo el ciclo de venta,<br />en una sola plataforma
+            </h2>
+            <p class="text-wrapper-8">
+              Deja de pegar con cinta adhesiva cinco herramientas distintas.
+              Urbatrix conecta cada fase del proceso, desde el primer clic hasta
+              la entrega de llaves.
+            </p>
+          </div>
+          <div class="bento">
+            <div class="div-3">
+              <article class="container-card-bento">
+                <div class="card-bento">
+                  <div class="ic-stage" aria-hidden="true">
+                    <div class="ic-frame">
+                      <div class="ic-row">
+                        <div class="ic-col">
+                          <div class="ic-google-wrapper">
+                            <img class="ic-img" src="/assets/illus/google-1.svg" alt="" />
+                          </div>
+                          <img class="ic-vector" src="/assets/illus/vector-603.svg" alt="" />
+                        </div>
+                        <div class="ic-col-meta">
+                          <div class="ic-frame-wrapper">
+                            <div class="ic-ring">
+                              <div class="ic-meta-wrapper">
+                                <img class="ic-meta" src="/assets/illus/meta-1.svg" alt="" />
+                              </div>
+                            </div>
+                          </div>
+                          <img class="ic-vector" src="/assets/illus/vector-608.svg" alt="" />
+                        </div>
+                        <div class="ic-col">
+                          <div class="ic-tiktok-wrapper">
+                            <img class="ic-img" src="/assets/illus/tiktok-1.svg" alt="" />
+                          </div>
+                          <img class="ic-vector" src="/assets/illus/vector-603.svg" alt="" />
+                        </div>
+                      </div>
+                      <div class="ic-panel">
+                        <div class="ic-panel-left">
+                          <div class="ic-lead">
+                            <div class="ic-lead-row">
+                              <div class="ic-lead-head">
+                                <span class="ic-avatar"><span class="ic-ellipse"></span></span>
+                                <p class="ic-step-name">Nuevo Lead</p>
+                              </div>
+                              <div class="ic-bar"></div>
+                            </div>
+                            <img class="ic-img-2" src="/assets/illus/frame-1000002955.svg" alt="" />
+                            <img class="ic-img-2" src="/assets/illus/frame-1000002956.svg" alt="" />
+                          </div>
+                          <div class="ic-add-button">
+                            <img class="ic-img-3" src="/assets/illus/frame-1000002958.svg" alt="" />
+                          </div>
+                        </div>
+                        <div class="ic-panel-right">
+                          <div class="ic-summary">
+                            <div class="ic-summary-bars">
+                              <div class="ic-bar-2"></div>
+                              <div class="ic-bar-3"></div>
+                              <div class="ic-bar-4"></div>
+                              <div class="ic-bar-5"></div>
+                            </div>
+                            <div class="ic-toggle-wrap">
+                              <div class="ic-toggle">
+                                <span class="ic-toggle-divider"></span>
+                                <span class="ic-toggle-knob"><span class="ic-knob-dot"></span></span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card">
+                    <div class="text-2">
+                      <div class="top">
+                        <div class="text-wrapper-9">01</div>
+                        <h3 class="text-wrapper-10">Captación</h3>
+                      </div>
+                      <p class="text-wrapper-11">
+                        Leads de Meta y Google Ads directos a tu CRM,
+                        calificados.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </article>
+              <article class="container-card-bento">
+                <div class="card-bento">
+                  <div class="r2-stage" aria-hidden="true">
+                    <div class="r2-frame">
+                    <section class="r2-div" aria-label="Métodos de pago">
+                    <article class="r2-container" aria-label="Paso WhatsApp">
+                    <span class="r2-step-name">WhatsApp</span>
+                    <div class="r2-detail-container" aria-hidden="true">
+                    <div class="r2-div-2">
+                    <div class="r2-detail-line"></div>
+                    <div class="r2-detail-line-2"></div>
+                    </div>
+                    </div>
+                    </article>
+                    <article class="r2-container-2" aria-label="Paso Pago online seleccionado">
+                    <div class="r2-step-name-wrapper">
+                    <span class="r2-text-wrapper">Pago online</span>
+                    </div>
+                    <div class="r2-payment-info">
+                    <div class="r2-div-3">
+                    <p class="r2-p" aria-label="Tarjeta terminada en 8888">
+                    <span class="r2-span" aria-hidden="true">••••</span>
+                    <span class="r2-text-wrapper-2">8888</span>
+                    </p>
+                    <div class="r2-detail-line-2" aria-hidden="true"></div>
+                    </div>
+                    </div>
+                    </article>
+                    <article class="r2-container" aria-label="Paso Tarjeta">
+                    <span class="r2-step-name">Tarjeta</span>
+                    <div class="r2-detail-container" aria-hidden="true">
+                    <div class="r2-div-2">
+                    <div class="r2-detail-line"></div>
+                    <div class="r2-detail-line-2"></div>
+                    </div>
+                    </div>
+                    </article>
+                    </section>
+                    <section class="r2-div-4" aria-label="Estado del proceso">
+                    <div class="r2-container-3" aria-hidden="true">
+                    <div class="r2-decor-line"></div>
+                    <div class="r2-decor-line"></div>
+                    </div>
+                    <div class="r2-processing-info" role="status" aria-live="polite" aria-atomic="true">
+                    <img class="r2-loader" src="/assets/illus/ir-loader.svg" alt="" aria-hidden="true" />
+                    <p class="r2-step-name-2">Reservando</p>
+                    </div>
+                    </section>
+                    <section class="r2-div-5" aria-label="Resumen de producto y pagos">
+                    <div class="r2-div-6">
+                    <article class="r2-container-4" aria-label="Producto">
+                    <div class="r2-container-wrapper">
+                    <img class="r2-img" src="/assets/illus/ir-product.png" alt="Ícono de Urbatrix CRM" />
+                    </div>
+                    <div class="r2-product-info">
+                    <div class="r2-cloud-drive-item">
+                    <span class="r2-step-name-3">Urbatrix CRM</span>
+                    </div>
+                    <p class="r2-step-name-4">$200.000 USD</p>
+                    </div>
+                    </article>
+                    <div class="r2-ellipse-wrapper" aria-label="Estado activo">
+                    <div class="r2-ellipse"></div>
+                    </div>
+                    </div>
+                    <div class="r2-div-7" aria-label="Detalle de pagos">
+                    <div class="r2-div-8" aria-hidden="true">
+                    <div class="r2-div-9">
+                    <div class="r2-detail-line-3"></div>
+                    <div class="r2-detail-line-4"></div>
+                    </div>
+                    <div class="r2-detail-line-5"></div>
+                    </div>
+                    <article class="r2-div-8" aria-label="Pago de dash arroba email punto com terminado en 4242">
+                    <div class="r2-div-10">
+                    <div class="r2-container-5">
+                    <p class="r2-step-name-5">$10.000</p>
+                    <p class="r2-step-name-6">USD</p>
+                    </div>
+                    <div class="r2-container-6">
+                    <div class="r2-icon" aria-hidden="true"></div>
+                    <p class="r2-step-name-7">dash@email.com</p>
+                    </div>
+                    </div>
+                    <p class="r2-step-name-8">• 4242</p>
+                    </article>
+                    <article class="r2-div-8" aria-label="Pago de tam arroba email punto com terminado en 8866">
+                    <div class="r2-div-10">
+                    <div class="r2-container-5">
+                    <p class="r2-step-name-5">$15.000</p>
+                    <p class="r2-step-name-6">USD</p>
+                    </div>
+                    <div class="r2-container-7">
+                    <div class="r2-icon-2" aria-hidden="true"></div>
+                    <p class="r2-step-name-7">tam@email.com</p>
+                    </div>
+                    </div>
+                    <p class="r2-step-name-8">• 8866</p>
+                    </article>
+                    </div>
+                    </section>
+                    </div>
+                  </div>
+                  <div class="card">
+                    <div class="text-2">
+                      <div class="top">
+                        <div class="text-wrapper-9">02</div>
+                        <h3 class="text-wrapper-10">Reserva</h3>
+                      </div>
+                      <p class="text-wrapper-11">
+                        El comprador reserva y paga online, tarjeta o WhatsApp
+                        en minutos.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </article>
+            </div>
+            <div class="bottom-bento">
+              <article class="container-card-bento">
+                <div class="card-bento">
+                  <div class="r3-stage" aria-hidden="true">
+                    <div class="r3-frame">
+                    <section class="r3-div" aria-label="Document stack">
+                    <div class="r3-card-background" aria-hidden="true">
+                    <div class="r3-detail-container">
+                    <div class="r3-detail-line"></div>
+                    <div class="r3-detail-line-2"></div>
+                    </div>
+                    </div>
+                    <section class="r3-div-2" aria-label="Available documents">
+                    <article class="r3-card" aria-label="Fideicomiso document with translation option">
+                    <div class="r3-icon-and-text">
+                    <div class="r3-icon-container" aria-hidden="true">
+                    <img class="r3-file-line" src="/assets/illus/il-file.svg" alt="" />
+                    </div>
+                    <div class="r3-card-text-container">
+                    <span class="r3-step-name">Fideicomiso</span>
+                    </div>
+                    </div>
+                    <div class="r3-language-wrapper" aria-label="Translate Fideicomiso">
+                    <img class="r3-language" src="/assets/illus/il-lang.svg" alt="" />
+                    </div>
+                    </article>
+                    <article class="r3-card" aria-label="Confotur document with translation option">
+                    <div class="r3-icon-and-text">
+                    <div class="r3-icon-container" aria-hidden="true">
+                    <img class="r3-file-line" src="/assets/illus/il-file.svg" alt="" />
+                    </div>
+                    <div class="r3-card-text-container">
+                    <span class="r3-step-name">Confotur</span>
+                    </div>
+                    </div>
+                    <div class="r3-language-wrapper" aria-label="Translate Confotur">
+                    <img class="r3-language" src="/assets/illus/il-lang.svg" alt="" />
+                    </div>
+                    </article>
+                    <article class="r3-card" aria-label="Contratos document with translation option">
+                    <div class="r3-icon-and-text">
+                    <div class="r3-icon-container" aria-hidden="true">
+                    <img class="r3-file-line" src="/assets/illus/il-file.svg" alt="" />
+                    </div>
+                    <div class="r3-card-text-container">
+                    <span class="r3-step-name">Contratos</span>
+                    </div>
+                    </div>
+                    <div class="r3-language-wrapper" aria-label="Translate Contratos">
+                    <img class="r3-language" src="/assets/illus/il-lang.svg" alt="" />
+                    </div>
+                    </article>
+                    </section>
+                    <div class="r3-card-background" aria-hidden="true">
+                    <div class="r3-detail-container">
+                    <div class="r3-detail-line"></div>
+                    <div class="r3-detail-line-2"></div>
+                    </div>
+                    </div>
+                    </section>
+                    <img class="r3-box" src="/assets/illus/il-box.svg" alt="" aria-hidden="true" />
+                    </div>
+                  </div>
+                  <div class="card">
+                    <div class="text-2">
+                      <div class="top">
+                        <div class="text-wrapper-9">03</div>
+                        <h3 class="text-wrapper-10">Capa Legal &amp; Confianza</h3>
+                      </div>
+                      <p class="text-wrapper-11">
+                        Contratos, CONFOTUR y fideicomiso integrados y
+                        bilingües.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </article>
+              <article class="container-card-bento">
+                <div class="card-bento">
+                  <div class="r4-stage" aria-hidden="true">
+                    <div class="r4-frame">
+                          <section class="r4-div" aria-label="Características principales">
+                            <div class="r4-div-2" aria-label="Funciones del lado izquierdo">
+                              <article class="r4-frame-wrapper">
+                                <div class="r4-div-3" role="group" aria-label="Pagos por hito">
+                                  <img
+                                    class="r4-img"
+                                    src="/assets/illus/s4-icon-advice.svg"
+                                    alt=""
+                                    aria-hidden="true"
+                                  />
+                                  <p class="r4-step-name">Pagos por hito</p>
+                                </div>
+                              </article>
+                              <article class="r4-div-wrapper">
+                                <div class="r4-div-4" role="group" aria-label="Gestión Leads">
+                                  <img
+                                    class="r4-img"
+                                    src="/assets/illus/s4-frame.svg"
+                                    alt=""
+                                    aria-hidden="true"
+                                  />
+                                  <p class="r4-step-name">Gestión Leads</p>
+                                </div>
+                              </article>
+                              <article class="r4-frame-wrapper">
+                                <div class="r4-div-5" role="group" aria-label="Gestión">
+                                  <img
+                                    class="r4-img"
+                                    src="/assets/illus/s4-icon-code.svg"
+                                    alt=""
+                                    aria-hidden="true"
+                                  />
+                                  <p class="r4-step-name">Gestión</p>
+                                </div>
+                              </article>
+                            </div>
+                            <div class="r4-badge-connectors r4-badge-connectors-left" aria-hidden="true">
+                              <span></span>
+                              <span></span>
+                              <span></span>
+                            </div>
+                          </section>
+                          <section
+                            class="r4-center-container"
+                            aria-label="Tarjeta central de Urbatrix"
+                          >
+                            <div class="r4-div-6">
+                              <figure
+                                class="r4-container"
+                                aria-label="Vista previa visual de la aplicación"
+                              >
+                                <img
+                                  class="r4-element"
+                                  src="/assets/illus/s4-preview.png"
+                                  alt="Vista previa de la interfaz de Urbatrix"
+                                />
+                                <div class="r4-element-2" aria-hidden="true"></div>
+                              </figure>
+                              <div class="r4-div-7" aria-hidden="true">
+                                <div class="r4-center-rounded"></div>
+                                <div class="r4-center-rounded-2"></div>
+                                <div class="r4-center-rounded-2"></div>
+                              </div>
+                              <div class="r4-step-name-wrapper" role="img" aria-label="Urbatrix">
+                                <span class="r4-text-wrapper">URBATRIX</span>
+                              </div>
+                            </div>
+                          </section>
+                          <section class="r4-div-8" aria-label="Funciones complementarias">
+                            <div class="r4-badge-connectors r4-badge-connectors-right" aria-hidden="true">
+                              <span></span>
+                              <span></span>
+                              <span></span>
+                            </div>
+                            <div class="r4-div-9" aria-label="Funciones del lado derecho">
+                              <article class="r4-frame-wrapper">
+                                <div class="r4-div-3" role="group" aria-label="Avance de obra">
+                                  <img
+                                    class="r4-img"
+                                    src="/assets/illus/s4-icon-plan.svg"
+                                    alt=""
+                                    aria-hidden="true"
+                                  />
+                                  <p class="r4-step-name">Avance de obra</p>
+                                </div>
+                              </article>
+                              <article class="r4-frame-wrapper-2">
+                                <div class="r4-div-5" role="group" aria-label="Comunicación">
+                                  <img
+                                    class="r4-img"
+                                    src="/assets/illus/s4-icon-summarize.svg"
+                                    alt=""
+                                    aria-hidden="true"
+                                  />
+                                  <p class="r4-step-name">Comunicación</p>
+                                </div>
+                              </article>
+                              <article class="r4-frame-wrapper">
+                                <div class="r4-div-5" role="group" aria-label="Analiticas">
+                                  <img
+                                    class="r4-img"
+                                    src="/assets/illus/s4-icon-analyze.svg"
+                                    alt=""
+                                    aria-hidden="true"
+                                  />
+                                  <p class="r4-step-name">Analiticas</p>
+                                </div>
+                              </article>
+                            </div>
+                          </section>
+                        </div>
+                  </div>
+                  <div class="card">
+                    <div class="text-2">
+                      <div class="top">
+                        <div class="text-wrapper-9">04</div>
+                        <h3 class="text-wrapper-10">Seguimiento</h3>
+                      </div>
+                      <p class="text-wrapper-11">
+                        Avance de obra, pagos por hito y comunicación
+                        centralizada.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </article>
+              <article class="container-card-bento">
+                <div class="card-bento">
+                  <div class="e5-stage" aria-hidden="true">
+                    <div class="e5-frame">
+
+                    <div class="e5-logo-wrap">
+                    <img
+                          class="e5-active-logo"
+                          src="/assets/illus/e5-logo.svg"
+                          alt="Active logo"
+                        />
+                    </div>
+                    <section class="e5-div" aria-label="Right icon group">
+                    <div class="e5-key-line-wrapper" aria-label="Key">
+                    <img class="e5-img" src="/assets/key-2-line-1.svg" alt="" aria-hidden="true" />
+                    </div>
+                    <div class="e5-line-chart-line-wrapper" aria-label="Line chart">
+                    <img class="e5-img" src="/assets/line-chart-line-1.svg" alt="" aria-hidden="true" />
+                    </div>
+                    <div class="e5-div-2" aria-label="Empty action"></div>
+                    </section>
+                    <section class="e5-div-3" aria-label="Left icon group">
+                    <div class="e5-div-4" aria-label="Empty action"></div>
+                    <div class="e5-img-wrapper" aria-label="Megaphone">
+                    <img class="e5-img" src="/assets/megaphone-line-1.svg" alt="" aria-hidden="true" />
+                    </div>
+                    <div class="e5-img-wrapper" aria-label="Auction">
+                    <img class="e5-img" src="/assets/auction-line-1.svg" alt="" aria-hidden="true" />
+                    </div>
+                    </section>
+                    </div>
+                  </div>
+                  <div class="card">
+                    <div class="text-2">
+                      <div class="top">
+                        <div class="text-wrapper-9">05</div>
+                        <h3 class="text-wrapper-10">Entrega</h3>
+                      </div>
+                      <p class="text-wrapper-12">
+                        Post-venta, garantías y gestión de renta tras la
+                        entrega.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </article>
+            </div>
+          </div>
+        </section>
+        <section class="section-features" aria-labelledby="funciones-title">
+          <div class="div-inner-section-featured">
+            <header class="title">
+              <div class="features-head">
+                <div class="features-headline">
+                  <h2 id="funciones-title" class="p">
+                    Las funciones que cierran ventas
+                  </h2>
+                </div>
+                <p class="text-wrapper-8">
+                  Deja de pegar con cinta adhesiva cinco herramientas distintas.
+                  Urbatrix conecta cada fase del proceso, desde el primer clic
+                  hasta la entrega de llaves.
+                </p>
+              </div>
+            </header>
+
+            <div class="section-features-grid">
+              <div class="section-features-cols">
+                <article
+                  class="div-inner-section"
+                  aria-labelledby="feature-pagos-title"
+                >
+                  <div class="div-left-feature">
+                    <div class="features-step">
+                      <span class="features-step__dot" aria-hidden="true"></span>
+                      <div class="features-step__body">
+                        <p class="features-step__label">PAGOS Y RESERVAS</p>
+                        <h3 class="features-step__title" id="feature-pagos-title">
+                          Cobra reservas de cualquier país
+                        </h3>
+                        <p class="features-step__desc">
+                          Stripe y jelou integrados. El comprador paga con tarjeta o
+                          directamente por WhatsApp, en su divisa, sin salir de la
+                          plataforma. Tú defines los montos por proyecto.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </article>
+
+                <article
+                  class="div-inner-section"
+                  aria-labelledby="feature-crm-title"
+                >
+                  <div class="div-left-feature">
+                    <div class="features-step">
+                      <span class="features-step__dot" aria-hidden="true"></span>
+                      <div class="features-step__body">
+                        <p class="features-step__label">CAPTACIÓN Y CRM</p>
+                        <h3 class="features-step__title" id="feature-crm-title">
+                          Cada lead, calificado y asignado solo
+                        </h3>
+                        <p class="features-step__desc">
+                          Conecta Meta y Google Ads, puntúa leads por temperatura y
+                          reparte a tus asesores con seguimiento bilingüe automático por
+                          WhatsApp, email y SMS.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </article>
+
+                <article
+                  class="div-inner-section"
+                  aria-labelledby="feature-legal-title"
+                >
+                  <div class="div-left-feature">
+                    <div class="features-step">
+                      <span class="features-step__dot" aria-hidden="true"></span>
+                      <div class="features-step__body">
+                        <p class="features-step__label">LEGAL Y CONFIANZA</p>
+                        <h3 class="features-step__title" id="feature-legal-title">
+                          La parte legal, resuelta y bilingüe
+                        </h3>
+                        <p class="features-step__desc">
+                          Fichas de propiedad, contratos de reserva, CONFOTUR y
+                          fideicomiso (Ley 189-11) generados automáticamente, en español
+                          e inglés, listos para firmar.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </article>
+
+                <article
+                  class="div-inner-section"
+                  aria-labelledby="feature-postventa-title"
+                >
+                  <div class="div-left-feature">
+                    <div class="features-step">
+                      <span class="features-step__dot" aria-hidden="true"></span>
+                      <div class="features-step__body">
+                        <p class="features-step__label">ASESORÍA Y POST VENTA</p>
+                        <h3 class="features-step__title" id="feature-postventa-title">
+                          Del primer “hola” a la entrega de llaves
+                        </h3>
+                        <p class="features-step__desc">
+                          Agenda videollamadas con un clic (Meet/Zoom + email +
+                          WhatsApp), muestra el avance de obra en vivo y gestiona
+                          garantías y renta tras la entrega.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </article>
+              </div>
+
+              <div class="section-features-stage">
+                <figure class="div-right-feature">
+                  <video class="feature-video" src="/assets/video-urbatrix.mp4" muted loop playsinline preload="metadata" aria-label="Demo: pagos y reservas"></video>
+                  <button class="feature-fs" type="button" aria-label="Ver en pantalla completa">
+                    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M8 3H5a2 2 0 0 0-2 2v3M16 3h3a2 2 0 0 1 2 2v3M21 16v3a2 2 0 0 1-2 2h-3M3 16v3a2 2 0 0 0 2 2h3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </button>
+                </figure>
+                <figure class="div-right-feature">
+                  <video class="feature-video" src="/assets/video-urbatrix.mp4" muted loop playsinline preload="metadata" aria-label="Demo: captación y CRM"></video>
+                  <button class="feature-fs" type="button" aria-label="Ver en pantalla completa">
+                    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M8 3H5a2 2 0 0 0-2 2v3M16 3h3a2 2 0 0 1 2 2v3M21 16v3a2 2 0 0 1-2 2h-3M3 16v3a2 2 0 0 0 2 2h3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </button>
+                </figure>
+                <figure class="div-right-feature">
+                  <video class="feature-video" src="/assets/video-urbatrix.mp4" muted loop playsinline preload="metadata" aria-label="Demo: capa legal y confianza"></video>
+                  <button class="feature-fs" type="button" aria-label="Ver en pantalla completa">
+                    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M8 3H5a2 2 0 0 0-2 2v3M16 3h3a2 2 0 0 1 2 2v3M21 16v3a2 2 0 0 1-2 2h-3M3 16v3a2 2 0 0 0 2 2h3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </button>
+                </figure>
+                <figure class="div-right-feature">
+                  <video class="feature-video" src="/assets/video-urbatrix.mp4" muted loop playsinline preload="metadata" aria-label="Demo: asesoría y post venta"></video>
+                  <button class="feature-fs" type="button" aria-label="Ver en pantalla completa">
+                    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M8 3H5a2 2 0 0 0-2 2v3M16 3h3a2 2 0 0 1 2 2v3M21 16v3a2 2 0 0 1-2 2h-3M3 16v3a2 2 0 0 0 2 2h3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </button>
+                </figure>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="client-types" aria-labelledby="operacion-title">
+          <div class="title">
+            <div class="badge-2">
+              <img loading="lazy" decoding="async"
+                class="stackshare-line"
+                src="/assets/stackshare-line-3.svg"
+                alt=""
+                aria-hidden="true"
+              />
+              <p class="text-wrapper-7">Tu herramienta todo en uno</p>
+            </div>
+            <h2 id="operacion-title" class="text-wrapper-16">
+              Hecho para cada lado de la operación
+            </h2>
+          </div>
+          <div class="content-2">
+            <article class="content-wrapper">
+              <a class="card-link" href="#" aria-hidden="true" tabindex="-1"></a>
+              <div class="content-3">
+                <div class="icon-2">
+                  <img loading="lazy" decoding="async"
+                    class="img-6"
+                    src="/assets/bank-fill-1.svg"
+                    alt=""
+                    aria-hidden="true"
+                  />
+                </div>
+                <div class="text-3">
+                  <div class="content-4">
+                    <h3 class="text-wrapper-17">Desarrolladores</h3>
+                    <p class="text-wrapper-18">
+                      Lanza y vende más rápido, a más mercados
+                    </p>
+                  </div>
+                  <a class="button" href="#">
+                    <span class="text-wrapper-19">Ver solución</span>
+                    <img loading="lazy" decoding="async"
+                      class="img-7"
+                      src="/assets/arrow-right-up-long-line-4.svg"
+                      alt=""
+                      aria-hidden="true"
+                    />
+                  </a>
+                </div>
+              </div>
+            </article>
+            <article class="content-wrapper">
+              <a class="card-link" href="#" aria-hidden="true" tabindex="-1"></a>
+              <div class="content-3">
+                <div class="icon-2">
+                  <img loading="lazy" decoding="async"
+                    class="img-6"
+                    src="/assets/shield-user-fill-1.svg"
+                    alt=""
+                    aria-hidden="true"
+                  />
+                </div>
+                <div class="text-3">
+                  <div class="content-4">
+                    <h3 class="text-wrapper-17">Brokers y Agencias</h3>
+                    <p class="text-wrapper-18">
+                      Más inventario premium, comisiones claras.
+                    </p>
+                  </div>
+                  <a class="button" href="#">
+                    <span class="text-wrapper-19">Ver solución</span>
+                    <img loading="lazy" decoding="async"
+                      class="img-7"
+                      src="/assets/arrow-right-up-long-line-4.svg"
+                      alt=""
+                      aria-hidden="true"
+                    />
+                  </a>
+                </div>
+              </div>
+            </article>
+            <article class="content-wrapper">
+              <a class="card-link" href="#" aria-hidden="true" tabindex="-1"></a>
+              <div class="content-3">
+                <div class="icon-2">
+                  <img loading="lazy" decoding="async"
+                    class="img-6"
+                    src="/assets/flashlight-fill-1.svg"
+                    alt=""
+                    aria-hidden="true"
+                  />
+                </div>
+                <div class="text-3">
+                  <div class="content-4">
+                    <h3 class="text-wrapper-17">Compradores</h3>
+                    <p class="text-wrapper-18">
+                      Compra desde cualquier país, con seguridad
+                    </p>
+                  </div>
+                  <a class="button" href="#">
+                    <span class="text-wrapper-19">Ver solución</span>
+                    <img loading="lazy" decoding="async"
+                      class="img-7"
+                      src="/assets/arrow-right-up-long-line-4.svg"
+                      alt=""
+                      aria-hidden="true"
+                    />
+                  </a>
+                </div>
+              </div>
+            </article>
+          </div>
+        </section>
+        <section class="stats-metrics" aria-labelledby="resultados-title">
+          <div class="stats">
+            <div class="title-2">
+              <div class="title-3">
+                <div class="badge-2">
+                  <img loading="lazy" decoding="async"
+                    class="stackshare-line"
+                    src="/assets/stackshare-line-5.svg"
+                    alt=""
+                    aria-hidden="true"
+                  />
+                  <p class="text-wrapper-7">Tu herramienta todo en uno</p>
+                </div>
+                <h2 id="resultados-title" class="text-wrapper-14">
+                  Resultados reales, no humo
+                </h2>
+              </div>
+              <a href="#" class="link">
+                <span class="text-wrapper-20">Solicitar Demo</span>
+                <img loading="lazy" decoding="async"
+                  class="img-7"
+                  src="/assets/arrow-right-up-long-line-4.svg"
+                  alt=""
+                  aria-hidden="true"
+                />
+              </a>
+            </div>
+            <div class="stats-grid">
+            <div class="stats-2">
+              <div class="div-4">
+                <div class="text-wrapper-21">2min</div>
+                <div class="text-wrapper-22">Tiempo promedio de respuesta</div>
+              </div>
+              <div class="div-4">
+                <div class="line-14"></div>
+                <div class="line-14"></div>
+                <div class="line-15"></div>
+              </div>
+            </div>
+            <div class="stats-2">
+              <div class="div-4">
+                <div class="text-wrapper-21">88+</div>
+                <div class="text-wrapper-22">Proyectos activos</div>
+              </div>
+              <div class="div-4">
+                <div class="line-14"></div>
+                <div class="line-14"></div>
+                <div class="line-14"></div>
+                <div class="line-15"></div>
+                <div class="line-15"></div>
+                <div class="line-15"></div>
+                <div class="line-15"></div>
+                <div class="line-15"></div>
+              </div>
+            </div>
+            <div class="stats-2">
+              <div class="div-4">
+                <div class="text-wrapper-21">44+</div>
+                <div class="text-wrapper-22">Países de compradores</div>
+              </div>
+              <div class="div-4">
+                <div class="line-14"></div>
+                <div class="line-14"></div>
+                <div class="line-14"></div>
+                <div class="line-14"></div>
+                <div class="line-14"></div>
+                <div class="line-15"></div>
+                <div class="line-15"></div>
+                <div class="line-15"></div>
+                <div class="line-15"></div>
+                <div class="line-15"></div>
+                <div class="line-15"></div>
+                <div class="line-15"></div>
+                <div class="line-15"></div>
+                <div class="line-15"></div>
+                <div class="line-15"></div>
+                <div class="line-15"></div>
+              </div>
+            </div>
+            <div class="stats-2">
+              <div class="div-4">
+                <div class="text-wrapper-21">10M</div>
+                <div class="text-wrapper-22">Volumen gestionado</div>
+              </div>
+              <div class="div-4">
+                <div class="line-14"></div>
+                <div class="line-14"></div>
+                <div class="line-14"></div>
+                <div class="line-14"></div>
+                <div class="line-15"></div>
+                <div class="line-15"></div>
+                <div class="line-15"></div>
+                <div class="line-15"></div>
+                <div class="line-15"></div>
+                <div class="line-15"></div>
+                <div class="line-15"></div>
+                <div class="line-15"></div>
+                <div class="line-15"></div>
+                <div class="line-15"></div>
+                <div class="line-15"></div>
+                <div class="line-15"></div>
+                <div class="line-15"></div>
+                <div class="line-15"></div>
+                <div class="line-15"></div>
+                <div class="line-15"></div>
+                <div class="line-15"></div>
+                <div class="line-15"></div>
+                <div class="line-15"></div>
+                <div class="line-15"></div>
+              </div>
+            </div>
+            </div>
+          </div>
+          <img loading="lazy" decoding="async"
+            class="divider"
+            src="/assets/divider.svg"
+            alt=""
+            aria-hidden="true"
+          />
+          <div class="action">
+            <p class="text-wrapper-23">
+              Optimiza las proyecto inmobiliario hoy
+            </p>
+            <a href="#" class="link">
+              <span class="text-wrapper-24">Solicitar Demo</span>
+              <img loading="lazy" decoding="async"
+                class="arrow-right-up-long"
+                src="/assets/arrow-right-up-long-line-5.svg"
+                alt=""
+                aria-hidden="true"
+              />
+            </a>
+          </div>
+        </section>
+        <section class="stats-metrics-2" aria-labelledby="confianza-title">
+          <div class="title-4">
+            <div class="badge-2">
+              <img loading="lazy" decoding="async"
+                class="stackshare-line"
+                src="/assets/stackshare-line-5.svg"
+                alt=""
+                aria-hidden="true"
+              />
+              <p class="text-wrapper-7">Tu herramienta todo en uno</p>
+            </div>
+            <h2 id="confianza-title" class="p">
+              Construido sobre cimientos de confianza
+            </h2>
+            <p class="cumplimiento-legal">
+              <span class="span">Cumplimiento legal en </span
+              ><span class="text-wrapper-25">EE. UU., la UE y el Caribe</span
+              ><span class="span"
+                >. Tus compradores ven exactamente por qué pueden confiar</span
+              >
+            </p>
+          </div>
+          <div class="stats-3">
+            <div class="badge-3">
+              <div class="logo-2">
+                <img loading="lazy" decoding="async"
+                  class="trustpilot"
+                  src="/assets/trustpilot@2x.png"
+                  alt=""
+                  aria-hidden="true"
+                />
+              </div>
+              <div class="text-wrapper-26">Confotur</div>
+            </div>
+            <div class="badge-3">
+              <div class="logo-2">
+                <img loading="lazy" decoding="async"
+                  class="img-8"
+                  src="/assets/coins-line-1.svg"
+                  alt=""
+                  aria-hidden="true"
+                />
+              </div>
+              <div class="text-wrapper-26">Fideicomisos Ley 189-11</div>
+            </div>
+            <div class="badge-3">
+              <div class="stripe-wrapper">
+                <div class="stripe">
+                  <img loading="lazy" decoding="async"
+                    class="vector"
+                    src="/assets/vector-1.svg"
+                    alt=""
+                    aria-hidden="true"
+                  />
+                </div>
+              </div>
+              <div class="text-wrapper-26">Stripe</div>
+            </div>
+            <div class="badge-3">
+              <div class="logo-2">
+                <img loading="lazy" decoding="async"
+                  class="trustpilot"
+                  src="/assets/trustpilot-1@2x.png"
+                  alt=""
+                  aria-hidden="true"
+                />
+              </div>
+              <div class="text-wrapper-26">PCI DSS</div>
+            </div>
+            <div class="badge-3">
+              <div class="logo-2">
+                <img loading="lazy" decoding="async"
+                  class="img-8"
+                  src="/assets/star-line-1.svg"
+                  alt=""
+                  aria-hidden="true"
+                />
+              </div>
+              <div class="text-wrapper-26">GDPR / CCPA</div>
+            </div>
+            <div class="badge-3">
+              <div class="logo-2">
+                <img loading="lazy" decoding="async"
+                  class="img-8"
+                  src="/assets/translate-2.svg"
+                  alt=""
+                  aria-hidden="true"
+                />
+              </div>
+              <div class="text-wrapper-26">Bilingüe ES/EN</div>
+            </div>
+          </div>
+        </section>
+        <section class="CTA" aria-labelledby="caso-exito-title">
+          <div class="container-2">
+            <div class="content-5">
+              <div class="div-left-4">
+                <div class="div-2">
+                  <div class="badge-4">
+                    <div class="dot"></div>
+                    <div class="text-wrapper-27">CASO DE ÉXITO</div>
+                  </div>
+                  <div class="div-4">
+                    <h2 id="caso-exito-title" class="text-wrapper-28">
+                      Makai Residences: Tecnología que se ve en las ventas
+                    </h2>
+                    <p class="text-wrapper-29">
+                      Un desarrollo de lujo en Cap Cana que usa Urbatrix para
+                      captar, reservar y entregar a compradores internacionales.
+                    </p>
+                  </div>
+                </div>
+                <a href="#" class="demo-2"
+                  ><span class="text-wrapper-2">Ver el caso completo</span></a
+                >
+              </div>
+              <img loading="lazy" decoding="async"
+                class="image"
+                src="/assets/image.png"
+                alt="Caso de éxito Makai Residences"
+              />
+            </div>
+          </div>
+        </section>
+
+        <section
+          class="CTA-sections-landing"
+          aria-labelledby="footer-cta-title"
+        >
+          <div class="ISOTIPO">
+            <svg
+              class="cta-isotipo"
+              viewBox="0 0 81 81"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              role="img"
+              aria-label="Urbatrix"
+            >
+              <path d="M27.1621 0.501953V53.1729H53.8311V79.834H27.1611L0.5 53.1738V0.501953H27.1621Z" fill="url(#cta_iso_0)"/>
+              <path d="M80.5 27.1602L53.8379 53.1719V0.5H80.5V27.1602Z" fill="url(#cta_iso_1)"/>
+              <path d="M27.1621 0.501953V53.1729H53.8311V79.834H27.1611L0.5 53.1738V0.501953H27.1621Z" stroke="url(#cta_iso_2)" stroke-miterlimit="10"/>
+              <path d="M80.5 27.1602L53.8379 53.1719V0.5H80.5V27.1602Z" stroke="url(#cta_iso_3)" stroke-miterlimit="10"/>
+              <defs>
+                <linearGradient id="cta_iso_0" x1="12.5938" y1="0.610523" x2="71.7318" y2="34.4127" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="white" stop-opacity="0.96"/>
+                  <stop offset="1" stop-color="white" stop-opacity="0.72"/>
+                </linearGradient>
+                <linearGradient id="cta_iso_1" x1="12.5938" y1="0.610523" x2="71.7318" y2="34.4127" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="white" stop-opacity="0.96"/>
+                  <stop offset="1" stop-color="white" stop-opacity="0.72"/>
+                </linearGradient>
+                <linearGradient id="cta_iso_2" x1="40.5" y1="0.5" x2="40.5" y2="79.834" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="white" stop-opacity="0"/>
+                  <stop offset="1" stop-color="white"/>
+                </linearGradient>
+                <linearGradient id="cta_iso_3" x1="40.5" y1="0.5" x2="40.5" y2="79.834" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="white" stop-opacity="0"/>
+                  <stop offset="1" stop-color="white"/>
+                </linearGradient>
+              </defs>
+            </svg>
+          </div>
+          <div class="listo-para-vender-tu-wrapper">
+            <h2 id="footer-cta-title" class="listo-para-vender-tu">
+              ¿Listo para vender tu<br />próximo desarrollo mejor?
+            </h2>
+            
+          </div>
+          <div class="button-container-2">
+            <a href="#" class="button-secundary"
+              ><span class="text-wrapper-5">Ver planes y precios</span></a
+            >
+            <a href="#" class="demo"
+              ><span class="text-wrapper-2">Solicitar Demo</span></a
+            >
+          </div>
+        </section>
+
+
+      </main>
+      <footer class="footer">
+        <div class="footer-sections">
+          <div class="content-6">
+            <div class="items">
+              <a href="#" aria-label="Urbatrix">
+                <img loading="lazy" decoding="async"
+                  class="logo-3"
+                  src="/assets/logo-6.svg"
+                  alt="Urbatrix"
+                />
+              </a>
+              <div class="frame-2">
+                <nav class="item" aria-label="Producto">
+                  <div class="text-wrapper-30">Producto</div>
+                  <a href="#" class="text-wrapper-31">Cómo funciona</a>
+                  <a href="#" class="text-wrapper-32">Captación y CRM</a>
+                  <a href="#" class="text-wrapper-31">Pagos y Reservas</a>
+                  <a href="#" class="text-wrapper-31">Capa Legal</a>
+                  <a href="#" class="text-wrapper-31">Post Venta</a>
+                  <a href="#" class="text-wrapper-31">Portal de Broker</a>
+                </nav>
+                <nav class="item" aria-label="Company">
+                  <div class="text-wrapper-30">Company</div>
+                  <a href="#" class="text-wrapper-31">Desarrolladores</a>
+                  <a href="#" class="text-wrapper-31">Brokers y Agencias</a>
+                  <a href="#" class="text-wrapper-31">Compradores</a>
+                  <a href="#" class="text-wrapper-31">Casos de éxito</a>
+                </nav>
+                <nav class="item" aria-label="Recursos">
+                  <div class="text-wrapper-30">Recursos</div>
+                  <a href="#" class="text-wrapper-31">Blog</a>
+                  <a href="#" class="text-wrapper-32">Guías</a>
+                  <a href="#" class="text-wrapper-31">Centro de ayuda</a>
+                </nav>
+                <address class="item">
+                  <div class="text-wrapper-30">Empresa</div>
+                  <a href="#" class="text-wrapper-31">Sobre nosotros</a>
+                  <a href="#" class="text-wrapper-32">Precios</a>
+                  <a href="#" class="text-wrapper-31">Solicitar demo</a>
+                  <a href="mailto:contacto@urbatrix.com" class="text-wrapper-31"
+                    >contacto@urbatrix.com</a
+                  >
+                </address>
+              </div>
+            </div>
+            <img loading="lazy" decoding="async"
+              class="divider"
+              src="/assets/divider-1.svg"
+              alt=""
+              aria-hidden="true"
+            />
+            <div class="div-3">
+              <a href="#" aria-label="Facebook de Urbatrix"
+                ><img loading="lazy" decoding="async"
+                  class="img-7"
+                  src="/assets/facebook-circle-fill-1.svg"
+                  alt=""
+                  aria-hidden="true"
+              /></a>
+              <a href="#" aria-label="Instagram de Urbatrix"
+                ><img loading="lazy" decoding="async"
+                  class="img-7"
+                  src="/assets/instagram-fill-1.svg"
+                  alt=""
+                  aria-hidden="true"
+              /></a>
+              <a href="#" aria-label="X de Urbatrix"
+                ><img loading="lazy" decoding="async"
+                  class="img-7"
+                  src="/assets/twitter-x-line-1.svg"
+                  alt=""
+                  aria-hidden="true"
+              /></a>
+              <p class="text-wrapper-33">
+                2026 Urbatrix © Todos los derechos reservados.
+              </p>
+            </div>
+          </div>
+          <div class="text-wrapper-34">Urbatrix</div>
+        </div>
+      </footer>
+      <nav class="mobile-bottomnav" aria-label="Navegación móvil">
+        <a href="#" class="mbn-link is-active">Inicio</a>
+        <a href="#" class="mbn-link">Producto</a>
+        <a href="#" class="mbn-link">Soluciones</a>
+        <a href="#" class="mbn-link">Precios</a>
+        <a href="#" class="mbn-demo">Demo</a>
+      </nav>
+
+    </div>
+<script>
+
+      (() => {
+        const toggle = document.querySelector(".mobile-menu-toggle");
+        const panel = document.getElementById("mobile-menu");
+
+        if (!toggle || !panel) {
+          return;
+        }
+
+        const focusableSelector =
+          'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])';
+
+        const closeMenu = (returnFocus = false) => {
+          panel.hidden = true;
+          toggle.setAttribute("aria-expanded", "false");
+          // colapsar los subtabs desplegados
+          panel
+            .querySelectorAll(".mobile-menu-parent")
+            .forEach((b) => b.setAttribute("aria-expanded", "false"));
+          panel
+            .querySelectorAll(".mobile-menu-sub")
+            .forEach((s) => s.classList.remove("is-open"));
+          if (returnFocus) {
+            toggle.focus();
+          }
+        };
+
+        const openMenu = () => {
+          panel.hidden = false;
+          toggle.setAttribute("aria-expanded", "true");
+          const firstFocusable = panel.querySelector(focusableSelector);
+          if (firstFocusable instanceof HTMLElement) {
+            firstFocusable.focus();
+          }
+        };
+
+        toggle.addEventListener("click", () => {
+          if (panel.hidden) {
+            openMenu();
+          } else {
+            closeMenu(false);
+          }
+        });
+
+        document.addEventListener("keydown", (event) => {
+          if (event.key === "Escape" && !panel.hidden) {
+            event.preventDefault();
+            closeMenu(true);
+          }
+        });
+
+        document.addEventListener("click", (event) => {
+          if (panel.hidden) {
+            return;
+          }
+
+          if (!(event.target instanceof Node)) {
+            return;
+          }
+
+          if (!panel.contains(event.target) && !toggle.contains(event.target)) {
+            closeMenu(false);
+          }
+        });
+
+        panel.querySelectorAll("a").forEach((link) => {
+          link.addEventListener("click", () => closeMenu(false));
+        });
+
+        // Acordeón de subtabs (Producto / Soluciones): solo nombres.
+        const parents = panel.querySelectorAll(".mobile-menu-parent");
+        parents.forEach((btn) => {
+          const sub = document.getElementById(btn.getAttribute("aria-controls"));
+          btn.addEventListener("click", () => {
+            const willOpen = btn.getAttribute("aria-expanded") !== "true";
+            parents.forEach((other) => {
+              if (other !== btn) {
+                other.setAttribute("aria-expanded", "false");
+                const os = document.getElementById(
+                  other.getAttribute("aria-controls")
+                );
+                if (os) os.classList.remove("is-open");
+              }
+            });
+            btn.setAttribute("aria-expanded", willOpen ? "true" : "false");
+            if (sub) sub.classList.toggle("is-open", willOpen);
+          });
+        });
+
+        window.addEventListener("resize", () => {
+          if (window.innerWidth > 767 && !panel.hidden) {
+            closeMenu(false);
+          }
+        });
+      })();
+
+</script>
+
+    <script src="/script.js" defer></script>
+  </body>
+</html>

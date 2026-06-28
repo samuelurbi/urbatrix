@@ -1,0 +1,163 @@
+.frame {
+  position: relative;
+  width: 413px;
+  height: 160px;
+}
+
+.frame .active-logo {
+  position: absolute;
+  top: -10px;
+  left: 88px;
+  width: 238px;
+  height: 238px;
+}
+
+.frame .div {
+  display: flex;
+  width: 154px;
+  height: 57px;
+  align-items: center;
+  position: absolute;
+  top: 52px;
+  left: 259px;
+}
+
+.frame .key-line-wrapper {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px;
+  position: relative;
+  flex: 0 0 auto;
+  z-index: 2;
+  background-color: #fdfdfdbf;
+  border-radius: 100px;
+  border: 1.35px solid;
+  border-color: #fdfdfd40;
+  box-shadow: 0px 0.9px 7.2px -3.6px #0000000d;
+}
+
+.frame .img {
+  position: relative;
+  width: 28.8px;
+  height: 28.8px;
+  aspect-ratio: 1;
+}
+
+.frame .line-chart-line-wrapper {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px;
+  position: relative;
+  flex: 0 0 auto;
+  margin-left: -8px;
+  z-index: 1;
+  background-color: #fdfdfdbf;
+  border-radius: 100px;
+  border: 1.35px solid;
+  border-color: #fdfdfd40;
+  box-shadow: 0px 0.9px 7.2px -3.6px #0000000d;
+}
+
+.frame .div-2 {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px;
+  position: relative;
+  flex: 0 0 auto;
+  margin-left: -8px;
+  z-index: 0;
+  background-color: #fdfdfdbf;
+  border-radius: 100px;
+  border: 1.35px solid;
+  border-color: #fdfdfd40;
+  box-shadow: 0px 0.9px 7.2px -3.6px #0000000d;
+}
+
+.frame .div-3 {
+  display: inline-flex;
+  align-items: center;
+  position: absolute;
+  top: 52px;
+  left: 0;
+}
+
+.frame .div-4 {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px;
+  position: relative;
+  flex: 0 0 auto;
+  background-color: #fdfdfdbf;
+  border-radius: 100px;
+  border: 1.35px solid;
+  border-color: #fdfdfd40;
+  box-shadow: 0px 0.9px 7.2px -3.6px #0000000d;
+}
+
+.frame .img-wrapper {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px;
+  position: relative;
+  flex: 0 0 auto;
+  margin-left: -8px;
+  background-color: #fdfdfdbf;
+  border-radius: 100px;
+  border: 1.35px solid;
+  border-color: #fdfdfd40;
+  box-shadow: 0px 0.9px 7.2px -3.6px #0000000d;
+}
+/* Inject the original CSS code above */
+
+.frame {
+  max-width: 413px;
+  width: 100%;
+}
+
+.frame .key-line-wrapper,
+.frame .line-chart-line-wrapper,
+.frame .div-2,
+.frame .div-4,
+.frame .img-wrapper {
+  justify-content: center;
+  appearance: none;
+  -webkit-appearance: none;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+  background-clip: padding-box;
+}
+
+.frame .key-line-wrapper:focus,
+.frame .line-chart-line-wrapper:focus,
+.frame .div-2:focus,
+.frame .div-4:focus,
+.frame .img-wrapper:focus {
+  outline: none;
+}
+
+.frame .key-line-wrapper:focus-visible,
+.frame .line-chart-line-wrapper:focus-visible,
+.frame .div-2:focus-visible,
+.frame .div-4:focus-visible,
+.frame .img-wrapper:focus-visible {
+  outline: 2px solid #4a90e2;
+  outline-offset: 2px;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}

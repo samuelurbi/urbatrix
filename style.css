@@ -1,0 +1,4186 @@
+.main-homepage-anima {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  position: relative;
+  background-color: var(--01-tokens-bg-white-0);
+}
+
+.main-homepage-anima .header {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px var(--container-pad);
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  background-color: transparent;
+}
+
+.main-homepage-anima .div-left {
+  position: relative;
+  width: 248px;
+}
+
+/* El isotipo del header solo se usa en el estado "scrolled" de móvil; en
+   desktop (y móvil sin scroll) va oculto. */
+.main-homepage-anima .header-iso {
+  display: none;
+}
+
+.main-homepage-anima .mobile-menu-toggle {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border: 1px solid #ffffff1f;
+  border-radius: 12px;
+  background: #ffffff0a;
+  cursor: pointer;
+}
+
+.main-homepage-anima .mobile-menu-toggle-icon {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.main-homepage-anima .mobile-menu-toggle-icon span {
+  display: block;
+  width: 18px;
+  height: 2px;
+  border-radius: 999px;
+  background-color: #ffffff;
+}
+
+.main-homepage-anima .mobile-menu-panel {
+  display: none;
+  width: 100%;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: 4px;
+  padding: 12px;
+  border-radius: 14px;
+  border: 1px solid #ffffff1f;
+  background-color: #050c13e6;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.main-homepage-anima .mobile-menu-panel[hidden] {
+  display: none !important;
+}
+
+.main-homepage-anima .mobile-menu-links {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.main-homepage-anima .mobile-menu-link {
+  all: unset;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 10px;
+  color: #ffffff;
+  font-family: "Mont-SemiBold", Helvetica;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  cursor: pointer;
+}
+
+.main-homepage-anima .mobile-menu-link[aria-current="page"] {
+  background-color: #00b48126;
+  color: #9ff5d8;
+}
+
+.main-homepage-anima .mobile-menu-parent .img {
+  width: 16px;
+  height: 16px;
+}
+
+.main-homepage-anima .mobile-menu-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* los dos CTA, uno al lado del otro */
+  gap: 8px;
+}
+
+.main-homepage-anima .mobile-menu-login,
+.main-homepage-anima .mobile-menu-demo {
+  text-decoration: none;
+  min-height: 44px;
+  border-radius: 999px;
+  font-family: "Mont-SemiBold", Helvetica;
+  font-size: 0.8125rem;
+  line-height: 1.125rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.main-homepage-anima .mobile-menu-login {
+  color: #ffffff;
+  border: 1px solid #ffffff26;
+  background: transparent;
+}
+
+.main-homepage-anima .mobile-menu-demo {
+  background: #ffffff;
+  color: var(--06-foundations-neutral-slate-700);
+  outline: 4px solid #ffffff26;
+}
+
+.main-homepage-anima .mobile-menu-toggle:focus-visible,
+.main-homepage-anima .mobile-menu-link:focus-visible,
+.main-homepage-anima .mobile-menu-login:focus-visible,
+.main-homepage-anima .mobile-menu-demo:focus-visible {
+  outline: 2px solid var(--collection-1-primery-urbatrix);
+  outline-offset: 2px;
+}
+
+/* Navbar central: SIEMPRE fijo y centrado arriba. Al hacer scroll (.is-stuck)
+   morfea de fondo claro a negro translúcido y aparecen, CRECIENDO desde los
+   extremos, el isotipo (izq) y el botón Solicitar Demo (der). Como está fijo en
+   ambos estados, no hay salto: la transición es fluida (color + ancho). */
+.main-homepage-anima .div-menu-navbar {
+  display: inline-flex;
+  align-items: center;
+  gap: 0;
+  padding: 6px;
+  position: fixed;
+  top: 18px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  background-color: #ffffff0a;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid;
+  border-color: #ffffff0f;
+  box-shadow:
+    0px 4px 9px #0000001a,
+    0px 17px 17px #00000017,
+    0px 38px 23px #0000000d,
+    0px 68px 27px #00000003,
+    0px 107px 30px transparent;
+  transition:
+    background-color 0.45s ease,
+    border-color 0.45s ease,
+    box-shadow 0.45s ease,
+    padding 0.45s ease;
+}
+
+/* Elementos extra: presentes siempre pero COLAPSADOS (max-width 0); crecen al
+   fijarse, dando el efecto de aparecer desde los extremos. */
+.main-homepage-anima .navbar-brand {
+  display: inline-flex;
+  align-items: center;
+  max-width: 0;
+  padding: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: max-width 0.45s ease, padding 0.45s ease, opacity 0.35s ease;
+}
+.main-homepage-anima .navbar-brand-ico {
+  width: 20px;
+  height: 20px;
+}
+.main-homepage-anima .navbar-sep {
+  align-self: stretch;
+  width: 1px;
+  max-width: 0;
+  margin: 4px 0;
+  opacity: 0;
+  background: rgba(255, 255, 255, 0.18);
+  overflow: hidden;
+  transition: max-width 0.45s ease, margin 0.45s ease, opacity 0.35s ease;
+}
+.main-homepage-anima .navbar-demo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 0;
+  padding: 0;
+  opacity: 0;
+  overflow: hidden;
+  border-radius: 6px;
+  background: #ffffff;
+  color: var(--06-foundations-neutral-slate-700, #1a2330);
+  font-family: "Mont-SemiBold", Helvetica, sans-serif;
+  font-weight: 600;
+  font-size: 0.8125rem;
+  line-height: normal;
+  white-space: nowrap;
+  transition: max-width 0.5s ease, padding 0.45s ease, opacity 0.35s ease,
+    filter 0.2s ease;
+}
+.main-homepage-anima .navbar-demo:hover {
+  filter: brightness(0.96);
+}
+.main-homepage-anima .div-menu-navbar .text-wrapper,
+.main-homepage-anima .div-menu-navbar .tab .img {
+  transition: color 0.45s ease, filter 0.45s ease;
+}
+
+/* ===== Estado fijo (al hacer scroll): fondo negro + elementos expandidos ===== */
+.main-homepage-anima .div-menu-navbar.is-stuck {
+  background-color: rgba(10, 14, 20, 0.62);
+  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(16px);
+  border-color: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 12px 34px rgba(0, 0, 0, 0.28);
+}
+.main-homepage-anima .div-menu-navbar.is-stuck .navbar-brand {
+  max-width: 44px;
+  opacity: 1;
+  padding: 0 6px 0 4px;
+}
+.main-homepage-anima .div-menu-navbar.is-stuck .navbar-sep {
+  max-width: 1px;
+  opacity: 1;
+  margin: 4px 6px;
+}
+.main-homepage-anima .div-menu-navbar.is-stuck .navbar-demo {
+  max-width: 220px;
+  opacity: 1;
+  padding: 8px 16px;
+}
+.main-homepage-anima .div-menu-navbar.is-stuck .menu {
+  align-items: center;
+}
+/* texto e iconos del menú en claro para buen contraste sobre el fondo negro */
+.main-homepage-anima .div-menu-navbar.is-stuck .text-wrapper {
+  color: rgba(255, 255, 255, 0.86);
+}
+.main-homepage-anima .div-menu-navbar.is-stuck .tab .img {
+  filter: brightness(0) invert(1);
+  opacity: 0.7;
+}
+
+/* ===== Indicador deslizante del menú (activo + hover) =====
+   .nav-items es el contenedor de referencia (posición relativa). El indicador
+   verde (.nav-indicator) se mueve y redimensiona al item activo, y sigue al
+   hover; al salir vuelve al activo. Como vive dentro de .nav-items, no se
+   descoloca cuando el navbar morfea a fijo. */
+.main-homepage-anima .nav-items {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+}
+.main-homepage-anima .nav-indicator {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  border-radius: 6px;
+  z-index: 0;
+  opacity: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.16) 0%,
+      rgba(255, 255, 255, 0) 100%
+    ),
+    linear-gradient(
+      0deg,
+      var(--collection-1-primery-urbatrix, #00b481) 0%,
+      var(--collection-1-primery-urbatrix, #00b481) 100%
+    );
+  box-shadow:
+    0px 0px 0px 1px #009369,
+    0px 1px 2px #0d111b3d;
+  transition:
+    transform 0.32s cubic-bezier(0.4, 0, 0.2, 1),
+    width 0.32s cubic-bezier(0.4, 0, 0.2, 1),
+    height 0.32s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.main-homepage-anima .nav-indicator.ready {
+  opacity: 1;
+}
+.main-homepage-anima .nav-item {
+  position: relative;
+  z-index: 1;
+}
+/* item bajo el indicador: texto blanco para contraste sobre el verde */
+.main-homepage-anima .nav-item.nav-on .text-wrapper {
+  color: #ffffff;
+}
+
+.main-homepage-anima .container-bg-active {
+  position: relative;
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  overflow: hidden;
+  aspect-ratio: 1;
+}
+
+.main-homepage-anima .bg-active {
+  position: absolute;
+  top: calc(50% - 15px);
+  left: calc(50% - 15px);
+  width: 30px;
+  height: 30px;
+  border-radius: 6px;
+  border: none;
+  box-shadow:
+    0px 0px 0px 1px #009369,
+    0px 1px 2px #0d111b3d;
+  aspect-ratio: 1;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.16) 0%,
+      rgba(255, 255, 255, 0) 100%
+    ),
+    linear-gradient(0deg, rgba(0, 180, 129, 1) 0%, rgba(0, 180, 129, 1) 100%);
+  background-color: var(--collection-1-primery-urbatrix);
+}
+
+.main-homepage-anima .bg-active::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  padding: 1px;
+  border-radius: 6px;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.12) 0%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.main-homepage-anima .icon-home {
+  display: flex;
+  width: 30px;
+  height: 30px;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  position: absolute;
+  top: calc(50% - 15px);
+  left: calc(50% - 15px);
+}
+
+.main-homepage-anima .img {
+  position: relative;
+  width: 14px;
+  height: 14px;
+  aspect-ratio: 1;
+}
+
+.main-homepage-anima .menu {
+  display: inline-flex;
+  align-items: center;
+  position: relative;
+  align-self: stretch;
+  flex: 0 0 auto;
+}
+
+.main-homepage-anima .tab {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  padding: 8px 8px 8px 10px;
+  position: relative;
+  align-self: stretch;
+  flex: 0 0 auto;
+}
+
+.main-homepage-anima .text-wrapper {
+  position: relative;
+  width: fit-content;
+  font-family: "Mont-Regular", Helvetica;
+  font-weight: 400;
+  color: var(--06-foundations-neutral-slate-300);
+  font-size: 0.8125rem;
+  letter-spacing: 0;
+  line-height: normal;
+  white-space: nowrap;
+}
+
+.main-homepage-anima .div-wrapper {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  padding: 8px 10px;
+  position: relative;
+  align-self: stretch;
+  flex: 0 0 auto;
+}
+
+.main-homepage-anima .div-right {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  position: relative;
+  flex: 0 0 auto;
+}
+
+.main-homepage-anima .a-link-login {
+  height: 36px;
+  padding: 4px 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  flex: 0 0 auto;
+  border-radius: 100px;
+  overflow: hidden;
+}
+
+.main-homepage-anima .div {
+  position: relative;
+  width: fit-content;
+  font-family: "Mont-SemiBold", Helvetica;
+  font-weight: 600;
+  color: var(--06-foundations-neutral-slate-0);
+  font-size: 0.8125rem;
+  letter-spacing: 0;
+  line-height: normal;
+  white-space: nowrap;
+}
+
+.main-homepage-anima .a-link-demo {
+  min-height: 48px;
+  padding: 4px 16px;
+  background-color: var(--01-tokens-bg-white-0);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  flex: 0 0 auto;
+  border-radius: 100px;
+  overflow: hidden;
+  outline: 6px solid #ffffff29;
+}
+
+.main-homepage-anima .text-wrapper-2 {
+  position: relative;
+  width: fit-content;
+  font-family: "Mont-SemiBold", Helvetica;
+  font-weight: 600;
+  color: var(--06-foundations-neutral-slate-700);
+  font-size: 0.8125rem;
+  letter-spacing: 0;
+  line-height: normal;
+  white-space: nowrap;
+}
+
+.main-homepage-anima .body {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  position: relative;
+  align-self: stretch;
+  width: 100%;
+  flex: 0 0 auto;
+  z-index: 1;
+  /* recorta el desbordamiento horizontal de las animaciones de salida de
+     features (título/descripción/cards). Va aquí (en <main>) y no en el wrapper
+     raíz para no recortar el navbar fijo, que vive en el <header> hermano.
+     'clip' no crea contenedor de scroll → no rompe los pines de ScrollTrigger. */
+  overflow-x: clip;
+}
+
+.main-homepage-anima .hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 36px;
+  padding: 124px var(--container-pad) 0px;
+  position: relative;
+  align-self: stretch;
+  width: 100%;
+  flex: 0 0 auto;
+  background-image: url(assets/hero.png);
+  background-size: cover;
+  background-position: 50% 50%;
+}
+
+.main-homepage-anima .content-text {
+  flex-direction: column;
+  max-width: 1000px;
+  align-items: center;
+  gap: 6px;
+  display: flex;
+  position: relative;
+  width: 100%;
+  flex: 0 0 auto;
+}
+
+.main-homepage-anima .badge {
+  display: inline-flex;
+  gap: 6px;
+  padding: 4px 4px 4px 10px;
+  background-color: #ffffff14;
+  border-radius: 100px;
+  overflow: hidden;
+  backdrop-filter: blur(6px) brightness(100%);
+  -webkit-backdrop-filter: blur(6px) brightness(100%);
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  flex: 0 0 auto;
+}
+
+.main-homepage-anima .text-wrapper-3 {
+  position: relative;
+  width: fit-content;
+  font-family: "Mont-SemiBold", Helvetica;
+  font-weight: 600;
+  color: #ffffffcc;
+  font-size: 0.75rem;
+  text-align: center;
+  letter-spacing: 0.36px;
+  line-height: 0.8375rem;
+  white-space: nowrap;
+}
+
+.main-homepage-anima .all-in-one {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 9px 6px 6px;
+  position: relative;
+  flex: 0 0 auto;
+  background-color: #ffffff;
+  border-radius: 100px;
+}
+
+.main-homepage-anima .text-wrapper-4 {
+  position: relative;
+  width: fit-content;
+  margin-top: -1px;
+  font-family: "Mont-Bold", Helvetica;
+  font-weight: 700;
+  color: var(--01-tokens-text-strong-950);
+  font-size: 0.625rem;
+  text-align: center;
+  letter-spacing: 0.6px;
+  line-height: 0.7rem;
+  white-space: nowrap;
+}
+
+.main-homepage-anima .vende-tu-desarrollo {
+  position: relative;
+  align-self: stretch;
+  font-family: "Mont-SemiBold", Helvetica;
+  font-weight: 600;
+  color: #ffffff;
+  font-size: 3.5rem;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: 4.2rem;
+}
+
+.main-homepage-anima .analiza {
+  position: relative;
+  font-family: "Mont-Regular", Helvetica;
+  font-weight: 400;
+  color: #ffffff;
+  font-size: 1rem;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: 1.35rem;
+}
+
+.main-homepage-anima .button-container {
+  max-width: 388px;
+  justify-content: flex-end;
+  gap: 12px;
+  padding: 16px 0px 0px;
+  width: 100%;
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.main-homepage-anima .button-secundary {
+  justify-content: center;
+  gap: 10px;
+  padding: 12px 24px;
+  flex: 1;
+  align-self: stretch;
+  flex-grow: 1;
+  background-color: #0000001f;
+  border-radius: 100px;
+  backdrop-filter: blur(6px) brightness(100%);
+  -webkit-backdrop-filter: blur(6px) brightness(100%);
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.main-homepage-anima .text-wrapper-5 {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: fit-content;
+  text-shadow: 0px 1px 12px #00000029;
+  font-family: "Mont-SemiBold", Helvetica;
+  font-weight: 600;
+  color: #ffffff;
+  font-size: 0.8125rem;
+  letter-spacing: 0;
+  line-height: normal;
+  white-space: nowrap;
+}
+
+.main-homepage-anima .demo {
+  display: flex;
+  min-height: 52px;
+  align-items: center;
+  justify-content: center;
+  padding: 4px 16px;
+  position: relative;
+  flex: 1;
+  flex-grow: 1;
+  margin: 0;
+  background-color: var(--01-tokens-bg-white-0);
+  border-radius: 100px;
+  overflow: hidden;
+  outline: 6px solid #ffffff29;
+}
+
+.main-homepage-anima .dashboard {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  position: relative;
+  flex: 0 0 auto;
+}
+
+.main-homepage-anima .div-2 {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  align-self: stretch;
+  width: 100%;
+  position: relative;
+  flex: 0 0 auto;
+}
+
+.main-homepage-anima .features {
+  display: flex;
+  align-items: flex-start;
+  position: relative;
+  align-self: stretch;
+  width: 100%;
+  flex: 0 0 auto;
+}
+
+.main-homepage-anima .card-feature {
+  justify-content: center;
+  gap: 10px;
+  padding: 12px;
+  flex: 1;
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.main-homepage-anima .icon {
+  position: relative;
+  width: 32px;
+  height: 32px;
+  background-color: #f6fcf7;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.main-homepage-anima .time-line {
+  position: absolute;
+  top: 6px;
+  left: 6px;
+  width: 20px;
+  height: 20px;
+  aspect-ratio: 1;
+}
+
+.main-homepage-anima .text-wrapper-6 {
+  position: relative;
+  width: fit-content;
+  font-family: "Mont-SemiBold", Helvetica;
+  font-weight: 600;
+  color: #00674f;
+  font-size: 0.8125rem;
+  letter-spacing: 0;
+  line-height: normal;
+  white-space: nowrap;
+}
+
+.main-homepage-anima .card-feature-2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 12px;
+  position: relative;
+  flex: 1;
+  flex-grow: 1;
+  border-right-width: 1px;
+  border-right-style: solid;
+  border-left-width: 1px;
+  border-left-style: solid;
+  border-color: #0055431f;
+}
+
+.main-homepage-anima .img-wrapper {
+  position: relative;
+  width: 32px;
+  height: 32px;
+  background-color: #f6fcf7;
+  border-radius: 6px;
+  overflow: hidden;
+  aspect-ratio: 1;
+}
+
+.main-homepage-anima .img-2 {
+  position: absolute;
+  top: calc(50% - 10px);
+  left: calc(50% - 10px);
+  width: 20px;
+  height: 20px;
+  aspect-ratio: 1;
+}
+
+.main-homepage-anima .box-dashboard {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 16px;
+  position: relative;
+  flex: 0 0 auto;
+  border-radius: 36px;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.05) 0%,
+    rgba(0, 0, 0, 0) 80%
+  );
+}
+
+.main-homepage-anima .dashboard-makai {
+  width: 1134px;
+  height: 665px;
+  position: relative;
+  aspect-ratio: 1.71;
+}
+
+.main-homepage-anima .sub-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  position: relative;
+  align-self: stretch;
+  width: 100%;
+  flex: 0 0 auto;
+}
+
+.main-homepage-anima .container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  position: relative;
+  align-self: stretch;
+  width: 100%;
+  flex: 0 0 auto;
+}
+
+.main-homepage-anima .logo {
+  position: relative;
+  width: 126px;
+  height: 42px;
+}
+
+.main-homepage-anima .line {
+  position: relative;
+  width: 1.5px;
+  height: 24px;
+}
+
+.main-homepage-anima .text {
+  position: relative;
+  align-self: stretch;
+  font-family: "Mont-SemiBold", Helvetica;
+  font-weight: 600;
+  color: var(--06-foundations-neutral-slate-400);
+  font-size: 0.875rem;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: 1.3125rem;
+}
+
+.main-homepage-anima .section-img {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 72px 0px;
+  position: relative;
+  align-self: stretch;
+  width: 100%;
+  flex: 0 0 auto;
+  overflow: hidden;
+}
+
+.main-homepage-anima .bento-features {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+  padding: 0px var(--container-pad) 120px;
+  align-self: stretch;
+  width: 100%;
+  position: relative;
+  flex: 0 0 auto;
+}
+
+.main-homepage-anima .title {
+  display: flex;
+  flex-direction: column;
+  width: 756px;
+  align-items: center;
+  gap: 8px;
+  position: relative;
+  flex: 0 0 auto;
+}
+
+.main-homepage-anima .badge-2 {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 6px 10px;
+  position: relative;
+  flex: 0 0 auto;
+  border-radius: 100px;
+  border: 1px solid;
+  border-color: var(--06-foundations-neutral-slate-200);
+}
+
+.main-homepage-anima .stackshare-line {
+  position: relative;
+  width: 16px;
+  height: 16px;
+  aspect-ratio: 1;
+}
+
+.main-homepage-anima .text-wrapper-7 {
+  position: relative;
+  width: fit-content;
+  font-family: "Mont-SemiBold", Helvetica;
+  font-weight: 600;
+  color: var(--06-foundations-neutral-slate-500);
+  font-size: 0.8125rem;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: 1.1rem;
+  white-space: nowrap;
+}
+
+.main-homepage-anima .p {
+  position: relative;
+  align-self: stretch;
+  background: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 1) 0%,
+    rgba(0, 180, 129, 1) 100%
+  );
+  -webkit-background-clip: text !important;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-fill-color: transparent;
+  font-family: "Mont-SemiBold", Helvetica;
+  font-weight: 600;
+  color: transparent;
+  font-size: 2.5rem;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: 3rem;
+}
+
+.main-homepage-anima .text-wrapper-8 {
+  position: relative;
+  width: 620px;
+  font-family: "Mont-Regular", Helvetica;
+  font-weight: 400;
+  color: var(--06-foundations-neutral-slate-500);
+  font-size: 0.9375rem;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: 1.26875rem;
+}
+
+.main-homepage-anima .bento {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  position: relative;
+  align-self: stretch;
+  width: 100%;
+  flex: 0 0 auto;
+}
+
+.main-homepage-anima .div-3 {
+  display: flex;
+  align-items: stretch;
+  gap: 16px;
+  align-self: stretch;
+  width: 100%;
+  position: relative;
+  flex: 0 0 auto;
+}
+
+.main-homepage-anima .container-card-bento {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 8px;
+  position: relative;
+  flex: 1;
+  align-self: stretch;
+  flex-grow: 1;
+  background-color: #ffffff66;
+  border-radius: 36px;
+  border: 1px solid;
+  border-color: var(--06-foundations-neutral-slate-200);
+  backdrop-filter: blur(6px) brightness(100%);
+  -webkit-backdrop-filter: blur(6px) brightness(100%);
+}
+
+.main-homepage-anima .card-bento {
+  flex-direction: column;
+  justify-content: flex-start;
+  align-self: stretch;
+  width: 100%;
+  flex: 1 0 auto;
+  background-color: var(--06-foundations-neutral-slate-100);
+  border-radius: 28px;
+  overflow: hidden;
+  border: 1px solid;
+  border-color: var(--06-foundations-neutral-slate-200);
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.main-homepage-anima .img-4 {
+  align-self: stretch;
+  width: 100%;
+  position: relative;
+  height: 340px;
+}
+
+.main-homepage-anima .card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 0px 8px 8px;
+  position: relative;
+  align-self: stretch;
+  width: 100%;
+  flex: 0 0 auto;
+}
+
+.main-homepage-anima .text-2 {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 16px;
+  position: relative;
+  align-self: stretch;
+  width: 100%;
+  flex: 0 0 auto;
+  background-color: #ffffff;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow:
+    inset 0px -1px 1px -0.5px #3e4b800f,
+    0px 0px 0px 1px #f5f5f5,
+    0px 48px 48px -24px #3e4b800a,
+    0px 24px 24px -12px #3e4b800a,
+    0px 6px 6px -3px #3e4b800a,
+    0px 3px 3px -1.5px #3e4b8005,
+    0px 1px 1px 0.5px #3d4b7f0a;
+}
+
+.main-homepage-anima .top {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  position: relative;
+  flex: 0 0 auto;
+}
+
+.main-homepage-anima .text-wrapper-9 {
+  position: relative;
+  width: fit-content;
+  margin-top: -1px;
+  font-family: "Mont-SemiBold", Helvetica;
+  font-weight: 600;
+  color: var(--collection-1-primery-urbatrix);
+  font-size: 0.875rem;
+  letter-spacing: 0;
+  line-height: 1.05rem;
+  white-space: nowrap;
+}
+
+.main-homepage-anima .text-wrapper-10 {
+  position: relative;
+  width: fit-content;
+  font-family: "Mont-SemiBold", Helvetica;
+  font-weight: 600;
+  color: #000000;
+  font-size: 1.125rem;
+  letter-spacing: 0;
+  line-height: 1.35rem;
+  white-space: nowrap;
+}
+
+.main-homepage-anima .text-wrapper-11 {
+  position: relative;
+  align-self: stretch;
+  font-family: "Mont-Regular", Helvetica;
+  font-weight: 400;
+  color: var(--06-foundations-neutral-slate-500);
+  font-size: 0.8125rem;
+  letter-spacing: 0;
+  line-height: 1.1rem;
+}
+
+.main-homepage-anima .bottom-bento {
+  display: flex;
+  align-items: stretch;
+  gap: 16px;
+  position: relative;
+  align-self: stretch;
+  width: 100%;
+}
+
+/* Cards del bento (arriba y abajo) con cajas de texto de IGUAL altura:
+   la caja gris ya crece para igualar alturas; aquí el bloque de texto
+   (.card) y la caja blanca (.text-2) crecen para rellenar ese alto,
+   de modo que las cajas blancas quedan a la misma altura entre sí. */
+.main-homepage-anima .bottom-bento .card,
+.main-homepage-anima .container-card-bento .card {
+  flex: 1 0 auto;
+}
+.main-homepage-anima .bottom-bento .text-2,
+.main-homepage-anima .container-card-bento .text-2 {
+  flex: 1 0 auto;
+}
+
+/* Cards del bento de ANCHO uniforme: sin esto los ítems flex no
+   encogen por igual (min-width:auto) y una card sale más ancha,
+   haciendo su imagen más alta y descuadrando las cajas. */
+.main-homepage-anima .container-card-bento,
+.main-homepage-anima .card-bento-wrapper {
+  min-width: 0;
+}
+.main-homepage-anima .img-4,
+.main-homepage-anima .img-5 {
+  min-width: 0;
+}
+
+.main-homepage-anima .card-bento-wrapper {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 8px;
+  position: relative;
+  flex: 1;
+  align-self: stretch;
+  flex-grow: 1;
+  background-color: #ffffff66;
+  border-radius: 36px;
+  border: 1px solid;
+  border-color: var(--06-foundations-neutral-slate-200);
+  backdrop-filter: blur(6px) brightness(100%);
+  -webkit-backdrop-filter: blur(6px) brightness(100%);
+}
+
+.main-homepage-anima .card-bento-2 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  position: relative;
+  flex: 1;
+  align-self: stretch;
+  flex-grow: 1;
+  background-color: var(--06-foundations-neutral-slate-100);
+  border-radius: 28px;
+  overflow: hidden;
+  border: 1px solid;
+  border-color: var(--06-foundations-neutral-slate-200);
+}
+
+.main-homepage-anima .img-5 {
+  position: relative;
+  width: 362px;
+  height: 340px;
+  aspect-ratio: 1.06;
+}
+
+.main-homepage-anima .text-wrapper-12 {
+  position: relative;
+  width: 268px;
+  font-family: "Mont-Regular", Helvetica;
+  font-weight: 400;
+  color: var(--06-foundations-neutral-slate-500);
+  font-size: 0.8125rem;
+  letter-spacing: 0;
+  line-height: 1.1rem;
+}
+
+.main-homepage-anima .section-features {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 120px var(--container-pad) 0;
+  position: relative;
+  align-self: stretch;
+  width: 100%;
+  flex: 0 0 auto;
+  background: #ffffff;
+}
+
+/* Bloque (no flex): el .section-features-grid pineado por GSAP debe vivir en
+   flujo de bloque normal para que el pin-spacer reserve el scroll. Si el padre
+   es flex, el spacer se vuelve flex-item y GSAP no puede añadir el espacio →
+   la sección "no se queda fija" y el resto de la página le pasa por encima. */
+.main-homepage-anima .div-inner-section-featured {
+  display: block;
+  width: 100%;
+  max-width: var(--content-max);
+  margin: 0 auto;
+}
+
+.main-homepage-anima .section-features .title {
+  width: 100%;
+  margin: 0 auto 24px;   /* separación header ↔ grid (menos = menos aire / solapamiento más corto) */
+}
+
+/* Cabecera de features (DESKTOP): título + descripción en fila (35% / 65%),
+   alineados a la izquierda. La animación palabra-por-palabra la maneja el JS.
+   En móvil (≤900) esto se aplana a estándar centrado — ver bloque al final. */
+.main-homepage-anima .div-inner-section-featured .features-head {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: flex-start;
+  width: 100%;
+}
+.main-homepage-anima .div-inner-section-featured .features-headline {
+  display: flex;
+  align-items: flex-start;
+  text-align: left;
+  width: 35%;
+}
+.main-homepage-anima .div-inner-section-featured .p {
+  font-size: 2.25rem;
+  line-height: 2.25rem;
+  text-align: left;
+  width: 100%;
+  text-wrap: balance;
+}
+.main-homepage-anima .div-inner-section-featured .text-wrapper-8 {
+  font-family: "Mont", "Mont-Regular", Helvetica, sans-serif;
+  font-weight: 400;
+  font-size: 2.2rem;
+  line-height: 2.5rem;
+  width: 65%;
+  text-align: left;
+}
+/* Cada palabra de la descripción (envueltas por JS) para el reveal con scroll. */
+.main-homepage-anima .div-inner-section-featured .text-wrapper-8 .fw {
+  display: inline-block;
+  will-change: color, font-weight;
+}
+
+.main-homepage-anima .title-text {
+  align-items: flex-start;
+  gap: 4px;
+  align-self: stretch;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  flex: 0 0 auto;
+}
+
+.main-homepage-anima .text-wrapper-13 {
+  position: relative;
+  width: fit-content;
+  margin-top: -1px;
+  font-family: "Mont-SemiBold", Helvetica;
+  font-weight: 600;
+  color: var(--collection-1-primery-urbatrix);
+  font-size: 0.75rem;
+  letter-spacing: 1.44px;
+  line-height: 1.0125rem;
+  white-space: nowrap;
+}
+
+.main-homepage-anima .text-wrapper-14 {
+  position: relative;
+  align-self: stretch;
+  background: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 1) 0%,
+    rgba(0, 180, 129, 1) 100%
+  );
+  -webkit-background-clip: text !important;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-fill-color: transparent;
+  font-family: "Mont-SemiBold", Helvetica;
+  font-weight: 600;
+  color: transparent;
+  font-size: 2.5rem;
+  letter-spacing: 0;
+  line-height: 3rem;
+}
+
+.main-homepage-anima .text-wrapper-15 {
+  position: relative;
+  align-self: stretch;
+  font-family: "Mont-Regular", Helvetica;
+  font-weight: 400;
+  color: var(--06-foundations-neutral-slate-500);
+  font-size: 1rem;
+  letter-spacing: 0;
+  line-height: 1.35rem;
+}
+
+.main-homepage-anima .div-inner-section {
+  display: flex;
+  align-items: center;
+  gap: 44px;
+  position: relative;
+  align-self: stretch;
+  width: 100%;
+  flex: 0 0 auto;
+}
+
+.main-homepage-anima .div-left-feature {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  position: relative;
+  flex: 1;
+  flex-grow: 1;
+}
+
+.main-homepage-anima .div-right-feature {
+  position: relative;
+  width: 720px;
+  max-width: 720px;
+  height: auto;
+  aspect-ratio: 4 / 3; /* el video encaja bien (4:3) */
+  flex-shrink: 0;
+  background-color: #eef0f2; /* gris clarito (antes verde) */
+  border-radius: 20px;
+  overflow: hidden;
+  margin: 0;
+}
+
+.main-homepage-anima .dashboard-makai-feature {
+  position: absolute;
+  top: calc(50% - 158px);
+  left: calc(50% - 300px);
+  width: 562px;
+  max-width: 562px;
+  height: auto;
+}
+
+.main-homepage-anima .client-types {
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+  padding: 80px var(--container-pad);
+  align-self: stretch;
+  display: flex;
+  position: relative;
+  width: 100%;
+  flex: 0 0 auto;
+}
+
+.main-homepage-anima .text-wrapper-16 {
+  position: relative;
+  background: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 1) 0%,
+    rgba(0, 180, 129, 1) 100%
+  );
+  -webkit-background-clip: text !important;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-fill-color: transparent;
+  font-family: "Mont-SemiBold", Helvetica;
+  font-weight: 600;
+  color: transparent;
+  font-size: 2.5rem;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: 3rem;
+}
+
+.main-homepage-anima .content-2 {
+  align-items: center;
+  gap: 24px;
+  align-self: stretch;
+  display: flex;
+  position: relative;
+  width: 100%;
+  flex: 0 0 auto;
+}
+
+.main-homepage-anima .content-wrapper {
+  flex-direction: column;
+  gap: 36px;
+  padding: 36px;
+  flex: 1;
+  flex-grow: 1;
+  background-color: var(--06-foundations-neutral-slate-50);
+  border-radius: 32px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  position: relative;
+  text-decoration: none; /* la card completa es un enlace */
+}
+
+.main-homepage-anima .content-3 {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 28px;
+  position: relative;
+  align-self: stretch;
+  width: 100%;
+  flex: 1 1 auto; /* crece para llenar la card (botón al fondo) */
+}
+
+.main-homepage-anima .icon-2 {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px;
+  position: relative;
+  flex: 0 0 auto;
+  background-color: var(--01-tokens-bg-white-0);
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: var(--colored-shadows-gray);
+}
+
+.main-homepage-anima .img-6 {
+  position: relative;
+  width: 28px;
+  height: 28px;
+}
+
+.main-homepage-anima .text-3 {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+  position: relative;
+  align-self: stretch;
+  width: 100%;
+  flex: 1 1 auto; /* crece para empujar el botón al fondo */
+}
+/* el link/botón de la card siempre al final */
+.main-homepage-anima .content-wrapper .button {
+  margin-top: auto;
+}
+
+.main-homepage-anima .content-4 {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+  align-self: stretch;
+  display: flex;
+  position: relative;
+  width: 100%;
+  flex: 0 0 auto;
+}
+
+.main-homepage-anima .text-wrapper-17 {
+  position: relative;
+  display: flex;
+  align-items: center;
+  align-self: stretch;
+  margin-top: -1px;
+  font-family: "Mont-SemiBold", Helvetica;
+  font-weight: 600;
+  color: var(--01-tokens-text-strong-950);
+  font-size: 1.25rem;
+  letter-spacing: -0.3px;
+  line-height: 1.25rem;
+}
+
+.main-homepage-anima .text-wrapper-18 {
+  position: relative;
+  align-self: stretch;
+  font-family: "Mont-Regular", Helvetica;
+  font-weight: 400;
+  color: var(--01-tokens-text-sub-600);
+  font-size: 1rem;
+  letter-spacing: -0.18px;
+  line-height: 1.5rem;
+}
+
+.main-homepage-anima .button {
+  all: unset;
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  position: relative;
+  flex: 0 0 auto;
+}
+
+.main-homepage-anima .text-wrapper-19 {
+  position: relative;
+  width: fit-content;
+  margin-top: -1px;
+  font-family: "Mont-SemiBold", Helvetica;
+  font-weight: 600;
+  color: var(--collection-1-primery-urbatrix);
+  font-size: 1rem;
+  letter-spacing: -0.18px;
+  line-height: 1.5rem;
+  white-space: nowrap;
+}
+
+.main-homepage-anima .img-7 {
+  position: relative;
+  width: 20px;
+  height: 20px;
+}
+
+/* ===== Hover de las tarjetas de .client-types ===== */
+.main-homepage-anima .client-types .content-wrapper {
+  transition:
+    transform 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+    background-color 0.35s ease,
+    box-shadow 0.35s ease;
+  will-change: transform;
+}
+/* Estado oculto del reveal on-scroll (lo gestiona script.js con la clase). */
+.main-homepage-anima .client-types .content-wrapper.reveal-hidden {
+  opacity: 0;
+  transform: translateY(28px) scale(0.96);
+}
+.main-homepage-anima .client-types .icon-2 {
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.main-homepage-anima .client-types .text-wrapper-17,
+.main-homepage-anima .client-types .text-wrapper-18,
+.main-homepage-anima .client-types .text-wrapper-19,
+.main-homepage-anima .client-types .img-7 {
+  transition: color 0.35s ease, filter 0.35s ease;
+}
+
+.main-homepage-anima .client-types .content-wrapper:hover {
+  background-color: var(--collection-1-primery-urbatrix, #00b481);
+  background-image: linear-gradient(
+    187deg,
+    rgba(0, 28, 17, 1) 0%,
+    rgba(0, 158, 113, 1) 52%,
+    rgba(115, 255, 215, 1) 100%
+  );
+  transform: translateY(-12px) scale(1.03);
+  /* la card activa por encima de las demás (su sombra no queda debajo de la
+     card de la fila inferior) */
+  z-index: 2;
+  /* sombra negra sutil y alargada hacia abajo */
+  box-shadow:
+    0 40px 50px -34px rgba(0, 0, 0, 0.13),
+    0 18px 28px -26px rgba(0, 0, 0, 0.08);
+}
+.main-homepage-anima .client-types .content-wrapper:hover .icon-2 {
+  transform: translateY(-6px);
+}
+.main-homepage-anima .client-types .content-wrapper:hover .text-wrapper-17 {
+  color: #ffffff;
+}
+.main-homepage-anima .client-types .content-wrapper:hover .text-wrapper-18 {
+  color: rgba(255, 255, 255, 0.85);
+}
+.main-homepage-anima .client-types .content-wrapper:hover .text-wrapper-19 {
+  color: #ffffff;
+}
+.main-homepage-anima .client-types .content-wrapper:hover .img-7 {
+  filter: brightness(0) invert(1);
+}
+
+.main-homepage-anima .stats-metrics {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 40px;
+  padding: 120px var(--container-pad);
+  position: relative;
+  align-self: stretch;
+  width: 100%;
+  flex: 0 0 auto;
+  background-color: var(--01-tokens-bg-white-0);
+}
+
+.main-homepage-anima .stats {
+  align-items: flex-end;
+  gap: 48px;
+  align-self: stretch;
+  display: flex;
+  position: relative;
+  width: 100%;
+  flex: 0 0 auto;
+}
+
+/* Wrapper de los 4 stats. En desktop es transparente (display:contents) para
+   que los .stats-2 sigan siendo hijos flex directos de .stats (fila con
+   divisores). En móvil pasa a ser el "box gris" con la cuadrícula 2×2. */
+.main-homepage-anima .stats-grid {
+  display: contents;
+}
+
+.main-homepage-anima .title-2 {
+  width: 571px;
+  align-items: flex-start;
+  gap: 24px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.main-homepage-anima .title-3 {
+  align-items: flex-start;
+  justify-content: center;
+  gap: 8px;
+  position: relative;
+  align-self: stretch;
+  width: 100%;
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.main-homepage-anima .link {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  position: relative;
+  flex: 0 0 auto;
+}
+
+.main-homepage-anima .text-wrapper-20 {
+  display: flex;
+  align-items: center;
+  margin-top: -1px;
+  color: var(--collection-1-primery-urbatrix);
+  font-size: 1rem;
+  letter-spacing: -0.18px;
+  line-height: 1.5rem;
+  position: relative;
+  width: fit-content;
+  font-family: "Mont-SemiBold", Helvetica;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.main-homepage-anima .stats-2 {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-end;
+  gap: 56px;
+  padding: 0px 0px 0px 40px;
+  position: relative;
+  flex: 1;
+  flex-grow: 1;
+  border-left-width: 1px;
+  border-left-style: solid;
+  border-color: var(--01-tokens-stroke-soft-200-duplicate);
+}
+
+.main-homepage-anima .div-4 {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  align-self: stretch;
+  display: flex;
+  position: relative;
+  width: 100%;
+  flex: 0 0 auto;
+}
+
+.main-homepage-anima .text-wrapper-21 {
+  position: relative;
+  display: flex;
+  align-items: center;
+  align-self: stretch;
+  margin-top: -1px;
+  font-family: "Mont-Regular", Helvetica;
+  font-weight: 400;
+  color: var(--01-tokens-text-strong-950);
+  font-size: 3rem;
+  letter-spacing: -0.48px;
+  line-height: 3.5rem;
+}
+
+.main-homepage-anima .text-wrapper-22 {
+  position: relative;
+  display: flex;
+  align-items: center;
+  align-self: stretch;
+  font-family: "Mont-Regular", Helvetica;
+  font-weight: 400;
+  color: var(--01-tokens-text-sub-600);
+  font-size: 1rem;
+  letter-spacing: -0.18px;
+  line-height: 1.5rem;
+}
+
+.main-homepage-anima .line-14 {
+  position: relative;
+  align-self: stretch;
+  width: 100%;
+  height: 12px;
+  background-color: var(--01-tokens-bg-soft-200);
+}
+
+.main-homepage-anima .line-15 {
+  position: relative;
+  align-self: stretch;
+  width: 100%;
+  height: 12px;
+  background-color: var(--collection-1-primery-urbatrix);
+}
+
+.main-homepage-anima .divider {
+  position: relative;
+  align-self: stretch;
+  width: 100%;
+  height: 1px;
+  object-fit: cover;
+}
+
+.main-homepage-anima .action {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 8px;
+  position: relative;
+  align-self: stretch;
+  width: 100%;
+  flex: 0 0 auto;
+}
+
+.main-homepage-anima .text-wrapper-23 {
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex: 1;
+  margin-top: -1px;
+  font-family: "Mont-SemiBold", Helvetica;
+  font-weight: 600;
+  color: var(--01-tokens-text-soft-400);
+  font-size: 0.875rem;
+  letter-spacing: -0.08px;
+  line-height: 1.25rem;
+}
+
+.main-homepage-anima .text-wrapper-24 {
+  display: flex;
+  align-items: center;
+  margin-top: -1px;
+  color: var(--01-tokens-text-sub-600);
+  font-size: 0.875rem;
+  letter-spacing: -0.08px;
+  line-height: 1.25rem;
+  position: relative;
+  width: fit-content;
+  font-family: "Mont-SemiBold", Helvetica;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.main-homepage-anima .arrow-right-up-long {
+  position: relative;
+  width: 16px;
+  height: 16px;
+}
+
+/* ===== Hover de los links "texto + flecha" (Ver solución / Solicitar Demo) =====
+   La flecha se desplaza arriba-derecha y el texto se intensifica, para indicar
+   que es clickeable. Aplica a .button (client-types) y .link (stats-metrics). */
+.main-homepage-anima .client-types .button,
+.main-homepage-anima .stats-metrics .link {
+  cursor: pointer;
+}
+.main-homepage-anima .client-types .button .img-7,
+.main-homepage-anima .stats-metrics .link .img-7,
+.main-homepage-anima .stats-metrics .link .arrow-right-up-long {
+  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.main-homepage-anima .client-types .button .text-wrapper-19,
+.main-homepage-anima .stats-metrics .link .text-wrapper-20,
+.main-homepage-anima .stats-metrics .link .text-wrapper-24 {
+  transition: filter 0.2s ease, opacity 0.2s ease;
+}
+.main-homepage-anima .client-types .button:hover .img-7,
+.main-homepage-anima .stats-metrics .link:hover .img-7,
+.main-homepage-anima .stats-metrics .link:hover .arrow-right-up-long {
+  transform: translate(3px, -3px);
+}
+.main-homepage-anima .stats-metrics .link:hover .text-wrapper-20,
+.main-homepage-anima .stats-metrics .link:hover .text-wrapper-24 {
+  filter: brightness(0.9);
+}
+
+.main-homepage-anima .stats-metrics-2 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+  padding: 64px var(--container-pad) 180px;
+  position: relative;
+  align-self: stretch;
+  width: 100%;
+  flex: 0 0 auto;
+  background-color: var(--01-tokens-bg-white-0);
+}
+
+.main-homepage-anima .title-4 {
+  align-items: center;
+  gap: 8px;
+  position: relative;
+  align-self: stretch;
+  width: 100%;
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.main-homepage-anima .cumplimiento-legal {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--label-medium-font-family);
+  font-weight: var(--label-medium-font-weight);
+  color: var(--01-tokens-text-soft-400);
+  font-size: var(--label-medium-font-size);
+  text-align: center;
+  letter-spacing: var(--label-medium-letter-spacing);
+  line-height: var(--label-medium-line-height);
+  font-style: var(--label-medium-font-style);
+}
+
+.main-homepage-anima .span {
+  color: #a3a3a3;
+  letter-spacing: var(--label-medium-letter-spacing);
+  font-family: var(--label-medium-font-family);
+  font-style: var(--label-medium-font-style);
+  font-weight: var(--label-medium-font-weight);
+  line-height: var(--label-medium-line-height);
+  font-size: var(--label-medium-font-size);
+}
+
+.main-homepage-anima .text-wrapper-25 {
+  color: #5c5c5c;
+  letter-spacing: var(--label-medium-letter-spacing);
+  font-family: var(--label-medium-font-family);
+  font-style: var(--label-medium-font-style);
+  font-weight: var(--label-medium-font-weight);
+  line-height: var(--label-medium-line-height);
+  font-size: var(--label-medium-font-size);
+}
+
+.main-homepage-anima .stats-3 {
+  flex-wrap: wrap;
+  max-width: 900px;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 12px 12px;
+  display: flex;
+  position: relative;
+  width: 100%;
+  flex: 0 0 auto;
+}
+
+.main-homepage-anima .badge-3 {
+  display: inline-flex;
+  gap: 14px;
+  padding: 8px 20px 8px 8px;
+  background-color: var(--01-tokens-bg-weak-50);
+  border-radius: 96px;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  flex: 0 0 auto;
+}
+
+.main-homepage-anima .logo-2 {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 8px;
+  position: relative;
+  flex: 0 0 auto;
+  background-color: var(--01-tokens-bg-white-0);
+  border-radius: 96px;
+  overflow: hidden;
+  box-shadow:
+    0px 0px 0px 1px #17171705,
+    0px 1px 1px -0.5px #1717170f,
+    0px 3px 3px -1.5px #1717170f;
+}
+
+.main-homepage-anima .trustpilot {
+  position: relative;
+  width: 24px;
+  height: 24px;
+  aspect-ratio: 1;
+  object-fit: cover;
+}
+
+.main-homepage-anima .text-wrapper-26 {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: fit-content;
+  font-family: "Mont-Regular", Helvetica;
+  font-weight: 400;
+  color: var(--06-foundations-neutral-slate-700);
+  font-size: 1.125rem;
+  letter-spacing: -0.27px;
+  line-height: 1.5rem;
+  white-space: nowrap;
+}
+
+.main-homepage-anima .img-8 {
+  position: relative;
+  width: 24px;
+  height: 24px;
+}
+
+.main-homepage-anima .stripe-wrapper {
+  display: inline-flex;
+  height: 40px;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 8px;
+  position: relative;
+  flex: 0 0 auto;
+  background-color: var(--01-tokens-bg-white-0);
+  border-radius: 96px;
+  overflow: hidden;
+  box-shadow:
+    0px 0px 0px 1px #17171705,
+    0px 1px 1px -0.5px #1717170f,
+    0px 3px 3px -1.5px #1717170f;
+}
+
+.main-homepage-anima .stripe {
+  position: relative;
+  width: 24px;
+  height: 16px;
+  background-color: #6366f3;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.main-homepage-anima .vector {
+  position: absolute;
+  width: 90.62%;
+  height: 73.33%;
+  top: 26.67%;
+  left: 9.38%;
+}
+
+.main-homepage-anima .CTA {
+  display: flex;
+  flex-direction: column;
+  min-height: 564px;
+  align-items: flex-start;
+  gap: 4px;
+  padding: 0px var(--container-pad) 120px;
+  position: relative;
+  align-self: stretch;
+  width: 100%;
+}
+
+.main-homepage-anima .container-2 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 56px;
+  padding: 12px;
+  position: relative;
+  align-self: stretch;
+  width: 100%;
+  flex: 0 0 auto;
+  background-color: var(--02-tokens-bg-white-0-duplicate);
+  border-radius: 36px;
+  border: 1px solid;
+  border-color: var(--02-tokens-stroke-soft-200);
+}
+
+.main-homepage-anima .content-5 {
+  align-items: center;
+  justify-content: center;
+  gap: 56px;
+  padding: 32px 32px 0px 32px;
+  align-self: stretch;
+  border-radius: 24px;
+  overflow: hidden;
+  background:
+    linear-gradient(
+      0deg,
+      rgba(24, 37, 31, 0.86) 0%,
+      rgba(24, 37, 31, 0.86) 100%
+    ),
+    url(assets/content.svg) 50% 50% / cover;
+  display: flex;
+  position: relative;
+  width: 100%;
+  flex: 0 0 auto;
+}
+
+.main-homepage-anima .div-left-4 {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 32px;
+  padding: 24px 24px 56px;
+  position: relative;
+  flex: 1;
+  flex-grow: 1;
+}
+
+.main-homepage-anima .badge-4 {
+  display: flex;
+  gap: 8px;
+  align-self: stretch;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  flex: 0 0 auto;
+}
+
+.main-homepage-anima .dot {
+  position: relative;
+  width: 10px;
+  height: 10px;
+  background-color: var(--collection-1-primery-urbatrix);
+  border-radius: 5px;
+  aspect-ratio: 1;
+}
+
+.main-homepage-anima .text-wrapper-27 {
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex: 1;
+  margin-top: 3px;
+  font-family: "Mont-SemiBold", Helvetica;
+  font-weight: 600;
+  color: #ffffff;
+  font-size: 0.875rem;
+  letter-spacing: 1.12px;
+  line-height: 1.5rem;
+}
+
+.main-homepage-anima .text-wrapper-28 {
+  position: relative;
+  display: flex;
+  align-items: center;
+  align-self: stretch;
+  margin-top: -1px;
+  font-family: "Mont-SemiBold", Helvetica;
+  font-weight: 600;
+  color: var(--02-tokens-text-white-0);
+  font-size: 2.75rem;
+  letter-spacing: -1.32px;
+  line-height: 2.96875rem;
+}
+
+.main-homepage-anima .text-wrapper-29 {
+  position: relative;
+  display: flex;
+  align-items: center;
+  align-self: stretch;
+  font-family: "Mont-Regular", Helvetica;
+  font-weight: 400;
+  color: #ffffffa3;
+  font-size: 1rem;
+  letter-spacing: -0.18px;
+  line-height: 1.5rem;
+}
+
+.main-homepage-anima .demo-2 {
+  display: inline-flex;
+  min-height: 52px;
+  align-items: center;
+  justify-content: center;
+  padding: 4px 64px;
+  position: relative;
+  margin: 0;
+  background-color: var(--01-tokens-bg-white-0);
+  border-radius: 100px;
+  overflow: hidden;
+  outline: 6px solid #ffffff29;
+}
+
+.main-homepage-anima .image {
+  position: relative;
+  flex: 1;
+  align-self: center;
+  flex-grow: 1;
+  min-width: 0;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  border-radius: 12px 12px 0px 0px;
+}
+
+.main-homepage-anima .footer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  position: relative;
+  align-self: stretch;
+  width: 100%;
+  flex: 0 0 auto;
+  z-index: 0;
+  background-color: transparent;
+}
+
+.main-homepage-anima .CTA-sections-landing {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  padding: 80px var(--container-pad);
+  position: relative;
+  align-self: stretch;
+  width: 100%;
+  flex: 0 0 auto;
+  background-image: url(assets/cta-sections--landing-.png);
+  background-size: cover;
+  background-position: 50% 50%;
+}
+
+.main-homepage-anima .ISOTIPO {
+  position: relative;
+  width: 80px;
+  height: 79.33px;
+}
+
+.main-homepage-anima .cta-isotipo {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.main-homepage-anima .blanco {
+  position: absolute;
+  top: calc(50% - 45px);
+  left: calc(50% - 57px);
+  width: 114px;
+  height: 114px;
+}
+
+.main-homepage-anima .blanco-2 {
+  position: absolute;
+  top: calc(50% - 40px);
+  left: calc(50% - 40px);
+  width: 80px;
+  height: 79px;
+}
+
+.main-homepage-anima .listo-para-vender-tu-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  position: relative;
+  flex: 1;
+  flex-grow: 1;
+}
+
+.main-homepage-anima .listo-para-vender-tu {
+  position: relative;
+  width: fit-content;
+  margin-top: -1px;
+  font-family: "Mont-SemiBold", Helvetica;
+  font-weight: 600;
+  color: var(--01-tokens-text-white-0-duplicate);
+  font-size: 2.25rem;
+  letter-spacing: -0.18px;
+  line-height: 2.5rem;
+}
+
+.main-homepage-anima .button-container-2 {
+  display: flex;
+  max-width: 388px;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+  position: relative;
+  flex: 1;
+  flex-grow: 1;
+}
+
+.main-homepage-anima .footer-sections {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px var(--container-pad) 0px;
+  position: relative;
+  align-self: stretch;
+  width: 100%;
+  flex: 0 0 auto;
+  background-color: var(--01-tokens-bg-white-0);
+}
+
+.main-homepage-anima .content-6 {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 32px;
+  align-self: stretch;
+  display: flex;
+  position: relative;
+  width: 100%;
+  flex: 0 0 auto;
+}
+
+.main-homepage-anima .items {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  position: relative;
+  align-self: stretch;
+  width: 100%;
+  flex: 0 0 auto;
+}
+
+.main-homepage-anima .logo-3 {
+  position: relative;
+  width: 134px;
+  height: 28px;
+}
+
+.main-homepage-anima .frame-2 {
+  display: inline-flex;
+  align-items: flex-start;
+  gap: 72px;
+  position: relative;
+  flex: 0 0 auto;
+}
+
+.main-homepage-anima .item {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  position: relative;
+  flex: 0 0 auto;
+}
+
+.main-homepage-anima .text-wrapper-30 {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  margin-top: -1px;
+  font-family: "Mont-SemiBold", Helvetica;
+  font-weight: 600;
+  color: var(--01-tokens-text-soft-400);
+  font-size: 0.875rem;
+  text-align: center;
+  letter-spacing: -0.08px;
+  line-height: 1.25rem;
+  white-space: nowrap;
+}
+
+.main-homepage-anima .text-wrapper-31 {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  font-family: "Mont-SemiBold", Helvetica;
+  font-weight: 600;
+  color: var(--01-tokens-text-sub-600);
+  font-size: 0.875rem;
+  text-align: center;
+  letter-spacing: -0.08px;
+  line-height: 1.25rem;
+  white-space: nowrap;
+}
+
+.main-homepage-anima .text-wrapper-32 {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: fit-content;
+  font-family: "Mont-SemiBold", Helvetica;
+  font-weight: 600;
+  color: var(--01-tokens-text-sub-600);
+  font-size: 0.875rem;
+  letter-spacing: -0.08px;
+  line-height: 1.25rem;
+  white-space: nowrap;
+}
+
+.main-homepage-anima .text-wrapper-33 {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex: 1;
+  font-family: "Mont-SemiBold", Helvetica;
+  font-weight: 600;
+  color: var(--01-tokens-text-soft-400);
+  font-size: 0.75rem;
+  text-align: right;
+  letter-spacing: 0;
+  line-height: 1rem;
+}
+
+.main-homepage-anima .text-wrapper-34 {
+  position: relative;
+  align-self: stretch;
+  height: 200px;
+  font-family: "Mont-Bold", Helvetica;
+  font-weight: 700;
+  color: var(--01-tokens-bg-weak-50);
+  font-size: 17.5rem;
+  text-align: center;
+  letter-spacing: -7.28px;
+  line-height: 23.25rem;
+  white-space: nowrap;
+  overflow: hidden;
+}
+/* inject original css code above */
+
+.main-homepage-anima .container-bg-active,
+.main-homepage-anima .div-wrapper,
+.main-homepage-anima .a-link-login,
+.main-homepage-anima .a-link-demo,
+.main-homepage-anima .button-secundary,
+.main-homepage-anima .demo,
+.main-homepage-anima .demo-2,
+.main-homepage-anima .link,
+.main-homepage-anima .text-wrapper-31,
+.main-homepage-anima .text-wrapper-32 {
+  text-decoration: none;
+}
+
+.main-homepage-anima .tab {
+  border: 0;
+  background: transparent;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+}
+
+.main-homepage-anima .container-bg-active,
+.main-homepage-anima .div-wrapper,
+.main-homepage-anima .a-link-login,
+.main-homepage-anima .a-link-demo,
+.main-homepage-anima .button-secundary,
+.main-homepage-anima .demo,
+.main-homepage-anima .demo-2,
+.main-homepage-anima .link {
+  cursor: pointer;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    opacity 0.2s ease;
+}
+
+.main-homepage-anima a,
+.main-homepage-anima button {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.main-homepage-anima .a-link-demo:hover,
+.main-homepage-anima .demo:hover,
+.main-homepage-anima .demo-2:hover {
+  transform: translateY(-1px);
+  box-shadow: 0px 10px 24px -14px rgba(0, 0, 0, 0.45);
+}
+
+.main-homepage-anima .a-link-demo:active,
+.main-homepage-anima .demo:active,
+.main-homepage-anima .demo-2:active {
+  transform: translateY(0);
+  box-shadow: 0px 6px 16px -12px rgba(0, 0, 0, 0.4);
+}
+
+.main-homepage-anima .button-secundary:hover,
+.main-homepage-anima .div-wrapper:hover,
+.main-homepage-anima .link:hover {
+  opacity: 0.9;
+}
+
+.main-homepage-anima .div-left,
+.main-homepage-anima .dashboard-makai,
+.main-homepage-anima .img-4,
+.main-homepage-anima .img-5,
+.main-homepage-anima .dashboard-makai-2,
+.main-homepage-anima .dashboard-makai-3,
+.main-homepage-anima .image {
+  display: block;
+  max-width: 100%;
+}
+
+.main-homepage-anima .header,
+.main-homepage-anima .bento-features,
+.main-homepage-anima .section-features,
+.main-homepage-anima .client-types,
+.main-homepage-anima .stats-metrics,
+.main-homepage-anima .stats-metrics-2,
+.main-homepage-anima .CTA-sections-landing,
+.main-homepage-anima .footer-sections {
+  max-width: 100%;
+}
+
+.main-homepage-anima .header {
+  width: 100%;
+}
+
+.main-homepage-anima .dashboard-makai {
+  height: auto;
+}
+
+.main-homepage-anima .img-5 {
+  width: 100%;
+  height: auto;
+}
+
+.main-homepage-anima .text-wrapper-31,
+.main-homepage-anima .text-wrapper-32 {
+  justify-content: flex-start;
+}
+
+.main-homepage-anima .item {
+  font-style: normal;
+}
+
+.main-homepage-anima .container-bg-active:focus-visible,
+.main-homepage-anima .div-wrapper:focus-visible,
+.main-homepage-anima .a-link-login:focus-visible,
+.main-homepage-anima .button-secundary:focus-visible,
+.main-homepage-anima .link:focus-visible,
+.main-homepage-anima .tab:focus-visible,
+.main-homepage-anima .button:focus-visible,
+.main-homepage-anima .text-wrapper-31:focus-visible,
+.main-homepage-anima .text-wrapper-32:focus-visible {
+  outline: 2px solid var(--collection-1-primery-urbatrix) !important;
+  outline-offset: 2px;
+  border-radius: 12px;
+}
+
+.main-homepage-anima .a-link-demo:focus-visible,
+.main-homepage-anima .demo:focus-visible,
+.main-homepage-anima .demo-2:focus-visible {
+  outline: 6px solid #ffffff29 !important;
+  outline-offset: 0;
+  box-shadow:
+    0 0 0 2px var(--collection-1-primery-urbatrix),
+    0px 10px 24px -14px rgba(0, 0, 0, 0.45);
+  border-radius: 100px;
+}
+
+@media (max-width: 1024px) {
+  .main-homepage-anima .hero,
+  .main-homepage-anima .bento-features,
+  .main-homepage-anima .section-features,
+  .main-homepage-anima .client-types,
+  .main-homepage-anima .stats-metrics,
+  .main-homepage-anima .stats-metrics-2,
+  .main-homepage-anima .CTA-sections-landing,
+  .main-homepage-anima .footer-sections {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  .main-homepage-anima .hero {
+    padding-top: 108px;
+    padding-bottom: 8px;
+    gap: 28px;
+  }
+
+  .main-homepage-anima .button-container {
+    padding-top: 12px;
+  }
+
+  .main-homepage-anima .title,
+  .main-homepage-anima .text-wrapper-8,
+  .main-homepage-anima .title-2,
+  .main-homepage-anima .div-inner-section-featured {
+    width: 100%;
+  }
+
+  .main-homepage-anima .bento-features {
+    gap: 24px;
+  }
+
+  .main-homepage-anima .stats {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 24px;
+  }
+
+  .main-homepage-anima .title-2 {
+    position: relative;
+  }
+
+  .main-homepage-anima .content-2,
+  .main-homepage-anima .div-3,
+  .main-homepage-anima .bottom-bento,
+  .main-homepage-anima .CTA-sections-landing,
+  .main-homepage-anima .items {
+    flex-wrap: wrap;
+  }
+
+  .main-homepage-anima .div-3,
+  .main-homepage-anima .bottom-bento {
+    gap: 12px;
+  }
+
+  .main-homepage-anima .container-card-bento,
+  .main-homepage-anima .card-bento-wrapper {
+    padding: 6px;
+    border-radius: 28px;
+  }
+
+  .main-homepage-anima .client-types {
+    gap: 24px;
+    padding-top: 64px;
+    padding-bottom: 64px;
+  }
+
+  .main-homepage-anima .content-2 {
+    gap: 16px;
+  }
+
+  .main-homepage-anima .content-wrapper {
+    padding: 28px;
+    gap: 24px;
+    border-radius: 28px;
+  }
+
+  .main-homepage-anima .CTA {
+    padding: 0px 24px 96px;
+  }
+
+  .main-homepage-anima .content-5 {
+    flex-direction: column;
+    gap: 32px;
+    padding: 24px 0px 0px 24px;
+  }
+
+  .main-homepage-anima .div-left-4 {
+    gap: 24px;
+    padding: 20px 16px 40px;
+  }
+
+  .main-homepage-anima .CTA-sections-landing {
+    gap: 24px;
+    padding-top: 56px;
+    padding-bottom: 56px;
+  }
+
+  .main-homepage-anima .button-container-2 {
+    max-width: none;
+    justify-content: flex-start;
+  }
+
+  .main-homepage-anima .footer-sections {
+    padding-top: 32px;
+    padding-bottom: 0;
+  }
+
+  .main-homepage-anima .frame-2 {
+    gap: 40px;
+    flex-wrap: wrap;
+  }
+
+  .main-homepage-anima .dashboard-makai-2,
+  .main-homepage-anima .dashboard-makai-3 {
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0;
+  }
+
+  .main-homepage-anima .text-wrapper-34 {
+    font-size: 10rem;
+    line-height: 1;
+    height: auto;
+  }
+}
+
+@media (max-width: 1200px) {
+  .main-homepage-anima .section-features {
+    padding: 96px 48px;
+  }
+
+  .main-homepage-anima .div-inner-section {
+    gap: 32px;
+  }
+
+  .main-homepage-anima .section-features .text-wrapper-14 {
+    font-size: 2.125rem;
+    line-height: 2.5625rem;
+  }
+}
+
+@media (max-width: 900px) {
+  .main-homepage-anima .section-features {
+    padding: 72px 24px;
+  }
+
+  .main-homepage-anima .section-features .p {
+    font-size: 2.125rem;
+    line-height: 2.5625rem;
+  }
+
+  .main-homepage-anima .section-features .text-wrapper-8 {
+    font-size: 0.9375rem;
+    line-height: 1.2625rem;
+  }
+
+  .main-homepage-anima .div-inner-section {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 24px;
+  }
+
+  .main-homepage-anima .div-right-feature {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    aspect-ratio: 6 / 5;
+  }
+
+  .main-homepage-anima .dashboard-makai-feature {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 93.6667%;
+    max-width: 562px;
+  }
+}
+
+@media (max-width: 768px) {
+  .main-homepage-anima .hero,
+  .main-homepage-anima .bento-features,
+  .main-homepage-anima .section-features,
+  .main-homepage-anima .client-types,
+  .main-homepage-anima .stats-metrics,
+  .main-homepage-anima .stats-metrics-2,
+  .main-homepage-anima .CTA-sections-landing,
+  .main-homepage-anima .footer-sections {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .main-homepage-anima .hero {
+    padding-top: 40px;
+    gap: 24px;
+  }
+
+  .main-homepage-anima .features {
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .main-homepage-anima .card-feature,
+  .main-homepage-anima .card-feature-2 {
+    width: 100%;
+    justify-content: flex-start;
+    padding: 10px 12px;
+  }
+
+  .main-homepage-anima .card-feature-2 {
+    border-left-width: 0;
+    border-right-width: 0;
+    border-top: 1px solid #0055431f;
+    border-bottom: 1px solid #0055431f;
+  }
+
+  .main-homepage-anima .div-3,
+  .main-homepage-anima .bottom-bento,
+  .main-homepage-anima .content-2 {
+    gap: 12px;
+  }
+
+  .main-homepage-anima .content-wrapper {
+    padding: 24px;
+  }
+
+  .main-homepage-anima .CTA {
+    padding: 0px 20px 72px;
+  }
+
+  .main-homepage-anima .container-2 {
+    padding: 10px;
+    border-radius: 28px;
+  }
+
+  .main-homepage-anima .content-5 {
+    gap: 20px;
+    padding: 20px 12px 0px;
+  }
+
+  .main-homepage-anima .CTA-sections-landing {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+    padding-top: 48px;
+    padding-bottom: 48px;
+  }
+
+  .main-homepage-anima .listo-para-vender-tu {
+    font-size: 1.875rem;
+    line-height: 2.125rem;
+  }
+
+  .main-homepage-anima .button-container-2 {
+    width: 100%;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+
+  .main-homepage-anima .footer-sections {
+    padding-top: 28px;
+  }
+
+  .main-homepage-anima .items {
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .main-homepage-anima .frame-2 {
+    width: 100%;
+    gap: 24px;
+    justify-content: space-between;
+  }
+}
+
+@media (max-width: 640px) {
+  .main-homepage-anima .section-features .p,
+  .main-homepage-anima .section-features .text-wrapper-14 {
+    font-size: 1.75rem;
+    line-height: 2.125rem;
+  }
+
+  .main-homepage-anima .section-features .text-wrapper-13 {
+    white-space: normal;
+  }
+
+  .main-homepage-anima .section-features .text-wrapper-15 {
+    font-size: 0.9375rem;
+    line-height: 1.2625rem;
+  }
+
+  /* Bento: apilar las 5 cards en una sola columna (una debajo de otra) */
+  .main-homepage-anima .div-3,
+  .main-homepage-anima .bottom-bento {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .main-homepage-anima .div-3 > .container-card-bento,
+  .main-homepage-anima .bottom-bento > .container-card-bento {
+    width: 100%;
+    flex: 0 0 auto;
+  }
+}
+
+@media (max-width: 767px) {
+  .main-homepage-anima .header {
+    position: relative;
+    padding: 12px 16px;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .main-homepage-anima .div-left {
+    width: 170px;
+  }
+
+  .main-homepage-anima .mobile-menu-toggle {
+    display: inline-flex;
+    margin-left: auto;
+  }
+
+  .main-homepage-anima .mobile-menu-panel {
+    display: flex;
+  }
+
+  .main-homepage-anima .div-menu-navbar,
+  .main-homepage-anima .div-right {
+    display: none;
+  }
+
+  .main-homepage-anima .CTA {
+    min-height: auto;
+    padding: 0px 16px 64px;
+  }
+
+  .main-homepage-anima .container-2 {
+    padding: 8px;
+  }
+
+  .main-homepage-anima .content-5 {
+    gap: 20px;
+    padding: 20px 12px 0px;
+  }
+
+  .main-homepage-anima .div-left-4 {
+    padding: 14px 8px 22px;
+  }
+
+  .main-homepage-anima .hero {
+    padding-top: 32px;
+    gap: 20px;
+  }
+
+  .main-homepage-anima .vende-tu-desarrollo {
+    font-size: 2.25rem;
+    line-height: 1.15;
+  }
+
+  .main-homepage-anima .text-wrapper-14,
+  .main-homepage-anima .p,
+  .main-homepage-anima .text-wrapper-16 {
+    font-size: 1.75rem;
+    line-height: 1.2;
+  }
+
+  .main-homepage-anima .button-container,
+  .main-homepage-anima .button-container-2,
+  .main-homepage-anima .features,
+  .main-homepage-anima .container,
+  .main-homepage-anima .action,
+  .main-homepage-anima .frame-2,
+  .main-homepage-anima .div-right {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .main-homepage-anima .button-container,
+  .main-homepage-anima .button-container-2 {
+    gap: 10px;
+  }
+
+  .main-homepage-anima .button-container .button-secundary,
+  .main-homepage-anima .button-container .demo,
+  .main-homepage-anima .button-container-2 .button-secundary,
+  .main-homepage-anima .button-container-2 .demo,
+  .main-homepage-anima .div-right .a-link-login,
+  .main-homepage-anima .div-right .a-link-demo {
+    width: 100%;
+  }
+
+  .main-homepage-anima .demo,
+  .main-homepage-anima .button-secundary,
+  .main-homepage-anima .a-link-demo {
+    margin-right: 0;
+  }
+
+  .main-homepage-anima .stats-2 {
+    padding-left: 16px;
+  }
+
+  .main-homepage-anima .text-wrapper-28 {
+    font-size: 2rem;
+    line-height: 1.15;
+  }
+
+  .main-homepage-anima .text-wrapper-34 {
+    font-size: 4.5rem;
+  }
+}
+
+@media (max-width: 390px) {
+  .main-homepage-anima .hero,
+  .main-homepage-anima .bento-features,
+  .main-homepage-anima .section-features,
+  .main-homepage-anima .client-types,
+  .main-homepage-anima .stats-metrics,
+  .main-homepage-anima .stats-metrics-2,
+  .main-homepage-anima .CTA-sections-landing,
+  .main-homepage-anima .footer-sections {
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+
+  .main-homepage-anima .header {
+    padding: 12px;
+  }
+
+  .main-homepage-anima .button-container {
+    gap: 8px;
+  }
+
+  .main-homepage-anima .container-card-bento,
+  .main-homepage-anima .card-bento-wrapper {
+    padding: 4px;
+    border-radius: 24px;
+  }
+
+  .main-homepage-anima .content-wrapper {
+    padding: 20px;
+    border-radius: 24px;
+  }
+
+  .main-homepage-anima .CTA {
+    padding: 0px 14px 56px;
+  }
+
+  .main-homepage-anima .container-2 {
+    padding: 6px;
+    border-radius: 24px;
+  }
+
+  .main-homepage-anima .content-5 {
+    padding: 16px 10px 0px;
+    gap: 16px;
+  }
+
+  .main-homepage-anima .div-left-4 {
+    padding: 12px 6px 20px;
+    gap: 20px;
+  }
+
+  .main-homepage-anima .CTA-sections-landing {
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+
+  .main-homepage-anima .footer-sections {
+    padding-top: 24px;
+  }
+}
+
+/* =====================================================================
+   RESPONSIVE — pase integral (correcciones + menú inferior tipo app)
+   Va al final para tener prioridad de orden sobre las media queries previas.
+   ===================================================================== */
+
+/* client-types: tarjetas apiladas; confianza: texto como párrafo fluido */
+@media (max-width: 768px) {
+  .main-homepage-anima .client-types .content-2 {
+    flex-direction: column;
+  }
+  .main-homepage-anima .client-types .content-wrapper {
+    width: 100%;
+    flex: 1 1 auto;
+  }
+  .main-homepage-anima .cumplimiento-legal {
+    display: block;
+  }
+}
+
+/* En táctil, neutralizar la "elevación" del hover de las cards (evita estado
+   pegado tras el tap). */
+@media (hover: none) {
+  .main-homepage-anima .client-types .content-wrapper:hover {
+    transform: none;
+    box-shadow: none;
+  }
+}
+
+/* ---------- Menú inferior tipo app (solo ≤900) ---------- */
+.main-homepage-anima .mobile-bottomnav {
+  display: none;
+}
+@media (max-width: 900px) {
+  .main-homepage-anima .mobile-bottomnav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2px;
+    position: fixed;
+    left: 12px;
+    right: 12px;
+    bottom: 14px;
+    z-index: 1000;
+    padding: 6px;
+    background: rgba(10, 14, 20, 0.72);
+    -webkit-backdrop-filter: blur(18px);
+    backdrop-filter: blur(18px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    box-shadow: 0 14px 34px rgba(0, 0, 0, 0.35);
+  }
+  .main-homepage-anima .mbn-link {
+    flex: 0 1 auto;
+    padding: 9px 8px;
+    border-radius: 10px;
+    font-family: "Mont-SemiBold", Helvetica, sans-serif;
+    font-size: 0.75rem;
+    line-height: 1;
+    color: rgba(255, 255, 255, 0.72);
+    white-space: nowrap;
+    transition: color 0.2s ease, background-color 0.2s ease;
+  }
+  .main-homepage-anima .mbn-link.is-active {
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.12);
+  }
+  .main-homepage-anima .mbn-demo {
+    flex: 0 0 auto;
+    padding: 9px 14px;
+    border-radius: 10px;
+    background: #ffffff;
+    color: var(--06-foundations-neutral-slate-700, #1a2330);
+    font-family: "Mont-SemiBold", Helvetica, sans-serif;
+    font-size: 0.75rem;
+    line-height: 1;
+    white-space: nowrap;
+  }
+  /* Bottom nav retirado: ahora se usa el header convencional con hamburguesa. */
+  .main-homepage-anima .mobile-bottomnav {
+    display: none !important;
+  }
+}
+
+/* Fuentes de los steps de features en móvil (el estilo Mont/gradiente vivía
+   solo en el layout desktop ≥901; en móvil caían a serif por defecto). */
+@media (max-width: 900px) {
+  .main-homepage-anima .features-step__label {
+    font-family: "Mont-SemiBold", Helvetica, sans-serif;
+    font-weight: 600;
+    font-size: 0.75rem;
+    letter-spacing: 1.44px;
+    color: var(--collection-1-primery-urbatrix, #00b481);
+  }
+  .main-homepage-anima .features-step__title {
+    font-family: "Mont-SemiBold", Helvetica, sans-serif;
+    font-weight: 600;
+    font-size: 1.8rem;
+    line-height: 2rem;
+    text-wrap: balance;
+    background: linear-gradient(
+      90deg,
+      rgba(0, 0, 0, 1) 0%,
+      rgba(0, 180, 129, 1) 100%
+    );
+    -webkit-background-clip: text !important;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+  }
+  .main-homepage-anima .features-step__desc {
+    font-family: "Mont-Regular", Helvetica, sans-serif;
+    font-weight: 400;
+    font-size: 1rem;
+    line-height: 1.5rem;
+    color: var(--06-foundations-neutral-slate-500, #5a6675);
+  }
+}
+
+/* En ≤900 se oculta el nav central desktop (el header móvil usa hamburguesa). */
+@media (max-width: 900px) {
+  .main-homepage-anima .div-menu-navbar {
+    display: none !important;
+  }
+}
+
+/* ---------- Móvil: ajustes de elementos que se veían mal ---------- */
+@media (max-width: 900px) {
+  /* Hero: el dashboard ocupaba 1134px (desbordaba). Ajustarlo al ancho. */
+  .main-homepage-anima .dashboard {
+    display: flex;
+    width: 100%;
+  }
+  .main-homepage-anima .box-dashboard-wrap,
+  .main-homepage-anima .box-dashboard {
+    display: flex;
+    width: 100%;
+    max-width: 100%;
+  }
+  .main-homepage-anima .box-dashboard {
+    padding: 8px;
+    border-radius: 18px;
+  }
+  .main-homepage-anima .dashboard-makai {
+    width: 100%;
+    height: auto;
+  }
+
+  /* Features móvil: cada box del dashboard/video se intercala debajo de su paso
+     (lo hace el JS). El stage queda vacío. Las cajas pasan a ancho completo,
+     mostrando el contenido (imagen/video) con un marco verde. */
+  .main-homepage-anima .section-features-stage {
+    display: none; /* vacío en móvil: los boxes se mueven dentro de cada paso */
+  }
+  .main-homepage-anima .div-inner-section > .div-right-feature {
+    position: static;
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    aspect-ratio: auto;
+    margin: 18px 0 0; /* resetea el margen por defecto del <figure> */
+    padding: 10px; /* marco verde delgado y uniforme (aloja imagen/video) */
+    border-radius: 18px;
+    overflow: hidden;
+  }
+  .main-homepage-anima .div-inner-section > .div-right-feature .dashboard-makai-feature {
+    position: static;
+    top: auto;
+    left: auto;
+    transform: none;
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px; /* media redondeada dentro del marco */
+  }
+}
+
+/* Stats: compactar las barras (el 10M tiene 24 → demasiado alto en móvil). */
+@media (max-width: 768px) {
+  .main-homepage-anima .line-14,
+  .main-homepage-anima .line-15 {
+    height: 8px;
+  }
+  .main-homepage-anima .stats-2 .div-4 {
+    gap: 5px;
+  }
+}
+
+/* Logos de clientes en móvil: envolver centrado (no 6 filas) y ocultar los
+   divisores verticales sueltos. */
+@media (max-width: 768px) {
+  .main-homepage-anima .sub-container .container {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 18px 26px;
+  }
+  .main-homepage-anima .sub-container .container .line {
+    display: none;
+  }
+  .main-homepage-anima .sub-container .container .logo {
+    width: 98px;
+    height: 32px;
+  }
+}
+
+/* Bottom nav en pantallas chicas: que quepan todos los items. */
+@media (max-width: 412px) {
+  .main-homepage-anima .mobile-bottomnav {
+    left: 8px;
+    right: 8px;
+    gap: 0;
+    padding: 5px;
+  }
+  .main-homepage-anima .mbn-link {
+    padding: 8px 6px;
+    font-size: 0.6875rem;
+  }
+  .main-homepage-anima .mbn-demo {
+    padding: 8px 12px;
+    font-size: 0.6875rem;
+  }
+}
+
+/* ============ Header móvil (fijo, superpuesto) ============
+   Estático (arriba, sobre el hero): logo wordmark + hamburguesa (caja blanca 8%).
+   Al hacer scroll (.scrolled): el logo se reduce al isotipo dentro de una caja
+   negra translúcida, y la hamburguesa también pasa a negra translúcida → quedan
+   dos cuadraditos fijos en los extremos. */
+@media (max-width: 900px) {
+  .main-homepage-anima .header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 20px;
+    z-index: 100;
+    background: transparent;
+  }
+  /* Logo: wordmark por defecto, isotipo oculto */
+  .main-homepage-anima .header-logo {
+    order: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .main-homepage-anima .header .div-left {
+    width: 200px;
+    flex: 0 0 auto;
+  }
+  .main-homepage-anima .header-iso {
+    display: none;
+    width: 22px;
+    height: 22px;
+  }
+  .main-homepage-anima .div-menu-navbar {
+    display: none !important;
+  }
+  /* sin botón Demo en el header: solo la hamburguesa a la derecha */
+  .main-homepage-anima .div-right {
+    display: none !important;
+  }
+  .main-homepage-anima .mobile-menu-toggle {
+    display: inline-flex !important;
+    order: 3;
+    margin-left: auto;
+    width: 42px;
+    height: 42px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+  }
+  /* el panel desplegable cae en línea completa debajo de la barra */
+  .main-homepage-anima .mobile-menu-panel {
+    order: 4;
+  }
+  /* el hero deja espacio arriba para el header superpuesto */
+  .main-homepage-anima .hero {
+    padding-top: 84px;
+  }
+
+  /* ----- Estado al hacer scroll: dos cuadraditos negros translúcidos ----- */
+  .main-homepage-anima .header.scrolled .header-logo {
+    width: 42px;
+    height: 42px;
+    border-radius: 12px;
+    background: rgba(10, 14, 20, 0.55);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    -webkit-backdrop-filter: blur(14px) saturate(140%);
+    backdrop-filter: blur(14px) saturate(140%);
+  }
+  .main-homepage-anima .header.scrolled .div-left {
+    display: none;
+  }
+  .main-homepage-anima .header.scrolled .header-iso {
+    display: block;
+  }
+  .main-homepage-anima .header.scrolled .mobile-menu-toggle {
+    background: rgba(10, 14, 20, 0.55);
+    border-color: rgba(255, 255, 255, 0.14);
+    -webkit-backdrop-filter: blur(14px) saturate(140%);
+    backdrop-filter: blur(14px) saturate(140%);
+  }
+}
+
+/* Animación de entrada/salida del panel del menú móvil:
+   se hace ABSOLUTO (cerrado no ocupa espacio) y anima blur(12→0) + fade + slide.
+   Se override [hidden] para no usar display:none (que no se puede animar). */
+@media (max-width: 900px) {
+  .main-homepage-anima .mobile-menu-panel {
+    display: flex !important;
+    position: absolute;
+    top: calc(100% - 6px);
+    left: 20px;
+    right: 20px;
+    width: auto;
+    margin-top: 0;
+    transform-origin: top center;
+    transition:
+      opacity 0.26s ease,
+      transform 0.3s cubic-bezier(0.2, 0.7, 0.3, 1),
+      filter 0.3s ease,
+      visibility 0.3s;
+    will-change: opacity, transform, filter;
+  }
+  .main-homepage-anima .mobile-menu-panel[hidden] {
+    display: flex !important;
+    opacity: 0;
+    visibility: hidden;
+    filter: blur(12px);
+    transform: translateY(-12px) scale(0.98);
+    pointer-events: none;
+  }
+  .main-homepage-anima .mobile-menu-panel:not([hidden]) {
+    opacity: 1;
+    visibility: visible;
+    filter: blur(0);
+    transform: translateY(0) scale(1);
+    pointer-events: auto;
+  }
+}
+
+/* Hero móvil: los dos botones uno al lado del otro (no apilados). */
+@media (max-width: 900px) {
+  .main-homepage-anima .hero .button-container {
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: 10px;
+  }
+  .main-homepage-anima .hero .button-container .button-secundary,
+  .main-homepage-anima .hero .button-container .demo {
+    width: auto;
+    flex: 1 1 0;
+  }
+}
+
+/* ============ Chips del hero: fila estática (desktop) / marquesina (móvil) ============
+   Estructura (creada por JS): .features > .chips-track > .chips-group ×2
+   (el 2º grupo es clon). Clases propias (.chips-*) para NO colisionar con el
+   .features-track del timeline de features. En desktop se oculta el clon y los
+   3 chips se reparten; en móvil la pista se desplaza en bucle infinito. */
+.main-homepage-anima .chips-track {
+  display: flex;
+  width: 100%;
+}
+.main-homepage-anima .chips-group {
+  display: flex;
+  align-items: stretch;
+  width: 100%;
+}
+.main-homepage-anima .chips-group[aria-hidden="true"] {
+  display: none;
+}
+.main-homepage-anima .chips-group > .card-feature,
+.main-homepage-anima .chips-group > .card-feature-2 {
+  flex: 1;
+}
+
+@media (max-width: 900px) {
+  .main-homepage-anima .hero .features.has-marquee {
+    display: block; /* el track (flex) toma su ancho real (max-content) */
+    overflow: hidden;
+    width: 100%;
+    /* difuminado sutil en los bordes para que el bucle no "corte" */
+    -webkit-mask-image: linear-gradient(
+      to right,
+      transparent 0,
+      #000 7%,
+      #000 93%,
+      transparent 100%
+    );
+    mask-image: linear-gradient(
+      to right,
+      transparent 0,
+      #000 7%,
+      #000 93%,
+      transparent 100%
+    );
+  }
+  .main-homepage-anima .features.has-marquee .chips-track {
+    width: max-content;
+    animation: heroChipsMarquee 22s linear infinite;
+  }
+  .main-homepage-anima .features.has-marquee .chips-group {
+    width: auto;
+    gap: 10px;
+    padding-right: 10px; /* gap de unión entre grupos = gap interno */
+  }
+  .main-homepage-anima .features.has-marquee .chips-group[aria-hidden="true"] {
+    display: flex;
+  }
+  .main-homepage-anima .features.has-marquee .card-feature,
+  .main-homepage-anima .features.has-marquee .card-feature-2 {
+    flex: 0 0 auto;
+    width: auto;
+    border: 0; /* quita los bordes (sup/inf) del chip del medio en el ticker */
+  }
+  .main-homepage-anima .features.has-marquee .text-wrapper-6 {
+    white-space: nowrap;
+  }
+}
+@keyframes heroChipsMarquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* Efecto al presionar la hamburguesa (no queda estática). */
+.main-homepage-anima .mobile-menu-toggle {
+  transition: transform 0.13s ease, background-color 0.3s ease, border-color 0.3s ease;
+}
+.main-homepage-anima .mobile-menu-toggle:active {
+  transform: scale(0.88);
+}
+
+/* ===== Features móvil: stack de boxes (arriba) + swap de texto (abajo) =====
+   Solo activo cuando el JS añade .is-mobile-pinned (GSAP, sin reduced-motion).
+   El JS mueve los boxes a .m-stage y los textos a .m-text dentro del pin.
+   Fallback reduced-motion: listado en columna ya estilizado. */
+@media (max-width: 900px) {
+  /* contenedores del modo animado (ocultos por defecto / en desktop vacíos) */
+  .main-homepage-anima .m-stage,
+  .main-homepage-anima .m-text {
+    display: none;
+  }
+
+  /* el grid pasa a block para que el pin-spacer reserve scroll
+     (pinear un flex-item rompe el pinSpacing). */
+  .main-homepage-anima .section-features-grid.is-mobile-pin-host {
+    display: block;
+  }
+  .main-homepage-anima .section-features-grid.is-mobile-pin-host
+    > .section-features-stage {
+    display: none;
+  }
+  .main-homepage-anima .section-features-cols.is-mobile-pinned {
+    position: relative;
+    display: block;
+    height: 100svh;
+    min-height: 580px;
+    gap: 0;
+  }
+  /* los artículos originales se ocultan: su contenido vive en .m-stage/.m-text */
+  .main-homepage-anima .section-features-cols.is-mobile-pinned .features-track,
+  .main-homepage-anima .section-features-cols.is-mobile-pinned .div-inner-section {
+    display: none;
+  }
+
+  /* ---- zona de boxes (stack, arriba) ---- */
+  .main-homepage-anima .is-mobile-pinned .m-stage {
+    display: block;
+    position: absolute;
+    top: 78px;
+    left: 20px;
+    right: 20px;
+    height: 42svh;
+  }
+  .main-homepage-anima .is-mobile-pinned .m-stage .div-right-feature {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    margin: 0;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    /* el video es absolute → el box necesita altura propia */
+    aspect-ratio: 4 / 3;
+    max-height: 42svh;
+    padding: 0;
+    border-radius: 18px;
+    overflow: hidden;
+  }
+  /* velo blanco por profundidad del stack (lo controla --fade desde el JS) */
+  .main-homepage-anima .is-mobile-pinned .m-stage .div-right-feature::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 2; /* sobre el video, debajo del botón FS */
+    border-radius: inherit;
+    background: #ffffff;
+    opacity: var(--fade, 0);
+    pointer-events: none;
+  }
+  .main-homepage-anima .is-mobile-pinned
+    .m-stage
+    .div-right-feature
+    .dashboard-makai-feature {
+    position: static;
+    top: auto;
+    left: auto;
+    transform: none;
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    max-height: calc(42svh - 16px);
+    object-fit: contain;
+    object-position: center;
+    border-radius: 12px;
+  }
+
+  /* ---- zona de texto (swap, abajo) ---- */
+  .main-homepage-anima .is-mobile-pinned .m-text {
+    display: block;
+    position: absolute;
+    left: 20px;
+    right: 20px;
+    top: calc(78px + 42svh + 48px); /* box vuelve a su altura + más separación */
+    bottom: 26px;
+  }
+  .main-homepage-anima .is-mobile-pinned .m-text .div-left-feature {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    will-change: transform, opacity, filter;
+  }
+  /* quita el indent raro del punto: texto a ancho completo, sin grilla */
+  .main-homepage-anima .is-mobile-pinned .m-text .features-step {
+    display: block;
+  }
+  .main-homepage-anima .is-mobile-pinned .m-text .features-step__dot {
+    display: none;
+  }
+  .main-homepage-anima .is-mobile-pinned .m-text .features-step__body {
+    position: static;
+  }
+}
+
+/* ===== Cabecera de features en MÓVIL (≤900): estándar y centrada =====
+   En desktop se mantiene el layout 35/65 a la izquierda + reveal palabra-por-
+   palabra. En móvil se aplana a la cabecera estándar del resto de secciones:
+   título centrado con gradiente y descripción pequeña centrada (slate). */
+@media (max-width: 900px) {
+  .main-homepage-anima .div-inner-section-featured .features-head,
+  .main-homepage-anima .div-inner-section-featured .features-headline {
+    display: contents;
+  }
+  .main-homepage-anima .div-inner-section-featured .p {
+    text-align: center;
+    width: auto;
+  }
+  .main-homepage-anima .div-inner-section-featured .text-wrapper-8 {
+    font-family: "Mont-Regular", Helvetica;
+    width: 620px;
+    max-width: 100%;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .main-homepage-anima .div-inner-section-featured .text-wrapper-8 .fw {
+    display: inline; /* texto fluido normal en móvil (sin animación) */
+  }
+}
+
+/* ===== Stats en MÓVIL: cada stat es su propio box gris claro (4 cards) en
+   cuadrícula 2×2 + números más chicos. El header (.title-2) va arriba. ===== */
+@media (max-width: 900px) {
+  .main-homepage-anima .stats {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 20px;
+  }
+  /* el wrapper solo organiza la cuadrícula 2×2 con buen espacio entre boxes */
+  .main-homepage-anima .stats-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 44px 30px; /* más separación entre boxes */
+    align-items: stretch;
+  }
+  /* cada stat: sin fondo ni padding, solo el contenido, alineado ABAJO */
+  .main-homepage-anima .stats-2 {
+    width: auto;
+    border-left: 0; /* quita el borde gris izquierdo */
+    background: transparent;
+    padding: 0;
+    gap: 14px; /* número/etiqueta ↔ barras */
+    justify-content: flex-end; /* contenido pegado al fondo del box */
+  }
+  .main-homepage-anima .text-wrapper-21 {
+    font-size: 1.875rem; /* ~30px (antes 48px) */
+    line-height: 2.1rem;
+  }
+  /* barras compactas para que las cards no se disparen de alto */
+  .main-homepage-anima .line-14,
+  .main-homepage-anima .line-15 {
+    height: 5px;
+  }
+  .main-homepage-anima .stats-2 .div-4 {
+    gap: 3px;
+  }
+}
+
+/* Header de stats en MÓVIL: badge, título y botón centrados. */
+@media (max-width: 900px) {
+  .main-homepage-anima .stats .title-2 {
+    align-items: center;
+    text-align: center;
+    width: 100%;
+  }
+  .main-homepage-anima .stats .title-3 {
+    align-items: center;
+  }
+}
+
+/* En móvil ocultamos el "Solicitar Demo" del header de stats (el del final se
+   mantiene en .action). */
+@media (max-width: 900px) {
+  .main-homepage-anima .stats .title-2 .link {
+    display: none;
+  }
+}
+
+/* Features pin (MÓVIL): centrar el contenido de texto de cada card
+   (subtítulo/categoría, título y descripción). */
+@media (max-width: 900px) {
+  .main-homepage-anima .is-mobile-pinned .m-text .div-left-feature,
+  .main-homepage-anima .is-mobile-pinned .m-text .features-step,
+  .main-homepage-anima .is-mobile-pinned .m-text .features-step__body {
+    align-items: center;
+    text-align: center;
+  }
+}
+
+/* Bento cards en MÓVIL: el contenedor exterior a 34px. La card interna
+   (.card-bento) conserva sus 28px. */
+@media (max-width: 900px) {
+  .main-homepage-anima .container-card-bento,
+  .main-homepage-anima .card-bento-wrapper {
+    border-radius: 34px;
+  }
+}
+
+/* CTA del footer en MÓVIL: todo centrado (isotipo, texto…) y los dos botones
+   uno al lado del otro. */
+@media (max-width: 900px) {
+  .main-homepage-anima .CTA-sections-landing {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .main-homepage-anima .CTA-sections-landing .listo-para-vender-tu-wrapper {
+    align-items: center;
+  }
+  .main-homepage-anima .CTA-sections-landing .button-container-2 {
+    width: 100%;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+  }
+  .main-homepage-anima .CTA-sections-landing .button-container-2 .button-secundary,
+  .main-homepage-anima .CTA-sections-landing .button-container-2 .demo {
+    flex: 1 1 0;
+    width: auto;
+    margin: 0;
+  }
+}
+
+/* ===== Footer en MÓVIL: estructura más clara y ordenada ===== */
+@media (max-width: 768px) {
+  .main-homepage-anima .footer-sections {
+    gap: 32px;
+  }
+  /* logo arriba, luego las columnas */
+  .main-homepage-anima .footer-sections .items {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 30px;
+  }
+  /* 4 columnas de enlaces en cuadrícula 2×2 (en vez de una columna larga) */
+  .main-homepage-anima .footer-sections .frame-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px 18px;
+    width: 100%;
+  }
+  .main-homepage-anima .footer-sections .item {
+    width: auto;
+    gap: 10px;
+  }
+  /* iconos sociales en FILA centrada + copyright centrado debajo */
+  .main-homepage-anima .footer-sections .div-3 {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+  }
+  .main-homepage-anima .footer-sections .div-3 .text-wrapper-33 {
+    flex-basis: 100%;
+    width: 100%;
+    margin: 4px 0 0;
+    text-align: center;
+  }
+  /* wordmark "Urbatrix": decorativo, cortado (~50% del nombre visible) */
+  .main-homepage-anima .footer-sections .text-wrapper-34 {
+    height: 0.55em;
+    font-size: 19vw;
+    line-height: 1;
+    letter-spacing: -2px;
+    overflow: hidden;
+    margin-top: 4px;
+  }
+}
+
+/* Caso de éxito (desktop): la imagen pegada al fondo del box oscuro. El box
+   .content-5 tiene padding-bottom 0, así que con align-self:flex-end la imagen
+   queda al ras y desaparece la fina línea de fondo que se veía debajo. */
+@media (min-width: 901px) {
+  .main-homepage-anima .CTA .image {
+    align-self: flex-end;
+  }
+}
+
+/* Hover del caso de éxito (desktop): la card sube un poco (sin escalar el box),
+   se ilumina con una LUZ VERDE INTERNA (::before con blur, z-index -1, dentro
+   del box oscuro) y la imagen sube y crece un poco. El default va un poco más
+   abajo para que al subir no se vea una línea de separación. */
+@media (min-width: 901px) {
+  /* el box NO se mueve; solo animan los elementos internos */
+
+  /* luz verde DENTRO del box oscuro, detrás del contenido */
+  .main-homepage-anima .CTA .content-5 {
+    position: relative;
+    z-index: 0;
+  }
+  .main-homepage-anima .CTA .content-5::before {
+    content: "";
+    position: absolute;
+    left: -10%;
+    top: -10%;
+    width: 60%;
+    height: 62%;
+    background: radial-gradient(
+      closest-side,
+      rgba(0, 180, 129, 0.7),
+      rgba(0, 180, 129, 0) 72%
+    );
+    filter: blur(64px);
+    z-index: -1; /* sobre el fondo oscuro, debajo del contenido */
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    pointer-events: none;
+  }
+  .main-homepage-anima .CTA .container-2:hover .content-5::before {
+    opacity: 1;
+  }
+
+  /* la imagen: por defecto un poco más abajo (compensa el translateY del hover);
+     al hacer hover sube y crece un poco. */
+  .main-homepage-anima .CTA .image {
+    transition: transform 0.45s cubic-bezier(0.2, 0.7, 0.3, 1);
+    transform: translateY(10px);
+  }
+  .main-homepage-anima .CTA .container-2:hover .image {
+    transform: translateY(-6px) scale(1.04);
+  }
+}
+
+/* ===================== Mega menús: Producto y Soluciones =====================
+   Paneles desplegables del navbar (desktop). Fondo negro translúcido + blur
+   (igual que el menú móvil), animación de entrada/salida. En móvil no aplican
+   (se usa el menú desplegable móvil). */
+.main-homepage-anima .mega-menu {
+  position: fixed;
+  top: 80px; /* el JS lo ajusta según la altura real del navbar */
+  left: 50%;
+  z-index: 1001;
+  padding: 12px;
+  border-radius: 20px;
+  /* mismo fondo que el navbar fijo (.is-stuck) para que coincidan */
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background-color: rgba(10, 14, 20, 0.62);
+  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(16px);
+  box-shadow: 0 12px 34px rgba(0, 0, 0, 0.28);
+  transform-origin: top center;
+  transition: opacity 0.28s ease,
+    transform 0.32s cubic-bezier(0.2, 0.7, 0.3, 1), filter 0.32s ease,
+    visibility 0.32s;
+}
+.main-homepage-anima .mega-menu[hidden] {
+  display: block; /* override de [hidden] para poder animar la salida */
+  opacity: 0;
+  visibility: hidden;
+  filter: blur(12px);
+  transform: translateX(-50%) translateY(-10px);
+  pointer-events: none;
+}
+.main-homepage-anima .mega-menu:not([hidden]) {
+  opacity: 1;
+  visibility: visible;
+  filter: blur(0);
+  transform: translateX(-50%) translateY(0);
+  pointer-events: auto;
+}
+
+.main-homepage-anima .mega-grid {
+  display: grid;
+  gap: 6px;
+}
+.main-homepage-anima .mega-grid--3 {
+  grid-template-columns: repeat(3, minmax(218px, 1fr));
+}
+.main-homepage-anima .mega-grid--2 {
+  grid-template-columns: repeat(2, minmax(300px, 1fr));
+}
+
+/* cada card: izquierda (icono en box) + derecha (título + descripción) */
+.main-homepage-anima .mega-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 12px;
+  border-radius: 14px;
+  text-decoration: none;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+.main-homepage-anima .mega-card:hover {
+  background-color: #ffffff12;
+  transform: translateY(-2px);
+}
+.main-homepage-anima .mega-card__left {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  border-radius: 10px;
+  background-color: #ffffff14; /* blanco al 8% */
+  transition: background-color 0.2s ease;
+}
+.main-homepage-anima .mega-card:hover .mega-card__left {
+  background-color: var(--collection-1-primery-urbatrix, #00b481);
+}
+.main-homepage-anima .mega-card__icon {
+  display: block;
+  width: 22px;
+  height: 22px;
+  filter: brightness(0) invert(1); /* icono en blanco sobre el fondo oscuro */
+}
+.main-homepage-anima .mega-card__right {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-width: 0;
+}
+.main-homepage-anima .mega-card__title {
+  color: #ffffff;
+  font-family: "Mont-SemiBold", Helvetica, sans-serif;
+  font-weight: 600;
+  font-size: 0.95rem;
+  line-height: 1.25;
+}
+.main-homepage-anima .mega-card__desc {
+  color: #9aa3ad;
+  font-family: "Mont-Regular", Helvetica, sans-serif;
+  font-size: 0.8rem;
+  line-height: 1.35;
+}
+
+@media (max-width: 900px) {
+  .main-homepage-anima .mega-menu {
+    display: none !important;
+  }
+}
+
+/* ===== Subtabs del menú móvil (acordeón): solo el nombre ===== */
+.main-homepage-anima .mobile-menu-group {
+  display: flex;
+  flex-direction: column;
+}
+.main-homepage-anima .mobile-menu-parent .img {
+  transition: transform 0.25s ease;
+}
+.main-homepage-anima .mobile-menu-parent[aria-expanded="true"] .img {
+  transform: rotate(180deg);
+}
+.main-homepage-anima .mobile-menu-sub {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  max-height: 0;
+  opacity: 0;
+  transition: max-height 0.32s ease, opacity 0.25s ease;
+  padding-left: 10px;
+}
+.main-homepage-anima .mobile-menu-sub.is-open {
+  max-height: 340px;
+  opacity: 1;
+}
+.main-homepage-anima .mobile-menu-sublink {
+  all: unset;
+  box-sizing: border-box;
+  display: block;
+  width: 100%;
+  padding: 9px 12px;
+  border-radius: 10px;
+  color: #c4ccd4; /* un poco más tenue que los items principales */
+  font-family: "Mont-Regular", Helvetica;
+  font-size: 0.84rem;
+  line-height: 1.2rem;
+  cursor: pointer;
+}
+.main-homepage-anima .mobile-menu-sublink:hover,
+.main-homepage-anima .mobile-menu-sublink:focus-visible {
+  background-color: #ffffff10;
+  color: #ffffff;
+}
+
+/* ============================ Página Producto ============================ */
+/* Hero */
+/* Contenedor que envuelve el hero + las cards; aquí va el fondo (configurable). */
+.main-homepage-anima .product-top {
+  position: relative;
+  width: 100%;
+  background-image: url(assets/hero.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 50% 50%;
+}
+/* En móvil el fondo se amplía y se ancla arriba (mejor encuadre del hero). */
+@media (max-width: 900px) {
+  .main-homepage-anima .product-top {
+    background-size: 300%;
+    background-position: top;
+  }
+}
+.main-homepage-anima .product-hero {
+  position: relative;
+  padding: 152px var(--container-pad) 96px;
+  text-align: center;
+}
+.main-homepage-anima .product-hero__inner {
+  position: relative;
+  max-width: 840px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+.main-homepage-anima .product-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  padding: 9px 20px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  font-family: "Mont-SemiBold", Helvetica, sans-serif;
+  font-weight: 600;
+  font-size: 0.85rem;
+  letter-spacing: 0.2px;
+  color: #ffffff;
+}
+.main-homepage-anima .product-hero__title {
+  margin: 0;
+  font-family: "Mont-SemiBold", Helvetica, sans-serif;
+  font-weight: 600;
+  font-size: 4rem;
+  line-height: 1.06;
+  text-wrap: balance;
+  color: #ffffff;
+}
+.main-homepage-anima .product-hero__desc {
+  margin: 0;
+  max-width: 600px;
+  font-family: "Mont-Regular", Helvetica, sans-serif;
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.72);
+}
+
+/* Grid de módulos (3×2) */
+.main-homepage-anima .product-modules {
+  padding: 28px var(--container-pad) 112px;
+}
+.main-homepage-anima .product-grid {
+  max-width: var(--content-max);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+}
+.main-homepage-anima .product-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 32px;
+  border-radius: 24px;
+  background: #ffffff;
+  border: 1px solid #ecedf0;
+  text-decoration: none;
+  box-shadow: 0 1px 2px rgba(16, 24, 32, 0.04);
+  transition: transform 0.34s cubic-bezier(0.2, 0.7, 0.3, 1),
+    box-shadow 0.34s ease, border-color 0.34s ease;
+}
+.main-homepage-anima .product-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(0, 180, 129, 0.28);
+  box-shadow: 0 34px 54px -30px rgba(0, 84, 67, 0.25),
+    0 14px 26px -22px rgba(0, 0, 0, 0.12);
+}
+.main-homepage-anima .product-card__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, #00b481 0%, #048a63 100%);
+  box-shadow: 0 10px 20px -10px rgba(0, 180, 129, 0.6);
+  margin-bottom: 4px;
+  transition: transform 0.34s cubic-bezier(0.2, 0.7, 0.3, 1);
+}
+.main-homepage-anima .product-card:hover .product-card__icon {
+  transform: translateY(-2px) scale(1.05) rotate(-3deg);
+}
+.main-homepage-anima .product-card__icon img {
+  width: 26px;
+  height: 26px;
+  filter: brightness(0) invert(1);
+}
+.main-homepage-anima .product-card__title {
+  margin: 0;
+  font-family: "Mont-SemiBold", Helvetica, sans-serif;
+  font-weight: 600;
+  font-size: 1.3rem;
+  line-height: 1.25;
+  color: #16201b;
+}
+.main-homepage-anima .product-card__desc {
+  margin: 0;
+  font-family: "Mont-Regular", Helvetica, sans-serif;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: var(--06-foundations-neutral-slate-500);
+}
+.main-homepage-anima .product-card__link {
+  margin-top: auto;
+  padding-top: 6px;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-family: "Mont-SemiBold", Helvetica, sans-serif;
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--collection-1-primery-urbatrix, #00b481);
+}
+.main-homepage-anima .product-card__arrow {
+  width: 15px;
+  height: 15px;
+  transition: transform 0.25s ease;
+}
+.main-homepage-anima .product-card:hover .product-card__arrow {
+  transform: translateX(4px);
+}
+/* estado oculto para el reveal con scroll (script.js) */
+.main-homepage-anima .product-card.reveal-hidden {
+  opacity: 0;
+  transform: translateY(26px);
+}
+
+/* CTA oscuro */
+.main-homepage-anima .product-cta {
+  background: radial-gradient(
+      120% 140% at 50% 0%,
+      rgba(0, 180, 129, 0.18),
+      rgba(0, 180, 129, 0) 55%
+    ),
+    #16241d;
+  padding: 96px var(--container-pad);
+  text-align: center;
+}
+.main-homepage-anima .product-cta__inner {
+  max-width: 680px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+.main-homepage-anima .product-cta__title {
+  margin: 0;
+  font-family: "Mont-SemiBold", Helvetica, sans-serif;
+  font-weight: 600;
+  font-size: 2.4rem;
+  line-height: 1.15;
+  color: #ffffff;
+  text-wrap: balance;
+}
+.main-homepage-anima .product-cta__desc {
+  margin: 0;
+  font-family: "Mont-Regular", Helvetica, sans-serif;
+  font-size: 1.05rem;
+  color: rgba(255, 255, 255, 0.72);
+}
+.main-homepage-anima .product-cta__actions {
+  margin-top: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+}
+.main-homepage-anima .product-cta__actions .demo,
+.main-homepage-anima .product-cta__actions .button-secundary {
+  margin: 0;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .main-homepage-anima .product-hero {
+    padding: 116px var(--container-pad) 130px;
+  }
+  .main-homepage-anima .product-hero__title {
+    font-size: 2.5rem;
+  }
+  .main-homepage-anima .product-modules {
+    padding: 12px var(--container-pad) 72px;
+  }
+  .main-homepage-anima .product-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+  .main-homepage-anima .product-cta {
+    padding: 76px var(--container-pad);
+  }
+  .main-homepage-anima .product-cta__title {
+    font-size: 1.95rem;
+  }
+}
+@media (max-width: 600px) {
+  .main-homepage-anima .product-hero__title {
+    font-size: 2.1rem;
+  }
+  .main-homepage-anima .product-grid {
+    grid-template-columns: 1fr;
+  }
+  .main-homepage-anima .product-card {
+    padding: 24px;
+  }
+}
+
+/* Subtítulo opcional del CTA de cierre (.CTA-sections-landing). */
+.main-homepage-anima .CTA-sections-landing .cta-subtext {
+  margin: 10px 0 0;
+  font-family: "Mont-Regular", Helvetica, sans-serif;
+  font-size: 1.05rem;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.72);
+}
+
+/* Cards de Producto: reutilizan el estilo de .client-types (caja gris + icono
+   blanco + hover). El grid 3×2 lo da .product-grid; los iconos se tintan de
+   verde (scopeado a .product-modules para no tocar el home). */
+.main-homepage-anima .product-grid {
+  width: 100%;
+}
+.main-homepage-anima .product-modules .img-6 {
+  filter: brightness(0) saturate(100%) invert(53%) sepia(94%) saturate(385%)
+    hue-rotate(116deg) brightness(95%) contrast(101%);
+}
+
+/* Card completa clickeable: un <a> overlay cubre toda la .content-wrapper
+   (los textos/iconos quedan debajo). El botón visible sigue siendo el enlace
+   accesible y de teclado; el overlay es solo para el clic con mouse. */
+.main-homepage-anima .content-wrapper .card-link {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+.main-homepage-anima .content-wrapper .button {
+  cursor: pointer;
+}
+
+/* Cards de Producto: frosted glass (deja ver el fondo verde difuminado). */
+.main-homepage-anima .product-modules .content-wrapper {
+  background-color: rgba(0, 0, 0, 0.04);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+}
+
+/* ===== Video en las features (home) + botón pantalla completa ===== */
+.main-homepage-anima .feature-video {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  background: #eef0f2;
+}
+.main-homepage-anima .feature-fs {
+  position: absolute;
+  right: 14px;
+  bottom: 14px;
+  z-index: 3; /* sobre el video y el velo del stack */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  padding: 0;
+  border: none;
+  border-radius: 10px;
+  background: rgba(8, 14, 20, 0.5);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+  color: #ffffff;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+.main-homepage-anima .feature-fs:hover {
+  background: rgba(8, 14, 20, 0.72);
+  transform: scale(1.06);
+}
+.main-homepage-anima .feature-fs svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* Chips del hero (arriba del dashboard): texto blanco en DESKTOP; en móvil
+   se mantiene el verde oscuro (#00674f). */
+@media (min-width: 901px) {
+  .main-homepage-anima .hero .text-wrapper-6 {
+    color: #ffffff;
+  }
+}

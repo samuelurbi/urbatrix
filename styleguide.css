@@ -1,0 +1,176 @@
+:root {
+  /* ============================================================
+     CAPA DE TOKENS LIMPIA (Urbatrix) — alias semánticos sobre los
+     tokens de Anima + escalas de layout, spacing, radios y tipo.
+     Usar SIEMPRE estos en código nuevo.
+     ============================================================ */
+
+  /* Marca / colores semánticos */
+  --c-green: var(--collection-1-primery-urbatrix);      /* #00b481 */
+  --c-green-700: #00674f;
+  --c-green-50: #f6fcf7;
+  --c-ink: var(--01-tokens-text-strong-950);            /* #171717 */
+  --c-text-sub: var(--01-tokens-text-sub-600);          /* #5c5c5c */
+  --c-text-soft: var(--01-tokens-text-soft-400);        /* #a3a3a3 */
+  --c-bg: var(--01-tokens-bg-white-0);                  /* #fff */
+  --c-bg-weak: var(--01-tokens-bg-weak-50);             /* #f7f7f7 */
+  --c-stroke: var(--02-tokens-stroke-soft-200);         /* #e1e4ea */
+  --c-slate-100: var(--06-foundations-neutral-slate-100);
+  --c-slate-200: var(--06-foundations-neutral-slate-200);
+  --c-slate-500: var(--06-foundations-neutral-slate-500);
+
+  /* Layout: ancho máximo de contenido + gutter responsive.
+     El truco padding-inline:max(gutter,(100%-max)/2) centra y limita
+     el contenido sin tocar el DOM y mejora los márgenes en móvil. */
+  --content-max: 87.5rem;        /* 1400px */
+  --gutter: clamp(1.25rem, 6vw, 6.25rem);  /* 20px → 100px */
+  --container-pad: max(var(--gutter), calc((100% - var(--content-max)) / 2));
+
+  /* Escala de espaciado (base 4px) */
+  --space-1: 0.25rem;   /* 4 */
+  --space-2: 0.5rem;    /* 8 */
+  --space-3: 0.75rem;   /* 12 */
+  --space-4: 1rem;      /* 16 */
+  --space-5: 1.5rem;    /* 24 */
+  --space-6: 2rem;      /* 32 */
+  --space-7: 2.75rem;   /* 44 */
+  --space-8: 3.5rem;    /* 56 */
+  --space-9: 5rem;      /* 80 */
+  --space-10: 7.5rem;   /* 120 */
+
+  /* Radios */
+  --radius-sm: 0.5rem;   /* 8 */
+  --radius-md: 0.875rem; /* 14 */
+  --radius-lg: 1.25rem;  /* 20 */
+  --radius-xl: 1.75rem;  /* 28 */
+  --radius-2xl: 2.25rem; /* 36 */
+  --radius-pill: 6.25rem;/* 100 */
+
+  /* Escala tipográfica (fluida donde aporta) */
+  --fs-eyebrow: 0.75rem;   /* 12 */
+  --fs-sm: 0.8125rem;      /* 13 */
+  --fs-base: 1rem;         /* 16 */
+  --fs-lg: 1.125rem;       /* 18 */
+  --fs-xl: 1.25rem;        /* 20 */
+  --fs-h3: clamp(1.625rem, 3vw, 2.5rem);   /* 26→40 */
+  --fs-h2: clamp(1.75rem, 4vw, 2.5rem);    /* 28→40 */
+  --fs-h1: clamp(2rem, 5.4vw, 3.5rem);     /* 32→56 */
+  --fs-stat: clamp(2rem, 4vw, 3rem);       /* 32→48 */
+  --fs-wordmark: clamp(4rem, 18vw, 15rem); /* 64→240 */
+
+  --label-medium-font-family: "Caros", "Mont-Regular", Helvetica;
+  --label-medium-font-weight: 500;
+  --label-medium-font-size: 1rem;
+  --label-medium-letter-spacing: -0.176px;
+  --label-medium-line-height: 1.5rem;
+  --label-medium-font-style: normal;
+  --colored-shadows-gray:
+    0px 0px 0px 1px rgba(23, 23, 23, 0.04),
+    0px 1px 1px -0.5px rgba(23, 23, 23, 0.04),
+    0px 3px 3px -1.5px rgba(23, 23, 23, 0.04),
+    0px 6px 6px -3px rgba(23, 23, 23, 0.04),
+    0px 10px 10px -5px rgba(23, 23, 23, 0.04),
+    0px 20px 20px -10px rgba(23, 23, 23, 0.04);
+  --02-neutral-0: var(--06-foundations-neutral-gray-0);
+  --02-neutral-50: var(--06-foundations-neutral-gray-50);
+  --02-neutral-200: var(--06-foundations-neutral-gray-200);
+  --02-neutral-400: var(--06-foundations-neutral-gray-400);
+  --02-neutral-500: var(--06-foundations-neutral-gray-500);
+  --02-neutral-600: var(--06-foundations-neutral-gray-600);
+  --02-neutral-700: var(--06-foundations-neutral-gray-700);
+  --02-neutral-800: var(--06-foundations-neutral-gray-800);
+  --02-neutral-950: var(--06-foundations-neutral-gray-950);
+  --collection-1-primery-urbatrix: rgba(0, 180, 129, 1);
+  --01-tokens-bg-white-0: var(--02-neutral-0);
+  --01-tokens-text-strong-950: var(--02-neutral-950);
+  --01-tokens-text-sub-600: var(--02-neutral-600);
+  --01-tokens-text-soft-400: var(--02-neutral-400);
+  --01-tokens-text-white-0-duplicate: var(--02-neutral-0);
+  --01-tokens-bg-weak-50: var(--02-neutral-50);
+  --01-tokens-bg-soft-200: var(--02-neutral-200);
+  --01-tokens-stroke-soft-200-duplicate: var(--02-neutral-200);
+  --01-tokens-static-static-white: var(--02-neutral-0);
+  --06-foundations-neutral-slate-300: rgba(202, 207, 216, 1);
+  --06-foundations-neutral-slate-0: rgba(255, 255, 255, 1);
+  --06-foundations-neutral-slate-700: rgba(43, 48, 59, 1);
+  --06-foundations-neutral-slate-400: rgba(153, 160, 174, 1);
+  --06-foundations-neutral-slate-500: rgba(113, 119, 132, 1);
+  --06-foundations-neutral-slate-200: rgba(234, 236, 240, 1);
+  --06-foundations-neutral-slate-100: rgba(242, 245, 248, 1);
+  --06-foundations-neutral-slate-50: rgba(245, 247, 250, 1);
+  --06-foundations-neutral-gray-0: rgba(255, 255, 255, 1);
+  --06-foundations-neutral-gray-950: rgba(23, 23, 23, 1);
+  --06-foundations-neutral-slate-950: rgba(14, 18, 27, 1);
+  --06-foundations-neutral-gray-600: rgba(92, 92, 92, 1);
+  --06-foundations-neutral-slate-600: rgba(82, 88, 102, 1);
+  --06-foundations-neutral-gray-400: rgba(163, 163, 163, 1);
+  --06-foundations-neutral-gray-500: rgba(123, 123, 123, 1);
+  --06-foundations-neutral-gray-50: rgba(247, 247, 247, 1);
+  --06-foundations-neutral-gray-800: rgba(38, 38, 38, 1);
+  --06-foundations-neutral-slate-800: rgba(34, 37, 48, 1);
+  --06-foundations-neutral-gray-200: rgba(235, 235, 235, 1);
+  --06-foundations-neutral-gray-700: rgba(51, 51, 51, 1);
+  --02-tokens-text-white-0: var(--01-primitives-neutral-0);
+  --02-tokens-bg-white-0-duplicate: var(--01-primitives-neutral-0);
+  --02-tokens-stroke-soft-200: var(--01-primitives-neutral-200);
+  --01-primitives-neutral-0: rgba(255, 255, 255, 1);
+  --01-primitives-neutral-200: rgba(225, 228, 234, 1);
+}
+
+/*
+
+To enable a theme in your HTML, simply add one of the following data attributes to an HTML element, like so:
+
+<body data-02-neutral-mode="gray">
+    <!-- the rest of your content -->
+</body>
+
+You can apply the theme on any DOM node, not just the `body`
+
+*/
+
+[data-02-neutral-mode="gray"] {
+  --02-neutral-0: var(--06-foundations-neutral-gray-0);
+  --02-neutral-50: var(--06-foundations-neutral-gray-50);
+  --02-neutral-200: var(--06-foundations-neutral-gray-200);
+  --02-neutral-400: var(--06-foundations-neutral-gray-400);
+  --02-neutral-500: var(--06-foundations-neutral-gray-500);
+  --02-neutral-600: var(--06-foundations-neutral-gray-600);
+  --02-neutral-700: var(--06-foundations-neutral-gray-700);
+  --02-neutral-800: var(--06-foundations-neutral-gray-800);
+  --02-neutral-950: var(--06-foundations-neutral-gray-950);
+}
+
+[data-02-neutral-mode="slate"] {
+  --02-neutral-0: var(--06-foundations-neutral-slate-0);
+  --02-neutral-50: var(--06-foundations-neutral-slate-50);
+  --02-neutral-200: var(--06-foundations-neutral-slate-200);
+  --02-neutral-400: var(--06-foundations-neutral-slate-400);
+  --02-neutral-500: var(--06-foundations-neutral-slate-500);
+  --02-neutral-600: var(--06-foundations-neutral-slate-600);
+  --02-neutral-700: var(--06-foundations-neutral-slate-700);
+  --02-neutral-800: var(--06-foundations-neutral-slate-800);
+  --02-neutral-950: var(--06-foundations-neutral-slate-950);
+}
+
+[data-01-tokens-mode="light"] {
+  --01-tokens-bg-white-0: var(--02-neutral-0);
+  --01-tokens-text-strong-950: var(--02-neutral-950);
+  --01-tokens-text-sub-600: var(--02-neutral-600);
+  --01-tokens-text-soft-400: var(--02-neutral-400);
+  --01-tokens-text-white-0-duplicate: var(--02-neutral-0);
+  --01-tokens-bg-weak-50: var(--02-neutral-50);
+  --01-tokens-bg-soft-200: var(--02-neutral-200);
+  --01-tokens-stroke-soft-200-duplicate: var(--02-neutral-200);
+}
+
+[data-01-tokens-mode="dark"] {
+  --01-tokens-bg-white-0: var(--02-neutral-950);
+  --01-tokens-text-strong-950: var(--02-neutral-0);
+  --01-tokens-text-sub-600: var(--02-neutral-400);
+  --01-tokens-text-soft-400: var(--02-neutral-500);
+  --01-tokens-text-white-0-duplicate: var(--02-neutral-950);
+  --01-tokens-bg-weak-50: var(--02-neutral-800);
+  --01-tokens-bg-soft-200: var(--02-neutral-700);
+  --01-tokens-stroke-soft-200-duplicate: var(--02-neutral-800);
+}

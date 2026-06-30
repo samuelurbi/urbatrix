@@ -1483,6 +1483,13 @@
   document.addEventListener('click', (e) => {
     const opener = e.target.closest(OPEN_SEL);
     if (opener && !modal.contains(opener)) {
+      // Si el disparador es un enlace real a una página (href distinto de "#"),
+      // deja navegar con normalidad en vez de abrir el modal. Útil para botones
+      // que reutilizan el estilo .demo/.demo-2 pero apuntan a una URL.
+      const href = opener.getAttribute('href');
+      if (opener.tagName === 'A' && href && href.charAt(0) !== '#') {
+        return;
+      }
       e.preventDefault();
       open();
       return;

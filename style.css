@@ -998,12 +998,13 @@
   flex: 1;
   align-self: stretch;
   flex-grow: 1;
-  background-color: #ffffff66;
+  /* Sin backdrop-filter: el blur del marco apenas se veía (borde de 8px sobre
+     card opaca) pero re-difuminaba el fondo en cada frame de scroll → jank.
+     Blanco suave opaco mantiene el aspecto del marco frosted. */
+  background-color: #ffffffe6;
   border-radius: 36px;
   border: 1px solid;
   border-color: var(--06-foundations-neutral-slate-200);
-  backdrop-filter: blur(6px) brightness(100%);
-  -webkit-backdrop-filter: blur(6px) brightness(100%);
 }
 
 .main-homepage-anima .card-bento {
@@ -1152,12 +1153,12 @@
   flex: 1;
   align-self: stretch;
   flex-grow: 1;
-  background-color: #ffffff66;
+  /* Sin backdrop-filter (mismo motivo que .container-card-bento): evita el
+     re-difuminado por frame durante el scroll. */
+  background-color: #ffffffe6;
   border-radius: 36px;
   border: 1px solid;
   border-color: var(--06-foundations-neutral-slate-200);
-  backdrop-filter: blur(6px) brightness(100%);
-  -webkit-backdrop-filter: blur(6px) brightness(100%);
 }
 
 .main-homepage-anima .card-bento-2 {

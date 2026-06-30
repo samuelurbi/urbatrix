@@ -42,7 +42,7 @@
             {% if ctaText %}<p class="cta-subtext">{{ ctaText }}</p>{% endif %}
           </div>
           <div class="button-container-2">
-            <a href="{{ ctaSecondaryHref | default('#') }}" class="button-secundary"
+            <a href="{{ ctaSecondaryHref | default('#') }}" class="button-secundary"{% if ctaSecondaryDemo %} data-demo{% endif %}
               ><span class="text-wrapper-5">{{ ctaSecondaryLabel | default("Ver planes y precios") }}</span></a
             >
             <a href="{{ ctaPrimaryHref | default('#') }}" class="demo"

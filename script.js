@@ -135,6 +135,7 @@
   // Bento features (más marcado) y tarjetas de .client-types (más sutil).
   revealOnScroll('.container-card-bento', 180, 850);
   revealOnScroll('.client-types .content-wrapper', 150, 700);
+  // (El recorrido "Cómo funciona" tiene su propia animación pineada más abajo.)
   // Si no hay IntersectionObserver o hay reduced-motion, las cards quedan
   // visibles por defecto (no se les añade la clase), sin estilos inline.
 
@@ -1113,6 +1114,71 @@
       // quiere que suba desde abajo); aparece estática. El hover (CSS) la anima.
     }
   }
+
+  // ---- Video del hero (Cómo funciona): autoplay + botón pantalla completa ----
+  // Placeholder: reutiliza el video de las features del home. Autoplay muteado en
+  // bucle; el botón .feature-fs lo abre en pantalla completa (con sonido+controles).
+  const cfHeroVideo = document.querySelector('.cf-hero__video .feature-video');
+  if (cfHeroVideo) {
+    const playSafe = () => {
+      const p = cfHeroVideo.play();
+      if (p && p.catch) p.catch(() => {});
+    };
+    playSafe();
+    const fsBtn = cfHeroVideo.parentElement.querySelector('.feature-fs');
+    if (fsBtn) {
+      fsBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        if (cfHeroVideo.requestFullscreen) cfHeroVideo.requestFullscreen();
+        else if (cfHeroVideo.webkitRequestFullscreen) cfHeroVideo.webkitRequestFullscreen();
+        else if (cfHeroVideo.webkitEnterFullscreen) cfHeroVideo.webkitEnterFullscreen(); // iOS
+      });
+    }
+    document.addEventListener('fullscreenchange', () => {
+      const fs = document.fullscreenElement === cfHeroVideo;
+      cfHeroVideo.controls = fs;
+      cfHeroVideo.muted = !fs;
+      if (!fs) playSafe();
+    });
+  }
+
+  // ---- 11. "Cómo funciona" · recorrido vertical alternado ----
+  // (sólo en /producto/como-funciona/). Una línea central se rellena de verde
+  // (--tl-progress) según el avance del scroll por la sección, y va encendiendo
+  // el nodo de cada fase cuando el relleno pasa por su centro (~(i+0.5)/N).
+  // Sin GSAP / reduced-motion: el recorrido se muestra completo (línea llena +
+  // todos los nodos activos), sin animación.
+  const cfTimeline = document.querySelector('.cf-journey .cf-timeline');
+  if (cfTimeline) {
+    const items = Array.prototype.slice.call(
+      cfTimeline.querySelectorAll('.cf-tl-item')
+    );
+    const N = items.length;
+    const setProgress = (p) => {
+      const c = Math.max(0, Math.min(1, p));
+      cfTimeline.style.setProperty('--tl-progress', (c * 100).toFixed(2) + '%');
+      items.forEach((it, i) => {
+        const nodeFrac = N > 0 ? (i + 0.5) / N : 1;
+        it.classList.toggle('is-reached', c >= nodeFrac - 0.0001);
+      });
+    };
+
+    if (window.gsap && window.ScrollTrigger && !reducedMotion) {
+      gsap.registerPlugin(ScrollTrigger);
+      ScrollTrigger.create({
+        id: 'cf-journey',
+        trigger: cfTimeline,
+        start: 'top 72%',
+        end: 'bottom 78%',
+        invalidateOnRefresh: true,
+        onUpdate: (self) => setProgress(self.progress),
+        onRefresh: (self) => setProgress(self.progress),
+      });
+    } else {
+      // recorrido completo (sin animación)
+      setProgress(1);
+    }
+  }
 })();
 
 /* ===================== Mega menús (Producto / Soluciones) =====================
@@ -1172,6 +1238,11 @@
     tab.addEventListener('mouseleave', scheduleClose);
     tab.addEventListener('focus', () => open(tab));
     tab.addEventListener('click', (e) => {
+      // Si el tab es un enlace real (p. ej. "Producto" → /producto/), deja
+      // navegar; el dropdown ya se abre solo en hover/focus. Los tabs sin href
+      // (p. ej. Soluciones) siguen abriendo el mega menú al hacer click.
+      const href = tab.getAttribute('href');
+      if (href && href !== '#') return;
       e.preventDefault();
       open(tab);
     });
@@ -1203,4 +1274,244 @@
     },
     { passive: true }
   );
+})();
+
+/* ===== Stepper interactivo "Cómo empezamos contigo" (dev-flow) =====
+   Acordeón: al activar un paso se expande mostrando su descripción + visual y
+   se cierran los demás (siempre queda uno abierto). Solo actúa si existe en la
+   página; accesible por teclado al ser <button> con aria-expanded. */
+(function () {
+  const items = Array.from(document.querySelectorAll('.dev-flow__item'));
+  if (!items.length) return;
+
+  function open(item) {
+    items.forEach((it) => {
+      const isTarget = it === item;
+      it.classList.toggle('is-open', isTarget);
+      const head = it.querySelector('.dev-flow__head');
+      if (head) head.setAttribute('aria-expanded', isTarget ? 'true' : 'false');
+    });
+  }
+
+  items.forEach((item) => {
+    const head = item.querySelector('.dev-flow__head');
+    if (!head) return;
+    head.addEventListener('click', () => {
+      if (item.classList.contains('is-open')) return; // ya abierto: lo dejamos
+      open(item);
+    });
+  });
+})();
+
+/* ===== Animaciones de entrada por scroll (dev-reveal) =====
+   Añade .is-in cuando el elemento entra al viewport; el CSS hace el resto con
+   @keyframes. Sin IntersectionObserver o con reduced-motion, se muestra todo
+   de inmediato. Solo actúa si hay elementos .dev-reveal en la página. */
+(function () {
+  const els = Array.from(document.querySelectorAll('.dev-reveal'));
+  if (!els.length) return;
+
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduce || !('IntersectionObserver' in window)) {
+    els.forEach((el) => el.classList.add('is-in'));
+    return;
+  }
+
+  const io = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) {
+          e.target.classList.add('is-in');
+          io.unobserve(e.target);
+        }
+      });
+    },
+    { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
+  );
+  els.forEach((el) => io.observe(el));
+})();
+
+/* ===== Precios: toggle Mensual / Anual =====
+   Cambia el estado del switch y reemplaza el importe /mes de cada plan por su
+   versión anual (data-a) o mensual (data-m). Solo actúa si existe el toggle. */
+(function () {
+  const toggle = document.getElementById('pricing-toggle');
+  if (!toggle) return;
+  const sw = toggle.querySelector('.pricing-toggle__switch');
+  const opts = Array.from(toggle.querySelectorAll('.pricing-toggle__opt'));
+  const permos = Array.from(document.querySelectorAll('.plan-permo'));
+
+  function setAnnual(annual) {
+    sw.setAttribute('aria-checked', annual ? 'true' : 'false');
+    opts.forEach((o) => o.classList.toggle('is-active', (o.dataset.period === 'anual') === annual));
+    permos.forEach((p) => {
+      p.textContent = annual ? p.dataset.a : p.dataset.m;
+    });
+  }
+
+  sw.addEventListener('click', () => setAnnual(sw.getAttribute('aria-checked') !== 'true'));
+  opts.forEach((o) => o.addEventListener('click', () => setAnnual(o.dataset.period === 'anual')));
+})();
+
+/* ===== Modal de contacto "Reserva tu demo" =====
+   Se abre con cualquier disparador (.demo / .a-link-demo / .navbar-demo /
+   .mobile-menu-demo / [data-demo]); se cierra con [data-demo-close], overlay,
+   Escape. Trap de foco básico y bloqueo de scroll del documento. El envío del
+   formulario muestra un estado de éxito (sin backend). */
+(function () {
+  const modal = document.getElementById('demo-modal');
+  if (!modal) return;
+  const dialog = modal.querySelector('.demo-modal__dialog');
+  const form = modal.querySelector('.demo-form');
+  const formview = modal.querySelector('.demo-modal__formview');
+  const success = modal.querySelector('.demo-modal__success');
+  const body = modal.querySelector('.demo-form__body');
+  const steps = Array.from(modal.querySelectorAll('.demo-step'));
+  const foots = Array.from(modal.querySelectorAll('.demo-foot'));
+  const stepItems = Array.from(modal.querySelectorAll('.demo-steps__item'));
+  const stepLine = modal.querySelector('.demo-steps__line');
+  let lastFocus = null;
+
+  const OPEN_SEL =
+    '[data-demo], .demo, .demo-2, .a-link-demo, .navbar-demo, .mobile-menu-demo';
+
+  function focusables() {
+    const sel = 'a[href], button:not([disabled]), input, select, textarea';
+    return Array.from(modal.querySelectorAll(sel)).filter((el) => el.offsetParent !== null);
+  }
+
+  function goStep(n) {
+    steps.forEach((s) => {
+      s.hidden = Number(s.dataset.step) !== n;
+    });
+    foots.forEach((f) => {
+      f.hidden = Number(f.dataset.foot) !== n;
+    });
+    stepItems.forEach((it) => {
+      const d = Number(it.dataset.stepdot);
+      it.classList.toggle('is-active', d === n);
+      it.classList.toggle('is-done', d < n);
+    });
+    if (stepLine) stepLine.classList.toggle('is-on', n >= 2);
+    if (body) body.scrollTop = 0;
+    const active = steps.find((s) => Number(s.dataset.step) === n);
+    if (active) {
+      const f = active.querySelector('input, select, textarea');
+      if (f) setTimeout(() => f.focus(), 50);
+    }
+  }
+
+  function validStep(n) {
+    const active = steps.find((s) => Number(s.dataset.step) === n);
+    if (!active) return true;
+    const fields = active.querySelectorAll('input, select, textarea');
+    for (const el of fields) {
+      if (!el.checkValidity()) {
+        el.reportValidity();
+        return false;
+      }
+    }
+    return true;
+  }
+
+  function open() {
+    lastFocus = document.activeElement;
+    modal.hidden = false;
+    if (formview) formview.hidden = false;
+    if (success) success.hidden = true;
+    if (steps.length) goStep(1);
+    requestAnimationFrame(() => modal.classList.add('is-open'));
+    document.documentElement.style.overflow = 'hidden';
+    document.addEventListener('keydown', onKey);
+    if (!steps.length) {
+      const first = focusables()[0];
+      if (first) setTimeout(() => first.focus(), 60);
+    }
+  }
+
+  function close() {
+    modal.classList.remove('is-open');
+    document.documentElement.style.overflow = '';
+    document.removeEventListener('keydown', onKey);
+    const finish = () => {
+      modal.hidden = true;
+      dialog.removeEventListener('transitionend', finish);
+    };
+    dialog.addEventListener('transitionend', finish);
+    setTimeout(() => {
+      if (!modal.hidden) modal.hidden = true;
+    }, 420);
+    if (lastFocus && lastFocus.focus) lastFocus.focus();
+  }
+
+  function onKey(e) {
+    if (e.key === 'Escape') {
+      close();
+    } else if (e.key === 'Tab') {
+      const list = focusables();
+      if (!list.length) return;
+      const first = list[0];
+      const last = list[list.length - 1];
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
+    }
+  }
+
+  document.addEventListener('click', (e) => {
+    const opener = e.target.closest(OPEN_SEL);
+    if (opener && !modal.contains(opener)) {
+      e.preventDefault();
+      open();
+      return;
+    }
+    if (e.target.closest('[data-demo-close]')) {
+      e.preventDefault();
+      close();
+    }
+  });
+
+  // Navegación entre pasos
+  modal.addEventListener('click', (e) => {
+    if (e.target.closest('[data-step-next]')) {
+      e.preventDefault();
+      if (validStep(1)) goStep(2);
+    } else if (e.target.closest('[data-step-back]')) {
+      e.preventDefault();
+      goStep(1);
+    }
+  });
+
+  if (form) {
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      if (!validStep(1)) {
+        goStep(1);
+        return;
+      }
+      if (!validStep(2)) return;
+      if (formview) formview.hidden = true;
+      if (success) success.hidden = false;
+    });
+  }
+})();
+
+/* ===== FAQ acordeón (Precios) =====
+   Toggle independiente por pregunta; expansión suave vía CSS (grid-rows).
+   Accesible: cada pregunta es un <button> con aria-expanded. */
+(function () {
+  const items = Array.from(document.querySelectorAll('.faq__item'));
+  if (!items.length) return;
+  items.forEach((item) => {
+    const q = item.querySelector('.faq__q');
+    if (!q) return;
+    q.addEventListener('click', () => {
+      const isOpen = item.classList.toggle('is-open');
+      q.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    });
+  });
 })();

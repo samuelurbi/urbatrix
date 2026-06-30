@@ -1,8 +1,13 @@
+{%- set u = page.url -%}
+{%- set fIsHome = u == "/" -%}
+{%- set fIsProducto = "/producto/" in u -%}
+{%- set fIsSol = "/soluciones/" in u -%}
+{%- set fIsPrecios = u == "/precios/" -%}
       <footer class="footer">
         <div class="footer-sections">
           <div class="content-6">
             <div class="items">
-              <a href="#" aria-label="Urbatrix">
+              <a href="/" aria-label="Urbatrix inicio">
                 <img loading="lazy" decoding="async"
                   class="logo-3"
                   src="/assets/logo-6.svg"
@@ -12,19 +17,19 @@
               <div class="frame-2">
                 <nav class="item" aria-label="Producto">
                   <div class="text-wrapper-30">Producto</div>
-                  <a href="#" class="text-wrapper-31">Cómo funciona</a>
-                  <a href="#" class="text-wrapper-32">Captación y CRM</a>
-                  <a href="#" class="text-wrapper-31">Pagos y Reservas</a>
-                  <a href="#" class="text-wrapper-31">Capa Legal</a>
-                  <a href="#" class="text-wrapper-31">Post Venta</a>
-                  <a href="#" class="text-wrapper-31">Portal de Broker</a>
+                  <a href="/producto/como-funciona/" class="text-wrapper-31">Cómo funciona</a>
+                  <a href="/producto/captacion-crm/" class="text-wrapper-32">Captación y CRM</a>
+                  <a href="/producto/pago-reservas/" class="text-wrapper-31">Pagos y Reservas</a>
+                  <a href="/producto/capa-legal/" class="text-wrapper-31">Capa Legal</a>
+                  <a href="/producto/post-venta/" class="text-wrapper-31">Post Venta</a>
+                  <a href="/producto/portal-brokers/" class="text-wrapper-31">Portal de Broker</a>
                 </nav>
                 <nav class="item" aria-label="Company">
                   <div class="text-wrapper-30">Company</div>
-                  <a href="#" class="text-wrapper-31">Desarrolladores</a>
-                  <a href="#" class="text-wrapper-31">Brokers y Agencias</a>
-                  <a href="#" class="text-wrapper-31">Compradores</a>
-                  <a href="#" class="text-wrapper-31">Casos de éxito</a>
+                  <a href="/soluciones/para-desarrolladores/" class="text-wrapper-31">Desarrolladores</a>
+                  <a href="/soluciones/" class="text-wrapper-31">Brokers y Agencias</a>
+                  <a href="/soluciones/para-compradores/" class="text-wrapper-31">Compradores</a>
+                  <a href="/casos-exito/" class="text-wrapper-31">Casos de éxito</a>
                 </nav>
                 <nav class="item" aria-label="Recursos">
                   <div class="text-wrapper-30">Recursos</div>
@@ -35,8 +40,8 @@
                 <address class="item">
                   <div class="text-wrapper-30">Empresa</div>
                   <a href="#" class="text-wrapper-31">Sobre nosotros</a>
-                  <a href="#" class="text-wrapper-32">Precios</a>
-                  <a href="#" class="text-wrapper-31">Solicitar demo</a>
+                  <a href="/precios/" class="text-wrapper-32">Precios</a>
+                  <a href="#" class="text-wrapper-31" data-demo>Solicitar demo</a>
                   <a href="mailto:contacto@urbatrix.com" class="text-wrapper-31"
                     >contacto@urbatrix.com</a
                   >
@@ -80,9 +85,9 @@
         </div>
       </footer>
       <nav class="mobile-bottomnav" aria-label="Navegación móvil">
-        <a href="#" class="mbn-link is-active">Inicio</a>
-        <a href="#" class="mbn-link">Producto</a>
-        <a href="#" class="mbn-link">Soluciones</a>
-        <a href="#" class="mbn-link">Precios</a>
-        <a href="#" class="mbn-demo">Demo</a>
+        <a href="/" class="mbn-link{% if fIsHome %} is-active{% endif %}">Inicio</a>
+        <a href="/producto/" class="mbn-link{% if fIsProducto %} is-active{% endif %}">Producto</a>
+        <a href="/soluciones/" class="mbn-link{% if fIsSol %} is-active{% endif %}">Soluciones</a>
+        <a href="/precios/" class="mbn-link{% if fIsPrecios %} is-active{% endif %}">Precios</a>
+        <a href="#" class="mbn-demo" data-demo>Demo</a>
       </nav>

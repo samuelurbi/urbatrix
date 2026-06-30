@@ -102,6 +102,33 @@
   color: #9ff5d8;
 }
 
+/* Fila "Producto" en móvil: el texto es un enlace a /producto/ y el chevron
+   (botón aparte) despliega el acordeón de subtabs. */
+.main-homepage-anima .mobile-menu-prow {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.main-homepage-anima .mobile-menu-prow__link {
+  flex: 1 1 auto;
+  width: auto;
+}
+.main-homepage-anima .mobile-menu-prow__chevron {
+  all: unset;
+  box-sizing: border-box;
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.main-homepage-anima .mobile-menu-prow__chevron:hover,
+.main-homepage-anima .mobile-menu-prow__chevron:focus-visible {
+  background-color: #ffffff10;
+}
+
 .main-homepage-anima .mobile-menu-parent .img {
   width: 16px;
   height: 16px;
@@ -3788,6 +3815,13 @@
 .main-homepage-anima .mega-card:hover .mega-card__left {
   background-color: var(--collection-1-primery-urbatrix, #00b481);
 }
+/* Sub-tab activo (estás en esa subpágina): card resaltada + icono en verde */
+.main-homepage-anima .mega-card[aria-current="page"] {
+  background-color: #ffffff12;
+}
+.main-homepage-anima .mega-card[aria-current="page"] .mega-card__left {
+  background-color: var(--collection-1-primery-urbatrix, #00b481);
+}
 .main-homepage-anima .mega-card__icon {
   display: block;
   width: 22px;
@@ -3857,6 +3891,10 @@
   line-height: 1.2rem;
   cursor: pointer;
 }
+.main-homepage-anima .mobile-menu-sublink[aria-current="page"] {
+  background-color: #00b48126;
+  color: #9ff5d8;
+}
 .main-homepage-anima .mobile-menu-sublink:hover,
 .main-homepage-anima .mobile-menu-sublink:focus-visible {
   background-color: #ffffff10;
@@ -3871,8 +3909,8 @@
   width: 100%;
   background-image: url(assets/hero.png);
   background-repeat: no-repeat;
-  background-size: cover;
-  background-position: 50% 50%;
+  background-size: 100% auto;
+  background-position: top center;
 }
 /* En móvil el fondo se amplía y se ancla arriba (mejor encuadre del hero). */
 @media (max-width: 900px) {
@@ -3913,7 +3951,7 @@
   margin: 0;
   font-family: "Mont-SemiBold", Helvetica, sans-serif;
   font-weight: 600;
-  font-size: 4rem;
+  font-size: 3.5rem; /* was: 4rem */
   line-height: 1.06;
   text-wrap: balance;
   color: #ffffff;
@@ -4069,6 +4107,11 @@
   .main-homepage-anima .product-hero {
     padding: 116px var(--container-pad) 130px;
   }
+  /* En precios el toggle viene justo después del hero: el padding-bottom
+     pensado para subpáginas con contenido deja un hueco grande → reducir. */
+  .main-homepage-anima .product-hero--precios {
+    padding-bottom: 72px;
+  }
   .main-homepage-anima .product-hero__title {
     font-size: 2.5rem;
   }
@@ -4182,5 +4225,1228 @@
 @media (min-width: 901px) {
   .main-homepage-anima .hero .text-wrapper-6 {
     color: #ffffff;
+  }
+}
+
+/* ===== Subpágina: Cómo funciona ===== */
+
+/* Hero 2-col: texto izq + video der. Scrim scopeado a esta sección
+   para garantizar legibilidad sobre el degradado de hero.png. */
+.main-homepage-anima .cf-hero {
+  position: relative;
+  padding: 124px var(--container-pad) 96px; /* was: 152px top */
+}
+/* Soluciones: más separación entre el hero y el contenido inferior */
+.main-homepage-anima .product-top--soluciones .cf-hero {
+  padding-bottom: 152px; /* was: 96px */
+}
+.main-homepage-anima .cf-hero__inner {
+  position: relative;
+  z-index: 1;
+  max-width: var(--content-max);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 56px;
+  align-items: center;
+}
+.main-homepage-anima .cf-hero__text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+}
+.main-homepage-anima .cf-hero__actions {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 4px;
+}
+.main-homepage-anima .cf-hero__actions .demo,
+.main-homepage-anima .cf-hero__actions .button-secundary {
+  flex: 0 0 auto;
+  align-self: auto;
+}
+/* El botón primario (Solicitar demo) más ancho que el secundario, para que se
+   lea como la acción más importante. Solo en heros interiores/subpáginas. */
+.main-homepage-anima .cf-hero__actions .demo {
+  padding-left: 42px;
+  padding-right: 42px;
+}
+
+/* Marco del video del hero: tarjeta con glow verde de fondo (visible mientras
+   carga el video) + el <video> .feature-video llenándola en object-fit cover. */
+.main-homepage-anima .cf-hero__video {
+  position: relative;
+  margin: 0;
+  width: 100%; /* abarca toda su columna (respetando el padding del hero) */
+  aspect-ratio: 16 / 9;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background:
+    radial-gradient(120% 120% at 50% 0%, rgba(0, 180, 129, 0.22) 0%, rgba(0, 180, 129, 0) 55%),
+    linear-gradient(160deg, rgba(8, 30, 22, 0.72) 0%, rgba(4, 16, 12, 0.84) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  box-shadow:
+    0 30px 70px -28px rgba(0, 0, 0, 0.6),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  transition: transform 0.5s cubic-bezier(0.22, 0.61, 0.36, 1), box-shadow 0.5s ease;
+}
+.main-homepage-anima .cf-hero__video:hover {
+  transform: translateY(-4px);
+  box-shadow:
+    0 42px 84px -28px rgba(0, 0, 0, 0.65),
+    0 0 0 1px rgba(0, 180, 129, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+/* sheen diagonal sutil (por encima del video) */
+.main-homepage-anima .cf-hero__video::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background: linear-gradient(115deg, rgba(255, 255, 255, 0.07) 0%, rgba(255, 255, 255, 0) 42%);
+  pointer-events: none;
+}
+
+/* Hero (cf) · botón secundario: mismo glass transparente que el secundario del
+   home (fondo translúcido oscuro, sin relleno blanco), texto blanco sobre verde */
+.main-homepage-anima .cf-hero__actions .button-secundary {
+  background-color: #0000001f; /* was: rgba(255,255,255,0.1) — igual que el home */
+  border: none; /* was: 1px solid rgba(255,255,255,0.28) */
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+  transition: background 0.3s ease;
+}
+.main-homepage-anima .cf-hero__actions .button-secundary .text-wrapper-5 {
+  color: #ffffff;
+}
+.main-homepage-anima .cf-hero__actions .button-secundary:hover {
+  background-color: #00000033;
+}
+
+/* ===== Subpáginas de producto: sección "Lo que incluye" =====
+   Reutiliza EXACTAMENTE las cards de /producto/ (.client-types.product-modules
+   > .product-grid > .content-wrapper, iconos SVG tintados de verde). Aquí solo
+   añadimos el título centrado de la sección encima del grid. */
+.main-homepage-anima .cf-modules__title {
+  max-width: 820px;
+  margin: 0 auto 8px;
+  text-align: center;
+  text-wrap: balance;
+  font-family: "Mont-SemiBold", Helvetica, sans-serif;
+  font-weight: 600;
+  font-size: 2.25rem;
+  line-height: 1.2;
+  color: var(--c-ink, #171717);
+}
+@media (max-width: 900px) {
+  .main-homepage-anima .cf-modules__title {
+    font-size: 1.9rem;
+  }
+}
+
+/* Título con el degradado negro → verde (mismo tratamiento que .p / cf-journey). */
+.main-homepage-anima .cf-modules__title.is-gradient,
+.main-homepage-anima .is-gradient {
+  background: linear-gradient(90deg, rgba(0, 0, 0, 1) 0%, rgba(0, 180, 129, 1) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+/* ===== Soluciones · Para Desarrolladores — secciones de contenido =====
+   Reutiliza el lenguaje visual de las cards de producto (fondo blanco, borde
+   stroke suave, radius-lg, iconos tintados de verde, títulos ink). Las
+   secciones son transparentes para que se lea el fondo del .product-top. */
+.main-homepage-anima .dev-section {
+  position: relative;
+  padding: 88px var(--container-pad);
+}
+/* Panel tintado tipo Stripe: gradiente sutil verde-gris para separar la
+   sección del resto sin recurrir a un bloque plano de color. */
+.main-homepage-anima .dev-section--panel {
+  background:
+    radial-gradient(130% 90% at 100% 0%, rgba(0, 180, 129, 0.07) 0%, rgba(0, 180, 129, 0) 55%),
+    radial-gradient(120% 90% at 0% 100%, rgba(0, 180, 129, 0.05) 0%, rgba(0, 180, 129, 0) 50%),
+    linear-gradient(180deg, #f6faf9 0%, #ffffff 100%);
+  border-top: 1px solid rgba(17, 17, 17, 0.05);
+  border-bottom: 1px solid rgba(17, 17, 17, 0.05);
+}
+.main-homepage-anima .dev-section__head {
+  max-width: 760px;
+  margin: 0 auto 52px;
+  text-align: center;
+}
+.main-homepage-anima .dev-section__head .cf-modules__title {
+  margin-bottom: 0;
+}
+.main-homepage-anima .dev-section__sub {
+  margin: 14px auto 0;
+  max-width: 620px;
+  font-family: "Mont-Regular", Helvetica, sans-serif;
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  color: var(--c-text-sub, #5c5c5c);
+  text-wrap: balance;
+}
+
+/* --- Tus retos, resueltos: tarjetas problema → solución --- */
+.main-homepage-anima .dev-challenges {
+  max-width: 1040px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 22px;
+}
+.main-homepage-anima .dev-challenge {
+  position: relative;
+  background: #ffffff;
+  border: 1px solid rgba(17, 17, 17, 0.07);
+  border-radius: 18px;
+  padding: 30px 32px;
+  box-shadow:
+    0 1px 2px rgba(17, 17, 17, 0.04),
+    0 14px 30px -20px rgba(17, 17, 17, 0.22);
+  transition: transform 0.4s cubic-bezier(0.22, 0.61, 0.36, 1),
+    box-shadow 0.4s ease, border-color 0.4s ease;
+}
+.main-homepage-anima .dev-challenge:hover {
+  transform: translateY(-4px);
+  border-color: rgba(0, 180, 129, 0.35);
+  box-shadow:
+    0 1px 2px rgba(17, 17, 17, 0.05),
+    0 24px 46px -24px rgba(0, 180, 129, 0.38);
+}
+.main-homepage-anima .dev-challenge__q {
+  margin: 0 0 18px;
+  padding-bottom: 18px;
+  border-bottom: 1px dashed rgba(17, 17, 17, 0.12);
+  font-family: "Mont-SemiBold", Helvetica, sans-serif;
+  font-weight: 600;
+  font-size: 1.15rem;
+  line-height: 1.35;
+  color: var(--c-ink, #171717);
+}
+.main-homepage-anima .dev-challenge__sol {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+.main-homepage-anima .dev-challenge__check {
+  flex: 0 0 auto;
+  width: 24px;
+  height: 24px;
+  margin-top: 1px;
+  display: grid;
+  place-items: center;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #00c98f 0%, #00936a 100%);
+  color: #ffffff;
+  box-shadow: 0 4px 10px -4px rgba(0, 180, 129, 0.6);
+}
+.main-homepage-anima .dev-challenge__check svg {
+  width: 13px;
+  height: 13px;
+}
+.main-homepage-anima .dev-challenge__a {
+  margin: 0;
+  font-family: "Mont-Regular", Helvetica, sans-serif;
+  font-size: 0.98rem;
+  line-height: 1.55;
+  color: var(--c-text-sub, #5c5c5c);
+}
+
+/* --- Lo que consigues: bento asimétrico --- */
+/* Una tarjeta grande destacada (2×2, oscura con glow verde) + 3 menores en
+   distintos tamaños. Distribución sobre una rejilla de 4 columnas:
+   A = col 1-2 / row 1-2 · B = col 3-4 / row 1 · C = col 3 · D = col 4 */
+.main-homepage-anima .dev-gains {
+  max-width: 1120px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: minmax(168px, auto);
+  gap: 20px;
+}
+.main-homepage-anima .dev-gain {
+  display: flex;
+  flex-direction: column;
+  background: #ffffff;
+  border: 1px solid rgba(17, 17, 17, 0.07);
+  border-radius: 18px;
+  padding: 28px;
+  box-shadow:
+    0 1px 2px rgba(17, 17, 17, 0.04),
+    0 14px 30px -20px rgba(17, 17, 17, 0.22);
+  transition: transform 0.4s cubic-bezier(0.22, 0.61, 0.36, 1),
+    box-shadow 0.4s ease, border-color 0.4s ease;
+}
+.main-homepage-anima .dev-gain:hover {
+  transform: translateY(-4px);
+  border-color: rgba(0, 180, 129, 0.35);
+  box-shadow:
+    0 1px 2px rgba(17, 17, 17, 0.05),
+    0 24px 46px -24px rgba(0, 180, 129, 0.38);
+}
+/* Posiciones del bento */
+.main-homepage-anima .dev-gain:nth-child(1) {
+  grid-column: span 2;
+  grid-row: span 2;
+}
+.main-homepage-anima .dev-gain:nth-child(2) {
+  grid-column: span 2;
+}
+/* Mismo box de icono que las cards de producto (.icon-2): fondo blanco,
+   radius 14px y sombra gris suave. */
+.main-homepage-anima .dev-gain__icon {
+  display: inline-flex;
+  align-items: center;
+  width: -moz-fit-content;
+  width: fit-content;
+  padding: 10px;
+  margin-bottom: 20px;
+  background-color: var(--01-tokens-bg-white-0, #ffffff);
+  border-radius: 14px;
+  box-shadow: var(--colored-shadows-gray);
+}
+.main-homepage-anima .dev-gain__icon img {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+  filter: brightness(0) saturate(100%) invert(53%) sepia(94%) saturate(385%)
+    hue-rotate(116deg) brightness(95%) contrast(101%);
+}
+.main-homepage-anima .dev-gain__body {
+  margin-top: auto; /* texto al fondo: aspecto editorial */
+}
+.main-homepage-anima .dev-gain__title {
+  margin: 0 0 8px;
+  font-family: "Mont-SemiBold", Helvetica, sans-serif;
+  font-weight: 600;
+  font-size: 1.05rem;
+  line-height: 1.3;
+  color: var(--c-ink, #171717);
+}
+.main-homepage-anima .dev-gain__desc {
+  margin: 0;
+  font-family: "Mont-Regular", Helvetica, sans-serif;
+  font-size: 0.93rem;
+  line-height: 1.5;
+  color: var(--c-text-sub, #5c5c5c);
+}
+
+/* Tarjeta destacada (la grande): fondo oscuro con glow verde, texto claro */
+.main-homepage-anima .dev-gain--feature {
+  padding: 36px;
+  background:
+    radial-gradient(120% 120% at 0% 0%, rgba(0, 180, 129, 0.28) 0%, rgba(0, 180, 129, 0) 52%),
+    linear-gradient(150deg, #0f221c 0%, #06110d 100%);
+  border-color: rgba(255, 255, 255, 0.1);
+  box-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.2),
+    0 34px 64px -32px rgba(0, 0, 0, 0.6);
+}
+.main-homepage-anima .dev-gain--feature:hover {
+  border-color: rgba(0, 180, 129, 0.55);
+  box-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.25),
+    0 40px 76px -32px rgba(0, 180, 129, 0.45);
+}
+.main-homepage-anima .dev-gain--feature .dev-gain__title {
+  font-size: 1.45rem;
+  color: #ffffff;
+}
+.main-homepage-anima .dev-gain--feature .dev-gain__desc {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.72);
+}
+
+/* --- Cómo empezamos contigo: stepper interactivo (acordeón) ---
+   Pasos apilados; el activo se expande mostrando descripción + un visual
+   abstracto. Toggle por click/teclado (JS en script.js, módulo "dev-flow").
+   La animación usa el truco grid-template-rows 0fr→1fr. */
+.main-homepage-anima .dev-flow {
+  max-width: 920px;
+  margin: 0 auto;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.main-homepage-anima .dev-flow__item {
+  background: #ffffff;
+  border: 1px solid rgba(17, 17, 17, 0.08);
+  border-radius: 16px;
+  overflow: hidden;
+  /* sombra real, negra-azulada y sutil */
+  box-shadow:
+    0 1px 2px rgba(15, 23, 42, 0.06),
+    0 4px 10px -4px rgba(15, 23, 42, 0.08);
+  transition: border-color 0.35s ease, box-shadow 0.35s ease;
+}
+.main-homepage-anima .dev-flow__item.is-open {
+  /* misma sombra negra-azulada, algo más profunda al abrirse (sutil) */
+  box-shadow:
+    0 1px 2px rgba(15, 23, 42, 0.07),
+    0 18px 38px -22px rgba(15, 23, 42, 0.28);
+}
+.main-homepage-anima .dev-flow__head {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 20px 24px;
+  margin: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+}
+.main-homepage-anima .dev-flow__num {
+  flex: 0 0 auto;
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  border-radius: 999px;
+  background: linear-gradient(140deg, #1c3a31 0%, #0a1714 100%);
+  color: #ffffff;
+  font-family: "Mont-SemiBold", Helvetica, sans-serif;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: background 0.35s ease, box-shadow 0.35s ease;
+}
+.main-homepage-anima .dev-flow__item.is-open .dev-flow__num {
+  background: linear-gradient(135deg, #00c98f 0%, #00936a 100%);
+}
+.main-homepage-anima .dev-flow__title {
+  flex: 1 1 auto;
+  font-family: "Mont-SemiBold", Helvetica, sans-serif;
+  font-weight: 600;
+  font-size: 1.12rem;
+  line-height: 1.3;
+  color: var(--c-ink, #171717);
+}
+.main-homepage-anima .dev-flow__chev {
+  flex: 0 0 auto;
+  display: grid;
+  place-items: center;
+  color: var(--c-text-sub, #5c5c5c);
+  transition: transform 0.35s ease, color 0.35s ease;
+}
+.main-homepage-anima .dev-flow__chev svg {
+  width: 18px;
+  height: 18px;
+  display: block;
+}
+.main-homepage-anima .dev-flow__item.is-open .dev-flow__chev {
+  transform: rotate(180deg);
+  color: var(--c-green, #00b481);
+}
+/* Panel colapsable */
+.main-homepage-anima .dev-flow__panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.42s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+.main-homepage-anima .dev-flow__item.is-open .dev-flow__panel {
+  grid-template-rows: 1fr;
+}
+.main-homepage-anima .dev-flow__panelInner {
+  overflow: hidden;
+}
+.main-homepage-anima .dev-flow__grid {
+  display: grid;
+  grid-template-columns: 1fr 0.9fr;
+  gap: 28px;
+  align-items: center;
+  padding: 2px 24px 26px 82px; /* alinea bajo el título: 24 pad + 40 num + 18 gap */
+}
+.main-homepage-anima .dev-flow__desc {
+  margin: 0;
+  font-family: "Mont-Regular", Helvetica, sans-serif;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--c-text-sub, #5c5c5c);
+}
+/* Visual abstracto del paso (mini-UI) */
+.main-homepage-anima .dev-flow__visual {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 18px;
+  border-radius: 14px;
+  background: linear-gradient(160deg, #f3faf8 0%, #eafaf3 100%);
+  border: 1px solid rgba(0, 180, 129, 0.16);
+}
+.main-homepage-anima .dev-flow__visualIcon {
+  width: 40px;
+  height: 40px;
+  margin-bottom: 4px;
+  display: grid;
+  place-items: center;
+  border-radius: 11px;
+  background: #ffffff;
+  box-shadow: 0 4px 12px -6px rgba(0, 0, 0, 0.2);
+}
+.main-homepage-anima .dev-flow__visualIcon img {
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
+  filter: brightness(0) saturate(100%) invert(53%) sepia(94%) saturate(385%)
+    hue-rotate(116deg) brightness(95%) contrast(101%);
+}
+.main-homepage-anima .dev-flow__visualBar {
+  height: 9px;
+  border-radius: 6px;
+  background: linear-gradient(90deg, rgba(0, 180, 129, 0.4) 0%, rgba(0, 180, 129, 0.08) 100%);
+}
+.main-homepage-anima .dev-flow__visualBar:nth-of-type(2) {
+  width: 88%;
+}
+.main-homepage-anima .dev-flow__visualBar:nth-of-type(3) {
+  width: 68%;
+}
+@media (prefers-reduced-motion: reduce) {
+  .main-homepage-anima .dev-flow__panel {
+    transition: none;
+  }
+}
+
+/* ===== Animaciones de entrada (scroll reveal) — subpágina desarrolladores =====
+   Hook JS: .dev-reveal recibe .is-in al entrar al viewport (módulo "dev-reveal"
+   en script.js). Se usa @keyframes con fill backwards para que, una vez
+   revelada la card, el transform vuelva a quedar libre para el hover. Bajo
+   reduced-motion no se oculta nada (el contenido aparece de inmediato). */
+@media (prefers-reduced-motion: no-preference) {
+  .main-homepage-anima .dev-reveal {
+    opacity: 0;
+  }
+  .main-homepage-anima .dev-reveal.is-in {
+    opacity: 1;
+    animation: devRevealIn 0.6s cubic-bezier(0.22, 0.61, 0.36, 1) backwards;
+  }
+  /* stagger según la posición dentro de cada grupo */
+  .main-homepage-anima .dev-challenges .dev-reveal.is-in:nth-of-type(2),
+  .main-homepage-anima .dev-gains .dev-reveal.is-in:nth-of-type(2),
+  .main-homepage-anima .dev-flow .dev-reveal.is-in:nth-of-type(2),
+  .main-homepage-anima .product-grid .dev-reveal.is-in:nth-of-type(2) {
+    animation-delay: 0.08s;
+  }
+  .main-homepage-anima .dev-challenges .dev-reveal.is-in:nth-of-type(3),
+  .main-homepage-anima .dev-gains .dev-reveal.is-in:nth-of-type(3),
+  .main-homepage-anima .dev-flow .dev-reveal.is-in:nth-of-type(3),
+  .main-homepage-anima .product-grid .dev-reveal.is-in:nth-of-type(3) {
+    animation-delay: 0.16s;
+  }
+  .main-homepage-anima .dev-challenges .dev-reveal.is-in:nth-of-type(4),
+  .main-homepage-anima .dev-gains .dev-reveal.is-in:nth-of-type(4),
+  .main-homepage-anima .dev-flow .dev-reveal.is-in:nth-of-type(4),
+  .main-homepage-anima .product-grid .dev-reveal.is-in:nth-of-type(4) {
+    animation-delay: 0.24s;
+  }
+  .main-homepage-anima .product-grid .dev-reveal.is-in:nth-of-type(5) {
+    animation-delay: 0.32s;
+  }
+  .main-homepage-anima .product-grid .dev-reveal.is-in:nth-of-type(6) {
+    animation-delay: 0.4s;
+  }
+}
+@keyframes devRevealIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 900px) {
+  .main-homepage-anima .dev-section {
+    padding: 56px var(--container-pad);
+  }
+  .main-homepage-anima .dev-gains {
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: auto;
+  }
+  /* el bento se simplifica: destacada y la ancha a todo el ancho; las dos
+     pequeñas, una al lado de la otra */
+  .main-homepage-anima .dev-gain:nth-child(1) {
+    grid-column: 1 / -1;
+    grid-row: auto;
+  }
+  .main-homepage-anima .dev-gain:nth-child(2) {
+    grid-column: 1 / -1;
+  }
+  .main-homepage-anima .dev-gain--feature .dev-gain__icon {
+    margin-bottom: 16px;
+  }
+  /* En móvil las cards son de altura automática: el texto pegado al fondo
+     (margin-top:auto) dejaba un hueco vacío bajo el icono. Que fluya tras él. */
+  .main-homepage-anima .dev-gain__body {
+    margin-top: 14px;
+  }
+  .main-homepage-anima .dev-gain--feature {
+    padding: 28px;
+  }
+  .main-homepage-anima .dev-gain--feature .dev-gain__title {
+    font-size: 1.3rem;
+  }
+}
+@media (max-width: 600px) {
+  .main-homepage-anima .dev-challenges,
+  .main-homepage-anima .dev-gains {
+    grid-template-columns: 1fr;
+  }
+  .main-homepage-anima .dev-gain:nth-child(1),
+  .main-homepage-anima .dev-gain:nth-child(2) {
+    grid-column: auto;
+  }
+}
+/* Stepper: el panel pasa a una columna (descripción sobre el visual) */
+@media (max-width: 760px) {
+  .main-homepage-anima .dev-flow__grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+    padding: 0 22px 22px;
+  }
+  .main-homepage-anima .dev-flow__head {
+    padding: 18px 20px;
+    gap: 14px;
+  }
+  /* el visual abstracto (barras) aporta poco en móvil y sube mucho la altura */
+  .main-homepage-anima .dev-flow__visual {
+    display: none;
+  }
+}
+
+/* ===== Sección: Las 5 fases del ciclo — recorrido vertical alternado =====
+   Una línea central marca el camino, con un relleno verde que crece según el
+   scroll (script.js, sección "cf-journey"). Cada fase pone su contenido a un
+   lado de la línea y el número grande al otro, alternando el orden. Los nodos
+   se encienden al ser alcanzados por el relleno. En móvil la línea se va a la
+   izquierda y todo el contenido a la derecha. Sin JS / reduced-motion: el
+   recorrido se muestra completo (línea verde llena, nodos activos). */
+.main-homepage-anima .cf-journey {
+  position: relative;
+  width: 100%;
+  /* separación clara respecto al hero (arriba) y al CTA (abajo): que se lean
+     como secciones distintas (regla de proximidad). */
+  margin: 96px 0 120px;
+  /* sin background: se ve la imagen del .product-top que envuelve hero + contenido */
+}
+.main-homepage-anima .cf-journey__head {
+  max-width: 760px;
+  margin: 0 auto 64px;
+}
+.main-homepage-anima .cf-journey__head .ciclo-steps__title {
+  margin: 0;
+  font-size: 2.25rem;
+  line-height: 2.7rem;
+}
+
+/* ---- Timeline ---- */
+.main-homepage-anima .cf-timeline {
+  --tl-progress: 0%;
+  position: relative;
+  width: 100%;
+  max-width: 1400px; /* was: 1240px */
+  margin: 0 auto;
+  padding: 0 24px; /* was: 0 var(--container-pad) — colapsaba a --gutter y angostaba el timeline */
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+}
+/* línea base (gris) + relleno (verde), ambas centradas */
+.main-homepage-anima .cf-timeline::before,
+.main-homepage-anima .cf-timeline::after {
+  content: "";
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  width: 3px;
+  transform: translateX(-50%);
+  border-radius: 3px;
+}
+.main-homepage-anima .cf-timeline::before {
+  bottom: 10px;
+  background: var(--c-stroke, #e1e4ea);
+}
+.main-homepage-anima .cf-timeline::after {
+  height: var(--tl-progress, 0%);
+  background: linear-gradient(180deg, #52d8b2 0%, #00b481 100%);
+}
+
+/* fila: dos mitades simétricas separadas por la línea central. El nodo va en
+   absoluto justo sobre la línea (centro vertical de la fila). En las fases pares
+   se intercambian los lados de contenido y número. */
+.main-homepage-anima .cf-tl-item {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+}
+.main-homepage-anima .cf-tl-content {
+  grid-column: 1;
+  grid-row: 1; /* misma fila que el número (evita que el grid baje el número a una 2ª fila en las pares) */
+  justify-self: end; /* pega el bloque a la línea central */
+  width: 100%;
+  max-width: 600px;
+  padding-right: 60px; /* aire respecto a la línea y el nodo */
+  text-align: right;
+}
+.main-homepage-anima .cf-tl-num {
+  grid-column: 2;
+  grid-row: 1; /* misma fila que el contenido */
+  justify-self: start;
+  padding-left: 60px;
+  text-align: left;
+  font-family: "Mont-Bold", "Mont-SemiBold", Helvetica, sans-serif;
+  font-weight: 700;
+  font-size: clamp(3.5rem, 7vw, 6rem);
+  line-height: 1;
+  background: linear-gradient(160deg, #b7e8d6 0%, #8bd9bd 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+/* fases pares: espejo — contenido a la derecha, número a la izquierda */
+.main-homepage-anima .cf-tl-item:nth-of-type(even) .cf-tl-content {
+  grid-column: 2;
+  justify-self: start;
+  padding-right: 0;
+  padding-left: 60px;
+  text-align: left;
+}
+.main-homepage-anima .cf-tl-item:nth-of-type(even) .cf-tl-num {
+  grid-column: 1;
+  justify-self: end;
+  padding-left: 0;
+  padding-right: 60px;
+  text-align: right;
+}
+
+/* nodo: centrado en absoluto sobre la línea (mismo 50% que la línea) */
+.main-homepage-anima .cf-tl-node {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 3px solid var(--c-stroke, #e1e4ea);
+  z-index: 1;
+  transition: border-color 0.35s ease, background 0.35s ease,
+    box-shadow 0.35s ease, transform 0.35s ease;
+}
+.main-homepage-anima .cf-tl-item.is-reached .cf-tl-node {
+  background: var(--c-green, #00b481); /* was: linear-gradient(160deg, #52d8b2 0%, #00b481 100%) */
+  border-color: transparent;
+  transform: translate(-50%, -50%) scale(1.25);
+  box-shadow: 0 0 0 6px rgba(0, 180, 129, 0.14);
+}
+
+/* contenido */
+.main-homepage-anima .cf-tl-eyebrow {
+  display: inline-flex;
+  margin-bottom: 12px;
+  font-family: "Mont-SemiBold", Helvetica, sans-serif;
+  font-weight: 600;
+  font-size: 0.78rem;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  color: var(--c-green, #00b481);
+}
+.main-homepage-anima .cf-tl-title {
+  margin: 0 0 12px;
+  font-family: "Mont-Bold", "Mont-SemiBold", Helvetica, sans-serif;
+  font-weight: 700;
+  font-size: 1.7rem;
+  line-height: 1.2;
+  color: var(--c-ink, #171717);
+}
+.main-homepage-anima .cf-tl-desc {
+  margin: 0;
+  font-family: "Mont-Regular", Helvetica, sans-serif;
+  font-size: 1.02rem;
+  line-height: 1.6;
+  color: #475569;
+}
+
+/* ===== Timeline en pantallas chicas: riel a la izquierda, todo a la derecha =====
+   La línea (::before/::after) se posiciona respecto al .cf-timeline (incluye su
+   padding lateral); el nodo respecto al .cf-tl-item (ya dentro de ese padding).
+   Para que el punto caiga EXACTO sobre la línea: línea a (padding + 12) y nodo a
+   12 dentro del item. Padding lateral del timeline fijado a 20px en móvil. */
+@media (max-width: 760px) {
+  .main-homepage-anima .cf-timeline {
+    max-width: 560px;
+    padding: 0 20px;
+    gap: 44px;
+  }
+  .main-homepage-anima .cf-timeline::before,
+  .main-homepage-anima .cf-timeline::after {
+    top: 6px;
+    left: 32px; /* 20px de padding + 12px hacia dentro del contenido */
+  }
+  .main-homepage-anima .cf-timeline::before {
+    bottom: 6px;
+  }
+  .main-homepage-anima .cf-tl-item,
+  .main-homepage-anima .cf-tl-item:nth-of-type(even) {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-left: 44px; /* deja libre el riel + el nodo */
+    gap: 4px;
+  }
+  .main-homepage-anima .cf-tl-node,
+  .main-homepage-anima .cf-tl-item:nth-of-type(even) .cf-tl-node {
+    left: 12px; /* item arranca en x=20 (padding) → 20 + 12 = 32 = línea */
+    top: 7px;
+    transform: translate(-50%, 0);
+  }
+  .main-homepage-anima .cf-tl-item.is-reached .cf-tl-node {
+    transform: translate(-50%, 0) scale(1.25);
+  }
+  .main-homepage-anima .cf-tl-num,
+  .main-homepage-anima .cf-tl-item:nth-of-type(even) .cf-tl-num {
+    order: -1; /* número arriba del contenido */
+    width: auto;
+    padding: 0;
+    margin-bottom: 2px;
+    text-align: left;
+    font-size: 2.4rem;
+  }
+  .main-homepage-anima .cf-tl-content,
+  .main-homepage-anima .cf-tl-item:nth-of-type(even) .cf-tl-content {
+    width: 100%;
+    max-width: none;
+    padding: 0;
+    text-align: left;
+  }
+}
+
+/* Badge = mismo patrón que el badge de las sections del home (.badge-2):
+   pill bordeado, padding 6px 10px, centrado. */
+.main-homepage-anima .ciclo-steps__eyebrow {
+  display: flex;
+  align-items: center;
+  width: fit-content;
+  margin: 0 auto 16px;
+  padding: 6px 10px;
+  border-radius: 100px;
+  border: 1px solid var(--06-foundations-neutral-slate-200);
+  font-family: "Mont-SemiBold", Helvetica, sans-serif;
+  font-weight: 600;
+  font-size: 0.8rem;
+  letter-spacing: 0.2px;
+  color: var(--c-ink, #171717);
+}
+/* Título = mismo tratamiento que el título de las sections del home (.p):
+   Mont-SemiBold 600 + degradado negro → verde. */
+.main-homepage-anima .ciclo-steps__title {
+  margin: 0 0 56px;
+  font-family: "Mont-SemiBold", Helvetica, sans-serif;
+  font-weight: 600;
+  font-size: 2.5rem;
+  line-height: 3rem;
+  text-align: center;
+  text-wrap: balance;
+  background: linear-gradient(90deg, rgba(0, 0, 0, 1) 0%, rgba(0, 180, 129, 1) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+/* Responsive */
+@media (max-width: 900px) {
+  .main-homepage-anima .cf-hero {
+    padding: 96px var(--container-pad) 64px; /* was: 116px top */
+  }
+  .main-homepage-anima .product-top--soluciones .cf-hero {
+    padding-bottom: 104px; /* separación hero ↔ contenido en móvil */
+  }
+  .main-homepage-anima .cf-hero__inner {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+  .main-homepage-anima .cf-journey {
+    margin: 64px 0 88px;
+  }
+  .main-homepage-anima .cf-journey__head {
+    margin-bottom: 40px;
+  }
+}
+@media (max-width: 480px) {
+  .main-homepage-anima .cf-tl-num,
+  .main-homepage-anima .cf-tl-item:nth-of-type(even) .cf-tl-num {
+    font-size: 2rem;
+  }
+}
+@media (max-width: 600px) {
+  /* botones lado a lado, repartidos al 50% */
+  .main-homepage-anima .cf-hero__actions {
+    flex-direction: row;
+    flex-wrap: nowrap;
+    width: 100%;
+    gap: 10px;
+  }
+  .main-homepage-anima .cf-hero__actions .demo,
+  .main-homepage-anima .cf-hero__actions .button-secundary {
+    flex: 1 1 0;
+    justify-content: center;
+    text-align: center;
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+}
+/* Pantallas muy estrechas: con etiquetas largas ("Ver todo el producto",
+   "Solicitar asesoría") los botones lado a lado parten el texto en 2 líneas y
+   quedan de distinta altura. Mejor apilarlos a ancho completo. */
+@media (max-width: 430px) {
+  .main-homepage-anima .cf-hero__actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .main-homepage-anima .cf-hero__actions .demo,
+  .main-homepage-anima .cf-hero__actions .button-secundary {
+    flex: 0 0 auto;
+    width: 100%;
+  }
+}
+
+/* ===== Scrollbar visible con identidad de marca (sin scopear: vive en la raíz).
+   IMPORTANTE: Chrome/Edge 121+ ignoran ::-webkit-scrollbar si se define
+   scrollbar-color/scrollbar-width en el mismo scroller (cambian al modelo
+   estándar, más fino). Por eso aquí NO ponemos scrollbar-* en html para webkit,
+   y dejamos scrollbar-color SOLO para Firefox (que no soporta ::-webkit-scrollbar). */
+::-webkit-scrollbar {
+  width: 16px;
+  height: 16px;
+}
+::-webkit-scrollbar-track {
+  background: #e6e9ee;
+}
+::-webkit-scrollbar-thumb {
+  background-color: #8b95a3;
+  border-radius: 10px;
+  border: 3px solid #e6e9ee; /* deja un margen alrededor del pulgar */
+  min-height: 48px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--c-green, #00b481);
+}
+::-webkit-scrollbar-thumb:active {
+  background-color: #00936a;
+}
+/* Firefox (no soporta ::-webkit-scrollbar): usa las propiedades estándar. */
+@supports not selector(::-webkit-scrollbar) {
+  html {
+    scrollbar-color: #8b95a3 #e6e9ee;
+  }
+}
+
+/* ===================================================================
+   CASOS DE ÉXITO — listado (/casos-exito/) + caso individual (template)
+   Mantiene los patrones: .product-top con hero.png, hero centrado/lateral,
+   cards blancas con borde + sombra suave, títulos con degradado.
+   =================================================================== */
+
+/* ---- Listado: grid de cards de caso ---- */
+.main-homepage-anima .cases-list {
+  padding: 8px var(--container-pad) 112px;
+}
+.main-homepage-anima .cases-grid {
+  max-width: var(--content-max);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 28px;
+}
+.main-homepage-anima .case-card {
+  display: flex;
+  flex-direction: column;
+  /* Lógica de marco como el modal de contacto: el padre hace de marco con un
+     padding fino (6px) y solo el box de la imagen va redondeado por dentro. */
+  padding: 6px;
+  background: #ffffff;
+  border: 1px solid rgba(17, 17, 17, 0.08);
+  border-radius: 18px;
+  text-decoration: none;
+  box-shadow:
+    0 1px 2px rgba(15, 23, 42, 0.06),
+    0 14px 30px -22px rgba(15, 23, 42, 0.16);
+  transition: transform 0.4s cubic-bezier(0.22, 0.61, 0.36, 1),
+    box-shadow 0.4s ease, border-color 0.4s ease;
+}
+.main-homepage-anima .case-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(0, 180, 129, 0.3);
+  box-shadow:
+    0 1px 2px rgba(15, 23, 42, 0.07),
+    0 30px 56px -28px rgba(15, 23, 42, 0.3);
+}
+.main-homepage-anima .case-card__media {
+  aspect-ratio: 16 / 10;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  /* Único elemento redondeado por los 4 lados (radio interior concéntrico). */
+  border-radius: 13px;
+  background:
+    radial-gradient(120% 120% at 50% 0%, rgba(0, 180, 129, 0.28) 0%, rgba(0, 180, 129, 0) 55%),
+    linear-gradient(155deg, #0f2620 0%, #06120e 100%);
+}
+/* Placeholder: image.png centrado en el box (sustituir por la foto real). */
+.main-homepage-anima .case-card__ph {
+  max-width: 82%;
+  max-height: 80%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border-radius: 10px;
+  transition: transform 0.4s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+.main-homepage-anima .case-card:hover .case-card__ph {
+  transform: scale(1.05);
+}
+.main-homepage-anima .case-card__body {
+  display: flex;
+  flex-direction: column;
+  padding: 22px 22px 22px;
+  flex: 1 1 auto;
+}
+.main-homepage-anima .case-card__title {
+  margin: 0 0 8px;
+  font-family: "Mont-SemiBold", Helvetica, sans-serif;
+  font-weight: 600;
+  font-size: 1.3rem;
+  line-height: 1.25;
+  color: var(--c-ink, #171717);
+}
+.main-homepage-anima .case-card__meta {
+  margin: 0 0 14px;
+  font-family: "Mont-Regular", Helvetica, sans-serif;
+  font-size: 0.8rem;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+  color: var(--c-text-sub, #5c5c5c);
+}
+.main-homepage-anima .case-card__desc {
+  margin: 0;
+  font-family: "Mont-Regular", Helvetica, sans-serif;
+  font-size: 0.97rem;
+  line-height: 1.55;
+  color: var(--c-text-sub, #5c5c5c);
+}
+.main-homepage-anima .case-card__link {
+  margin-top: 18px;
+  font-family: "Mont-SemiBold", Helvetica, sans-serif;
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--c-green, #00b481);
+}
+
+/* ---- Caso individual (template) ---- */
+.main-homepage-anima .case-hero {
+  position: relative;
+  padding: 124px var(--container-pad) 0;
+}
+.main-homepage-anima .case-hero__inner {
+  position: relative;
+  max-width: var(--content-max);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+}
+.main-homepage-anima .case-hero .product-hero__title,
+.main-homepage-anima .case-hero .product-hero__desc {
+  text-align: left;
+}
+.main-homepage-anima .case-hero .product-hero__title {
+  max-width: 17ch;
+}
+.main-homepage-anima .case-hero__media {
+  width: 100%;
+  margin-top: 32px;
+}
+
+.main-homepage-anima .case-section {
+  position: relative;
+  padding: 80px var(--container-pad);
+}
+.main-homepage-anima .case-split {
+  max-width: var(--content-max);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 56px;
+  align-items: center;
+}
+.main-homepage-anima .case-eyebrow {
+  display: block;
+  margin-bottom: 14px;
+  font-family: "Mont-SemiBold", Helvetica, sans-serif;
+  font-weight: 600;
+  font-size: 0.78rem;
+  letter-spacing: 1.6px;
+  text-transform: uppercase;
+  color: var(--c-green, #00b481);
+}
+.main-homepage-anima .case-h2 {
+  margin: 0 0 16px;
+  font-family: "Mont-SemiBold", Helvetica, sans-serif;
+  font-weight: 600;
+  font-size: 2rem;
+  line-height: 1.2;
+  text-wrap: balance;
+  color: var(--c-ink, #171717);
+}
+.main-homepage-anima .case-text p {
+  margin: 0;
+  font-family: "Mont-Regular", Helvetica, sans-serif;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: var(--c-text-sub, #5c5c5c);
+}
+.main-homepage-anima .case-video {
+  width: 100%;
+}
+/* Placeholder de medios (imagen/vídeo pendiente): marco claro con isotipo */
+.main-homepage-anima .case-frame {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--c-stroke, #e1e4ea);
+  background:
+    radial-gradient(120% 120% at 50% 0%, rgba(0, 180, 129, 0.1) 0%, rgba(0, 180, 129, 0) 55%),
+    linear-gradient(160deg, #f3faf8 0%, #eafaf3 100%);
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  gap: 12px;
+}
+.main-homepage-anima .case-frame__iso {
+  width: 44px;
+  height: 44px;
+  opacity: 0.55;
+  filter: brightness(0) saturate(100%) invert(53%) sepia(94%) saturate(385%)
+    hue-rotate(116deg) brightness(95%) contrast(101%);
+}
+.main-homepage-anima .case-frame__cap {
+  font-family: "Mont-Regular", Helvetica, sans-serif;
+  font-size: 0.85rem;
+  letter-spacing: 0.3px;
+  color: var(--c-text-sub, #5c5c5c);
+}
+
+/* Resultados */
+.main-homepage-anima .case-results {
+  text-align: center;
+}
+.main-homepage-anima .case-results__head {
+  max-width: 720px;
+  margin: 0 auto;
+}
+.main-homepage-anima .case-results .case-eyebrow {
+  text-align: center;
+}
+.main-homepage-anima .case-results .case-h2 {
+  margin-bottom: 10px;
+}
+.main-homepage-anima .case-results__note {
+  margin: 0;
+  font-family: "Mont-Regular", Helvetica, sans-serif;
+  font-size: 0.9rem;
+  color: var(--c-text-sub, #5c5c5c);
+}
+.main-homepage-anima .case-stats {
+  max-width: 1000px;
+  margin: 44px auto 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+.main-homepage-anima .case-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 34px 24px;
+  background: #ffffff;
+  border: 1px solid rgba(17, 17, 17, 0.08);
+  border-radius: 16px;
+  box-shadow:
+    0 1px 2px rgba(15, 23, 42, 0.05),
+    0 12px 26px -22px rgba(15, 23, 42, 0.16);
+}
+.main-homepage-anima .case-stat__value {
+  font-family: "Mont-SemiBold", Helvetica, sans-serif;
+  font-weight: 600;
+  font-size: 2.4rem;
+  line-height: 1;
+  background: linear-gradient(90deg, rgba(0, 0, 0, 1) 0%, rgba(0, 180, 129, 1) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+.main-homepage-anima .case-stat__label {
+  font-family: "Mont-Regular", Helvetica, sans-serif;
+  font-size: 0.95rem;
+  color: var(--c-text-sub, #5c5c5c);
+}
+.main-homepage-anima .case-results__media {
+  max-width: var(--content-max);
+  margin: 44px auto 0;
+}
+
+@media (max-width: 900px) {
+  .main-homepage-anima .cases-grid {
+    gap: 20px;
+  }
+  /* el hero del caso bajaba demasiado (124px) en móvil, igual que los demás
+     heros interiores → reducir el aire superior */
+  .main-homepage-anima .case-hero {
+    padding-top: 96px;
+  }
+  .main-homepage-anima .case-hero__media {
+    margin-top: 20px;
+  }
+  .main-homepage-anima .case-section {
+    padding: 56px var(--container-pad);
+  }
+  .main-homepage-anima .case-split {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+  /* el vídeo de "La solución" siempre encima del texto en móvil */
+  .main-homepage-anima .case-split .case-video {
+    order: -1;
+  }
+  .main-homepage-anima .case-h2 {
+    font-size: 1.7rem;
+  }
+}
+@media (max-width: 600px) {
+  .main-homepage-anima .cases-grid {
+    grid-template-columns: 1fr;
+  }
+  .main-homepage-anima .case-stats {
+    grid-template-columns: 1fr;
   }
 }

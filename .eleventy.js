@@ -7,6 +7,7 @@ module.exports = function (eleventyConfig) {
     "style.css",
     "illustrations.css",
     "cards.css",
+    "pricing.css",
     "script.js",
   ].forEach((path) => eleventyConfig.addPassthroughCopy(path));
 

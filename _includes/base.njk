@@ -32,11 +32,12 @@
     <link rel="preload" href="/assets/fonts/MONT-REGULAR.woff" as="font" type="font/woff" crossorigin />
     <link rel="preload" href="/assets/fonts/MONT-SEMIBOLD.woff" as="font" type="font/woff" crossorigin />
 
-    <link rel="stylesheet" href="/globals.css" />
-    <link rel="stylesheet" href="/styleguide.css" />
-    <link rel="stylesheet" href="/style.css" />
-    <link rel="stylesheet" href="/illustrations.css" />
-    <link rel="stylesheet" href="/cards.css" />
+    <link rel="stylesheet" href="/globals.css?v={{ v }}" />
+    <link rel="stylesheet" href="/styleguide.css?v={{ v }}" />
+    <link rel="stylesheet" href="/style.css?v={{ v }}" />
+    <link rel="stylesheet" href="/illustrations.css?v={{ v }}" />
+    <link rel="stylesheet" href="/cards.css?v={{ v }}" />
+    <link rel="stylesheet" href="/pricing.css?v={{ v }}" />
 
     <!-- GSAP + ScrollTrigger (CDN) -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
@@ -50,7 +51,8 @@
       </main>
 {% include "partials/footer.njk" %}
     </div>
+{% include "partials/demo-modal.njk" %}
 {% include "partials/scripts.njk" %}
-    <script src="/script.js" defer></script>
+    <script src="/script.js?v={{ v }}" defer></script>
   </body>
 </html>

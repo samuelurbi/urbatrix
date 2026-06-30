@@ -1,0 +1,103 @@
+---
+layout: base.njk
+title: "Makai Residences — Caso de éxito · Urbatrix"
+description: "Makai Residences, un desarrollo de lujo en Cap Cana (102 unidades, Fase 2), usa Urbatrix para captar, reservar y entregar a compradores internacionales."
+ogTitle: "Makai Residences · Tecnología que se ve en las ventas"
+ogDescription: "Cómo un desarrollo de lujo en Cap Cana vende a compradores de varios países sin fricción, sobre Urbatrix."
+ctaTitle: "Quiero esto para mi proyecto."
+ctaText: "Te mostramos en 30 minutos cómo Urbatrix vendería tu desarrollo."
+ctaSecondaryLabel: "Hablar con ventas"
+ctaSecondaryHref: "#"
+ctaPrimaryLabel: "Solicitar demo →"
+ctaPrimaryHref: "#"
+---
+
+{#
+  TEMPLATE de caso de éxito. Para crear uno nuevo, duplica este archivo en
+  /casos-exito/<slug>.njk y reemplaza: frontmatter, eyebrow/título/descripción
+  del hero, los bloques "El reto" y "La solución", y las 3 cifras de resultados.
+#}
+<div class="product-top">
+  <section class="case-hero" aria-labelledby="case-title">
+    <div class="case-hero__inner">
+      <span class="product-eyebrow">Caso de éxito · Makai Residences</span>
+      <h1 id="case-title" class="product-hero__title">
+        Makai Residences: tecnología que se ve en las ventas.
+      </h1>
+      <p class="product-hero__desc">
+        Un desarrollo de lujo en Cap Cana (102 unidades, Fase 2) que usa
+        Urbatrix para captar, reservar y entregar a compradores internacionales.
+      </p>
+
+      <figure class="cf-hero__video case-hero__media">
+        <video class="feature-video" src="/assets/video-urbatrix.mp4" muted loop autoplay playsinline preload="metadata" aria-label="Vídeo del proyecto Makai Residences"></video>
+        <button class="feature-fs" type="button" aria-label="Ver en pantalla completa">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M8 3H5a2 2 0 0 0-2 2v3M16 3h3a2 2 0 0 1 2 2v3M21 16v3a2 2 0 0 1-2 2h-3M3 16v3a2 2 0 0 0 2 2h3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </figure>
+    </div>
+  </section>
+
+  {# ===== El reto ===== #}
+  <section class="case-section" aria-labelledby="reto-title">
+    <div class="case-split">
+      <div class="case-text">
+        <span class="case-eyebrow">El reto</span>
+        <h2 id="reto-title" class="case-h2 is-gradient">Vender a compradores de varios países, sin fricción.</h2>
+        <p>Makai necesitaba captar leads internacionales, cobrar reservas en distintas divisas y gestionar la documentación legal bilingüe, sin montar un equipo de tecnología propio.</p>
+      </div>
+      <div class="case-frame" aria-hidden="true">
+        <img class="case-frame__iso" src="/assets/isotipo-white.svg" alt="" />
+        <span class="case-frame__cap">Contexto del reto</span>
+      </div>
+    </div>
+  </section>
+
+  {# ===== La solución ===== #}
+  <section class="case-section" aria-labelledby="solucion-title">
+    <div class="case-split">
+      <figure class="cf-hero__video case-video">
+        <video class="feature-video" src="/assets/video-urbatrix.mp4" muted loop autoplay playsinline preload="metadata" aria-label="La plataforma Urbatrix en Makai"></video>
+        <button class="feature-fs" type="button" aria-label="Ver en pantalla completa">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M8 3H5a2 2 0 0 0-2 2v3M16 3h3a2 2 0 0 1 2 2v3M21 16v3a2 2 0 0 1-2 2h-3M3 16v3a2 2 0 0 0 2 2h3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </figure>
+      <div class="case-text">
+        <span class="case-eyebrow">La solución con Urbatrix</span>
+        <h2 id="solucion-title" class="case-h2 is-gradient">Todo el ciclo, en una sola plataforma.</h2>
+        <p>Captación desde Meta y Google directo al CRM, reservas con Stripe y Jelou, contratos y CONFOTUR automáticos, y avance de obra para el comprador. Todo bilingüe y multi-divisa.</p>
+      </div>
+    </div>
+  </section>
+
+  {# ===== Los resultados ===== #}
+  <section class="case-section case-results" aria-labelledby="resultados-title">
+    <div class="case-results__head">
+      <span class="case-eyebrow">Los resultados</span>
+      <h2 id="resultados-title" class="case-h2 is-gradient">Resultados que hablan solos.</h2>
+      <p class="case-results__note">Cifras de referencia — sustituir por datos reales verificables.</p>
+    </div>
+
+    <div class="case-stats">
+      <article class="case-stat">
+        <span class="case-stat__value">102</span>
+        <span class="case-stat__label">Unidades reservadas</span>
+      </article>
+      <article class="case-stat">
+        <span class="case-stat__value">18</span>
+        <span class="case-stat__label">Países de compradores</span>
+      </article>
+      <article class="case-stat">
+        <span class="case-stat__value">&lt; 10 min</span>
+        <span class="case-stat__label">Tiempo medio de reserva</span>
+      </article>
+    </div>
+
+    <div class="case-frame case-results__media" aria-hidden="true">
+      <img class="case-frame__iso" src="/assets/isotipo-white.svg" alt="" />
+      <span class="case-frame__cap">Vídeo — testimonial del desarrollador</span>
+    </div>
+  </section>
+</div>
+
+{% include "partials/cta-final.njk" %}

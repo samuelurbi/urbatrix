@@ -1,0 +1,168 @@
+{# Modal de contacto "Reserva tu demo". Global (incluido en base.njk). Se abre
+   al hacer click en cualquier disparador .demo / .a-link-demo / .navbar-demo /
+   .mobile-menu-demo o [data-demo] (JS en script.js, módulo "demo-modal"). #}
+<div class="demo-modal" id="demo-modal" hidden>
+  <div class="demo-modal__overlay" data-demo-close></div>
+  <div class="demo-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="demo-modal-title">
+    <button class="demo-modal__close" type="button" aria-label="Cerrar" data-demo-close>
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    </button>
+
+    <div class="demo-modal__grid">
+      <aside class="demo-modal__aside">
+        <span class="demo-modal__eyebrow">Solicitar demo</span>
+        <h2 class="demo-modal__headline">Ve Urbatrix en acción, con tu proyecto en mente.</h2>
+        <p class="demo-modal__sub">30 minutos. Sin compromiso. Te mostramos exactamente cómo Urbatrix vendería tu desarrollo.</p>
+        <ul class="demo-modal__list">
+          <li>
+            <span class="demo-modal__check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            Una demo guiada y personalizada a tu tipo de proyecto.
+          </li>
+          <li>
+            <span class="demo-modal__check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            Resolvemos tus dudas sobre pagos, legal e integración.
+          </li>
+          <li>
+            <span class="demo-modal__check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            Te enviamos el enlace por email y WhatsApp al instante.
+          </li>
+        </ul>
+        <p class="demo-modal__meta">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/><path d="M12 7.5V12l3 2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Respuesta en menos de 24 horas
+        </p>
+      </aside>
+
+      <div class="demo-modal__main">
+       <div class="demo-modal__formview">
+        <div class="demo-modal__head">
+          <ol class="demo-steps" aria-label="Progreso del formulario">
+            <li class="demo-steps__item is-active" data-stepdot="1">
+              <span class="demo-steps__num"><span class="demo-steps__n">1</span><svg class="demo-steps__check" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+              <span class="demo-steps__label">Sobre ti</span>
+            </li>
+            <span class="demo-steps__line"></span>
+            <li class="demo-steps__item" data-stepdot="2">
+              <span class="demo-steps__num"><span class="demo-steps__n">2</span><svg class="demo-steps__check" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+              <span class="demo-steps__label">Tu proyecto</span>
+            </li>
+          </ol>
+          <h3 class="demo-modal__title" id="demo-modal-title">Reserva tu demo</h3>
+          <p class="demo-modal__lead">Completa el formulario y elige el horario que prefieras.</p>
+        </div>
+
+        <form class="demo-form" novalidate>
+         <div class="demo-form__body">
+          {# ---- Paso 1: sobre ti ---- #}
+          <div class="demo-step" data-step="1">
+            <div class="demo-form__row">
+              <label class="demo-field">
+                <span class="demo-field__label">Nombre <span class="demo-field__req">*</span></span>
+                <span class="demo-field__control">
+                  <svg class="demo-field__ic" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8ZM5.5 20a6.5 6.5 0 0 1 13 0" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+                  <input type="text" name="nombre" placeholder="Tu nombre" required />
+                </span>
+              </label>
+              <label class="demo-field">
+                <span class="demo-field__label">Empresa</span>
+                <span class="demo-field__control">
+                  <svg class="demo-field__ic" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 21V5a1 1 0 0 1 1-1h8a1 1 0 0 1 1 1v16M14 9h5a1 1 0 0 1 1 1v11M7 8h4M7 12h4M7 16h4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  <input type="text" name="empresa" placeholder="Tu empresa" />
+                </span>
+              </label>
+            </div>
+
+            <div class="demo-form__row">
+              <label class="demo-field">
+                <span class="demo-field__label">Email <span class="demo-field__req">*</span></span>
+                <span class="demo-field__control">
+                  <svg class="demo-field__ic" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" stroke-width="1.7"/><path d="m4 7 8 6 8-6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  <input type="email" name="email" placeholder="tu@email.com" required />
+                </span>
+              </label>
+              <label class="demo-field">
+                <span class="demo-field__label">WhatsApp <span class="demo-field__req">*</span></span>
+                <span class="demo-field__control">
+                  <svg class="demo-field__ic" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 4h3.5l1.8 4.5-2.2 1.6a11 11 0 0 0 4.8 4.8l1.6-2.2L19 16.5V20a1.5 1.5 0 0 1-1.6 1.5A15.5 15.5 0 0 1 3.5 5.6 1.5 1.5 0 0 1 5 4Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>
+                  <input type="tel" name="whatsapp" placeholder="+1 809 555 0100" required />
+                </span>
+              </label>
+            </div>
+
+          </div>
+
+          {# ---- Paso 2: tu proyecto ---- #}
+          <div class="demo-step" data-step="2" hidden>
+            <div class="demo-form__row">
+              <label class="demo-field">
+                <span class="demo-field__label">Soy…</span>
+                <span class="demo-field__control">
+                  <svg class="demo-field__ic" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 7.5 11 4l9 4-9 4-5-2.2M4 7.5V13l7 3.5L20 12V8" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  <select name="perfil">
+                    <option>Desarrollador</option>
+                    <option>Broker / Agencia</option>
+                    <option>Comprador</option>
+                    <option>Otro</option>
+                  </select>
+                </span>
+              </label>
+              <label class="demo-field">
+                <span class="demo-field__label">País</span>
+                <span class="demo-field__control">
+                  <svg class="demo-field__ic" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.7"/><path d="M3 12h18M12 3c2.5 2.4 2.5 15.6 0 18M12 3c-2.5 2.4-2.5 15.6 0 18" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+                  <input type="text" name="pais" placeholder="República Dominicana" />
+                </span>
+              </label>
+            </div>
+
+            <label class="demo-field demo-field--full">
+              <span class="demo-field__label">Nº de proyectos / unidades</span>
+              <span class="demo-field__control">
+                <svg class="demo-field__ic" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m12 3 9 5-9 5-9-5 9-5ZM3 13l9 5 9-5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <input type="text" name="volumen" placeholder="1 proyecto · 102 unidades" />
+              </span>
+            </label>
+
+            <label class="demo-field demo-field--full">
+              <span class="demo-field__label">¿Algo que quieras contarnos? (opcional)</span>
+              <textarea name="mensaje" rows="3" placeholder="Quiero ver el flujo de pago internacional y la parte de CONFOTUR…"></textarea>
+            </label>
+
+            <label class="demo-form__consent">
+              <input type="checkbox" name="consent" required />
+              <span>Acepto la <a href="#">Política de Privacidad</a> y que Urbatrix me contacte sobre la demo.</span>
+            </label>
+
+          </div>
+         </div>{# /demo-form__body #}
+
+         <div class="demo-form__footer">
+          <div class="demo-foot" data-foot="1">
+            <button class="demo-form__submit" type="button" data-step-next>Continuar →</button>
+            <p class="demo-form__note">Solo 2 pasos · menos de 1 minuto.</p>
+          </div>
+          <div class="demo-foot" data-foot="2" hidden>
+            <div class="demo-form__actions">
+              <button class="demo-form__back" type="button" data-step-back>← Atrás</button>
+              <button class="demo-form__submit" type="submit">Reservar mi demo →</button>
+            </div>
+            <p class="demo-form__note">Tras enviar, eliges día y hora en el calendario.</p>
+          </div>
+         </div>
+        </form>
+       </div>{# /demo-modal__formview #}
+
+       <div class="demo-modal__success" hidden>
+          <span class="demo-modal__success-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <h3 class="demo-modal__success-title">¡Gracias! Te contactamos enseguida.</h3>
+          <p class="demo-modal__success-text">Revisaremos tu solicitud y te escribiremos por <strong>email</strong> y <strong>WhatsApp</strong> en menos de 24 horas para coordinar tu demo.</p>
+          <span class="demo-modal__success-chip">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/><path d="M12 7.5V12l3 2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Respuesta en menos de 24 horas
+          </span>
+          <button class="demo-modal__success-btn" type="button" data-demo-close>Cerrar</button>
+       </div>
+      </div>
+    </div>
+  </div>
+</div>

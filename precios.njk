@@ -1,0 +1,279 @@
+---
+layout: base.njk
+title: "Precios — Urbatrix"
+description: "Precios que crecen con tu proyecto. Elige el plan según el tamaño de tu desarrollo: Launch, Growth o Enterprise. Sin sorpresas, sin letra pequeña."
+ogTitle: "Precios · Planes que crecen con tu desarrollo"
+ogDescription: "Launch, Growth y Enterprise: elige el plan según el tamaño de tu desarrollo. Sin sorpresas, sin letra pequeña."
+ctaTitle: "¿No sabes qué plan encaja contigo? Hablemos."
+ctaText: "Te ayudamos a elegir el plan que mejor encaja con tu desarrollo."
+ctaSecondaryLabel: "Hablar con ventas"
+ctaSecondaryHref: "#"
+ctaPrimaryLabel: "Solicitar demo →"
+ctaPrimaryHref: "#"
+---
+
+{%- set check %}<svg class="ic-check" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>{% endset -%}
+
+<div class="product-top product-top--soluciones">
+  <section class="product-hero product-hero--precios" aria-labelledby="precios-title">
+    <div class="product-hero__inner">
+      <span class="product-eyebrow">Precios</span>
+      <h1 id="precios-title" class="product-hero__title">
+        Precios que crecen con tu proyecto.
+      </h1>
+      <p class="product-hero__desc">
+        Elige el plan según el tamaño de tu desarrollo. Sin sorpresas, sin
+        letra pequeña.
+      </p>
+    </div>
+  </section>
+
+  {# ===== Planes ===== #}
+  <section class="pricing" aria-label="Planes de Urbatrix">
+    <div class="pricing__bar">
+      <div class="pricing-toggle" id="pricing-toggle" role="group" aria-label="Periodicidad de facturación">
+        <span class="pricing-toggle__opt is-active" data-period="mensual">Mensual</span>
+        <button class="pricing-toggle__switch" type="button" role="switch" aria-checked="false" aria-label="Activar facturación anual">
+          <span class="pricing-toggle__knob"></span>
+        </button>
+        <span class="pricing-toggle__opt" data-period="anual">Anual</span>
+        <span class="pricing-toggle__save">−15% anual</span>
+      </div>
+    </div>
+    <div class="pricing-grid" id="pricing-grid">
+
+      <article class="plan">
+        <div class="plan__head">
+          <span class="plan__name">Launch</span>
+          <p class="plan__for">Desarrollos boutique · 10–40 unidades</p>
+        <div class="plan__price">
+          <span class="plan__from">desde</span>
+          <span class="plan__amount">$3,500</span>
+          <span class="plan__unit">setup</span>
+        </div>
+        <p class="plan__note">+ $<span class="plan-permo" data-m="900" data-a="765">900</span>/mes + $150 por unidad reservada</p>
+        </div>
+        <ul class="plan__features">
+          <li>{{ check | safe }}Plataforma completa</li>
+          <li>{{ check | safe }}1 proyecto activo</li>
+          <li>{{ check | safe }}CRM + pagos (Stripe + Jelou)</li>
+          <li>{{ check | safe }}Capa legal y fichas</li>
+          <li>{{ check | safe }}Hasta 5 asesores</li>
+          <li>{{ check | safe }}Soporte estándar</li>
+        </ul>
+        <a class="plan__cta plan__cta--ghost" href="#" data-demo>Empezar</a>
+      </article>
+
+      <article class="plan plan--featured">
+        <span class="plan__badge">Más popular</span>
+        <div class="plan__head">
+          <span class="plan__name">Growth</span>
+          <p class="plan__for">Desarrolladores con pipeline · 40–150 unidades</p>
+        <div class="plan__price">
+          <span class="plan__from">desde</span>
+          <span class="plan__amount">$8,000</span>
+          <span class="plan__unit">setup</span>
+        </div>
+        <p class="plan__note">+ $<span class="plan-permo" data-m="1,800" data-a="1,530">1,800</span>/mes + success fee reducido por volumen</p>
+        </div>
+        <ul class="plan__features">
+          <li>{{ check | safe }}<strong>Todo lo de Launch, más:</strong></li>
+          <li>{{ check | safe }}Multi-proyecto</li>
+          <li>{{ check | safe }}Portal de brokers</li>
+          <li>{{ check | safe }}Multi-divisa</li>
+          <li>{{ check | safe }}Capa legal completa</li>
+          <li>{{ check | safe }}Asesores ilimitados</li>
+          <li>{{ check | safe }}Soporte prioritario</li>
+        </ul>
+        <a class="plan__cta plan__cta--primary" href="#" data-demo>Solicitar propuesta</a>
+      </article>
+
+      <article class="plan">
+        <div class="plan__head">
+          <span class="plan__name">Enterprise / White-label</span>
+          <p class="plan__for">Grandes desarrolladores y brokerages multi-mercado</p>
+        <div class="plan__price">
+          <span class="plan__amount plan__amount--text">A medida</span>
+        </div>
+        <p class="plan__note">Licencia anual personalizada</p>
+        </div>
+        <ul class="plan__features">
+          <li>{{ check | safe }}Marca 100% propia (white-label)</li>
+          <li>{{ check | safe }}Infraestructura dedicada</li>
+          <li>{{ check | safe }}API e integraciones</li>
+          <li>{{ check | safe }}Módulos legales a medida</li>
+          <li>{{ check | safe }}SLA garantizado</li>
+          <li>{{ check | safe }}Gestor de cuenta dedicado</li>
+        </ul>
+        <a class="plan__cta plan__cta--ghost" href="#" data-demo>Hablar con ventas</a>
+      </article>
+
+    </div>
+  </section>
+
+  {# ===== Add-ons ===== #}
+  <section class="addons" aria-labelledby="addons-title">
+    <div class="addons__head">
+      <h2 id="addons-title" class="cf-modules__title is-gradient">Potencia tu plan con servicios a medida.</h2>
+      <p class="dev-section__sub">Servicios extra que escalamos según tu nivel de inversión.</p>
+    </div>
+    <div class="addons__grid">
+      <article class="addon">
+        <div class="addon__top">
+          <div class="addon__icon">
+            <img loading="lazy" decoding="async" class="img-6" src="/assets/megaphone-line-1.svg" alt="" aria-hidden="true" />
+          </div>
+          <span class="addon__tag">Add-on</span>
+        </div>
+        <h3 class="addon__title">Gestión de campañas Meta / Google Ads</h3>
+        <p class="addon__desc">Dejamos tu captación en piloto automático. Gestionamos tus campañas de Meta y Google Ads y las conectamos directo a tu CRM.</p>
+        <div class="addon__foot">
+          <span class="addon__price">desde $1,200/mes + % de inversión</span>
+          <p class="addon__fine">A mayor inversión, mejor tarifa.</p>
+          <a class="addon__cta" href="#" data-demo>Añadir al plan →</a>
+        </div>
+      </article>
+      <article class="addon">
+        <div class="addon__top">
+          <div class="addon__icon">
+            <img loading="lazy" decoding="async" class="img-6" src="/assets/shield-user-fill-1.svg" alt="" aria-hidden="true" />
+          </div>
+          <span class="addon__tag">Add-on</span>
+        </div>
+        <h3 class="addon__title">Módulo Call Center</h3>
+        <p class="addon__desc">Un equipo de televentas inbound, con scripts, scoring y reportes, dimensionado a tu volumen de leads.</p>
+        <div class="addon__foot">
+          <span class="addon__price">desde $2,500/mes</span>
+          <p class="addon__fine">Ajustamos el equipo a tu nivel de inversión.</p>
+          <a class="addon__cta" href="#" data-demo>Añadir al plan →</a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  {# ===== Comparativa ===== #}
+  <section class="compare" aria-labelledby="compare-title">
+    <h2 id="compare-title" class="cf-modules__title is-gradient">Compara los planes en detalle</h2>
+    <div class="compare__wrap">
+      <table class="compare__table">
+        <colgroup>
+          <col class="compare__col-feat" />
+          <col />
+          <col class="compare__col-rec" />
+          <col />
+        </colgroup>
+        <thead>
+          <tr>
+            <th scope="col" class="compare__feat">Función</th>
+            <th scope="col" class="compare__plan">
+              <span class="compare__plan-name">Launch</span>
+              <span class="compare__plan-price">desde $900<span class="compare__plan-per">/mes</span></span>
+            </th>
+            <th scope="col" class="compare__plan compare__plan--rec">
+              <span class="compare__plan-name">Growth</span>
+              <span class="compare__plan-price">desde $1,800<span class="compare__plan-per">/mes</span></span>
+              <span class="compare__rec">Más popular</span>
+            </th>
+            <th scope="col" class="compare__plan">
+              <span class="compare__plan-name">Enterprise</span>
+              <span class="compare__plan-price compare__plan-price--text">A medida</span>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="compare__group"><th scope="row">Plataforma</th><td></td><td></td><td></td></tr>
+          <tr><th scope="row">Proyectos activos</th><td data-plan="Launch">1</td><td data-plan="Growth">Varios</td><td data-plan="Enterprise">Ilimitados</td></tr>
+          <tr><th scope="row">CRM + captación</th><td data-plan="Launch">{{ check | safe }}</td><td data-plan="Growth">{{ check | safe }}</td><td data-plan="Enterprise">{{ check | safe }}</td></tr>
+          <tr><th scope="row">Pagos (Stripe + Jelou)</th><td data-plan="Launch">{{ check | safe }}</td><td data-plan="Growth">{{ check | safe }}</td><td data-plan="Enterprise">{{ check | safe }}</td></tr>
+          <tr><th scope="row">Multi-divisa</th><td data-plan="Launch" class="is-no">—</td><td data-plan="Growth">{{ check | safe }}</td><td data-plan="Enterprise">{{ check | safe }}</td></tr>
+
+          <tr class="compare__group"><th scope="row">Equipo y red</th><td></td><td></td><td></td></tr>
+          <tr><th scope="row">Asesores</th><td data-plan="Launch">5</td><td data-plan="Growth">Ilimitados</td><td data-plan="Enterprise">Ilimitados</td></tr>
+          <tr><th scope="row">Portal de brokers</th><td data-plan="Launch" class="is-no">—</td><td data-plan="Growth">{{ check | safe }}</td><td data-plan="Enterprise">{{ check | safe }}</td></tr>
+
+          <tr class="compare__group"><th scope="row">Enterprise</th><td></td><td></td><td></td></tr>
+          <tr><th scope="row">White-label</th><td data-plan="Launch" class="is-no">—</td><td data-plan="Growth" class="is-no">—</td><td data-plan="Enterprise">{{ check | safe }}</td></tr>
+          <tr><th scope="row">API e integraciones</th><td data-plan="Launch" class="is-no">—</td><td data-plan="Growth" class="is-no">—</td><td data-plan="Enterprise">{{ check | safe }}</td></tr>
+          <tr><th scope="row">SLA garantizado</th><td data-plan="Launch" class="is-no">—</td><td data-plan="Growth" class="is-no">—</td><td data-plan="Enterprise">{{ check | safe }}</td></tr>
+          <tr><th scope="row">Soporte</th><td data-plan="Launch">Estándar</td><td data-plan="Growth">Prioritario</td><td data-plan="Enterprise">Dedicado</td></tr>
+        </tbody>
+      </table>
+      {# Barra de acción fija al fondo: solo los botones para elegir plan,
+         alineados bajo su columna. #}
+      <div class="compare__cta-bar" role="group" aria-label="Elegir plan">
+        <span class="compare__cta-spacer" aria-hidden="true"></span>
+        <a class="compare__plan-cta" href="#" data-demo>Empezar</a>
+        <a class="compare__plan-cta compare__plan-cta--primary" href="#" data-demo>Solicitar propuesta</a>
+        <a class="compare__plan-cta" href="#" data-demo>Hablar con ventas</a>
+      </div>
+    </div>
+  </section>
+
+  {# ===== FAQ ===== #}
+  <section class="faq" aria-labelledby="faq-title">
+    <h2 id="faq-title" class="cf-modules__title is-gradient">Preguntas frecuentes</h2>
+    <div class="faq__list">
+      <div class="faq__item is-open">
+        <button class="faq__q" type="button" aria-expanded="true" aria-controls="faq-1">
+          <span class="faq__qtext">¿El success fee se cobra sobre la reserva o sobre la venta?</span>
+          <span class="faq__icon" aria-hidden="true"></span>
+        </button>
+        <div class="faq__panel" id="faq-1">
+          <div class="faq__panelinner">
+            <p class="faq__a">Se cobra por unidad reservada, en el momento en que el comprador formaliza la reserva con su depósito. No esperamos al cierre de la venta.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq__item">
+        <button class="faq__q" type="button" aria-expanded="false" aria-controls="faq-2">
+          <span class="faq__qtext">¿Puedo cambiar de plan a mitad de proyecto?</span>
+          <span class="faq__icon" aria-hidden="true"></span>
+        </button>
+        <div class="faq__panel" id="faq-2">
+          <div class="faq__panelinner">
+            <p class="faq__a">Sí. Puedes subir de Launch a Growth en cualquier momento y solo ajustamos la diferencia. El paso a Enterprise se coordina con el gestor de cuenta.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq__item">
+        <button class="faq__q" type="button" aria-expanded="false" aria-controls="faq-3">
+          <span class="faq__qtext">¿Qué incluye el setup?</span>
+          <span class="faq__icon" aria-hidden="true"></span>
+        </button>
+        <div class="faq__panel" id="faq-3">
+          <div class="faq__panelinner">
+            <p class="faq__a">La configuración completa de tu proyecto: branding en la plataforma, carga de unidades, pasarelas de pago, plantillas legales (CONFOTUR, fideicomiso) y formación de tu equipo.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq__item">
+        <button class="faq__q" type="button" aria-expanded="false" aria-controls="faq-4">
+          <span class="faq__qtext">¿Los add-ons requieren un plan concreto?</span>
+          <span class="faq__icon" aria-hidden="true"></span>
+        </button>
+        <div class="faq__panel" id="faq-4">
+          <div class="faq__panelinner">
+            <p class="faq__a">No. La gestión de campañas y el módulo de call center se pueden añadir a cualquier plan, y los dimensionamos según tu nivel de inversión.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq__item">
+        <button class="faq__q" type="button" aria-expanded="false" aria-controls="faq-5">
+          <span class="faq__qtext">¿Hay permanencia?</span>
+          <span class="faq__icon" aria-hidden="true"></span>
+        </button>
+        <div class="faq__panel" id="faq-5">
+          <div class="faq__panelinner">
+            <p class="faq__a">El plan Launch no tiene permanencia para empezar. Growth y Enterprise se contratan por la duración del ciclo de ventas del proyecto, con condiciones que acordamos contigo.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+{% include "partials/cta-final.njk" %}

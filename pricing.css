@@ -1,0 +1,1503 @@
+/* ===================================================================
+   PRECIOS (/precios/) — planes, add-ons, comparativa y FAQ
+   + MODAL DE CONTACTO "Reserva tu demo" (global)
+   =================================================================== */
+
+/* ---- Toggle de periodicidad ---- */
+.main-homepage-anima .pricing__bar {
+  text-align: center;
+  margin: 0 auto 56px;
+}
+.main-homepage-anima .pricing-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: #f4f6f8;
+  border: 1px solid var(--c-stroke, #e1e4ea);
+}
+.main-homepage-anima .pricing-toggle__opt {
+  font-family: "Mont-SemiBold", Helvetica, sans-serif;
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--c-text-sub, #5c5c5c);
+  transition: color 0.3s ease;
+}
+.main-homepage-anima .pricing-toggle__opt.is-active {
+  color: var(--c-ink, #171717);
+}
+.main-homepage-anima .pricing-toggle__switch {
+  position: relative;
+  width: 46px;
+  height: 26px;
+  padding: 0;
+  border: none;
+  border-radius: 999px;
+  background: #cfd5dd;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+.main-homepage-anima .pricing-toggle__switch[aria-checked="true"] {
+  background: var(--c-green, #00b481);
+}
+.main-homepage-anima .pricing-toggle__knob {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 20px;
+  height: 20px;
+  border-radius: 999px;
+  background: #ffffff;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.3);
+  transition: transform 0.3s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+.main-homepage-anima .pricing-toggle__switch[aria-checked="true"] .pricing-toggle__knob {
+  transform: translateX(20px);
+}
+.main-homepage-anima .pricing-toggle__save {
+  font-family: "Mont-SemiBold", Helvetica, sans-serif;
+  font-weight: 600;
+  font-size: 0.78rem;
+  color: #00936a;
+  padding: 4px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(0, 180, 129, 0.45);
+}
+
+/* ---- Grid de planes ---- */
+.main-homepage-anima .pricing {
+  padding: 8px var(--container-pad) 24px;
+}
+.main-homepage-anima .pricing-grid {
+  max-width: var(--content-max);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  align-items: start;
+}
+.main-homepage-anima .plan {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 6px;
+  background: #ffffff;
+  border: 1px solid rgba(17, 17, 17, 0.09);
+  border-radius: 20px 20px 32px 32px;
+  box-shadow:
+    0 1px 2px rgba(15, 23, 42, 0.05),
+    0 16px 34px -24px rgba(15, 23, 42, 0.18);
+}
+/* Plan destacado: card oscura con glow verde y texto claro (máximo contraste
+   frente a las dos cards blancas; coherente con la card destacada del bento). */
+.main-homepage-anima .plan--featured {
+  border-color: rgba(255, 255, 255, 0.12);
+  background:
+    radial-gradient(120% 110% at 0% 0%, rgba(0, 180, 129, 0.3) 0%, rgba(0, 180, 129, 0) 52%),
+    linear-gradient(160deg, #102a22 0%, #06110d 100%);
+  box-shadow:
+    0 1px 2px rgba(15, 23, 42, 0.18),
+    0 40px 72px -30px rgba(15, 23, 42, 0.45);
+  /* Se eleva y agranda un poco respecto a las dos cards laterales. El transform
+     no ocupa espacio en el grid, así no descuadra las columnas. */
+  transform: translateY(-18px) scale(1.04);
+  transform-origin: center top;
+  z-index: 2;
+}
+/* Cabecera de la card destacada: fondo verde corporativo */
+.main-homepage-anima .plan--featured .plan__head {
+  background: var(--c-green, #00b481);
+  border-bottom-color: rgba(255, 255, 255, 0.2);
+}
+.main-homepage-anima .plan--featured .plan__head .plan__name {
+  color: rgba(255, 255, 255, 0.82);
+}
+.main-homepage-anima .plan--featured .plan__head .plan__for {
+  color: #ffffff;
+}
+/* Badge blanco para que resalte sobre la cabecera verde */
+.main-homepage-anima .plan--featured .plan__badge {
+  background: #ffffff;
+  color: #00936a;
+  box-shadow: 0 8px 18px -8px rgba(0, 0, 0, 0.35);
+}
+.main-homepage-anima .plan--featured .plan__name {
+  color: #9ff5d8;
+}
+.main-homepage-anima .plan--featured .plan__for,
+.main-homepage-anima .plan--featured .plan__amount {
+  color: #ffffff;
+}
+.main-homepage-anima .plan--featured .plan__from,
+.main-homepage-anima .plan--featured .plan__unit,
+.main-homepage-anima .plan--featured .plan__note {
+  color: rgba(255, 255, 255, 0.66);
+}
+.main-homepage-anima .plan--featured .plan__features li {
+  color: rgba(255, 255, 255, 0.92);
+}
+.main-homepage-anima .plan--featured .plan__features li strong {
+  color: #ffffff;
+}
+.main-homepage-anima .plan--featured .plan__features .ic-check {
+  color: #46e0b0;
+}
+/* CTA primario claro para que resalte sobre el fondo oscuro */
+.main-homepage-anima .plan--featured .plan__cta--primary {
+  background: #ffffff;
+  color: #0a1714;
+}
+.main-homepage-anima .plan--featured .plan__cta--primary:hover {
+  background: #ffffff;
+  box-shadow: 0 14px 30px -12px rgba(0, 0, 0, 0.5);
+}
+.main-homepage-anima .plan__badge {
+  position: absolute;
+  top: -13px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 6px 16px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #00c98f 0%, #00936a 100%);
+  color: #ffffff;
+  font-family: "Mont-SemiBold", Helvetica, sans-serif;
+  font-weight: 600;
+  font-size: 0.74rem;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+  box-shadow: 0 8px 18px -8px rgba(0, 180, 129, 0.6);
+}
+/* Cabecera como box redondeado (incluye nombre, "para quién", precio y nota),
+   con espacio respecto a la card (el padding de .plan hace de margen). */
+.main-homepage-anima .plan__head {
+  margin: 0 0 8px;
+  padding: 26px 26px 24px;
+  background: #f4f6f8;
+  border-radius: 16px;
+}
+.main-homepage-anima .plan__name {
+  display: block;
+  font-family: "Mont-SemiBold", Helvetica, sans-serif;
+  font-weight: 600;
+  font-size: 0.82rem;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+  color: var(--c-text-sub, #5c5c5c);
+  margin-bottom: 8px;
+}
+.main-homepage-anima .plan__for {
+  margin: 0 0 18px;
+  font-family: "Mont-Regular", Helvetica, sans-serif;
+  font-size: 0.95rem;
+  line-height: 1.45;
+  color: var(--c-ink, #171717);
+}
+.main-homepage-anima .plan__price {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+.main-homepage-anima .plan__from {
+  font-family: "Mont-Regular", Helvetica, sans-serif;
+  font-size: 0.85rem;
+  color: var(--c-text-sub, #5c5c5c);
+}
+.main-homepage-anima .plan__amount {
+  font-family: "Mont-SemiBold", Helvetica, sans-serif;
+  font-weight: 600;
+  font-size: 2.6rem;
+  line-height: 1;
+  color: var(--c-ink, #171717);
+}
+.main-homepage-anima .plan__amount--text {
+  font-size: 2.1rem;
+}
+.main-homepage-anima .plan__unit {
+  font-family: "Mont-Regular", Helvetica, sans-serif;
+  font-size: 0.9rem;
+  color: var(--c-text-sub, #5c5c5c);
+}
+.main-homepage-anima .plan__note {
+  margin: 0;
+  font-family: "Mont-Regular", Helvetica, sans-serif;
+  font-size: 0.92rem;
+  line-height: 1.5;
+  color: var(--c-text-sub, #5c5c5c);
+}
+.main-homepage-anima .plan__features {
+  list-style: none;
+  margin: 0 0 28px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+  flex: 1 1 auto;
+}
+.main-homepage-anima .plan__features li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-family: "Mont-Regular", Helvetica, sans-serif;
+  font-size: 0.96rem;
+  line-height: 1.4;
+  color: var(--c-ink, #171717);
+}
+.main-homepage-anima .plan__features li strong {
+  font-family: "Mont-SemiBold", Helvetica, sans-serif;
+  font-weight: 600;
+}
+.main-homepage-anima .plan__features .ic-check {
+  flex: 0 0 auto;
+  width: 18px;
+  height: 18px;
+  margin-top: 1px;
+  color: var(--c-green, #00b481);
+}
+.main-homepage-anima .plan__cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 50px;
+  padding: 4px 22px;
+  border-radius: 100px;
+  font-family: "Mont-SemiBold", Helvetica, sans-serif;
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+.main-homepage-anima .plan__cta--ghost {
+  background: #ffffff;
+  color: var(--c-ink, #171717);
+  border: 1px solid var(--c-stroke, #e1e4ea);
+}
+.main-homepage-anima .plan__cta--ghost:hover {
+  background: var(--c-green, #00b481);
+  border-color: var(--c-green, #00b481);
+  color: #ffffff;
+}
+.main-homepage-anima .plan__cta--primary {
+  background: linear-gradient(135deg, #00c98f 0%, #00936a 100%);
+  color: #ffffff;
+  border: none;
+}
+.main-homepage-anima .plan__cta--primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 28px -12px rgba(0, 180, 129, 0.6);
+}
+
+/* ---- Add-ons (banda tintada) ---- */
+.main-homepage-anima .addons {
+  margin-top: 24px;
+  padding: 64px var(--container-pad);
+}
+.main-homepage-anima .addons__head {
+  max-width: 760px;
+  margin: 0 auto 44px;
+  text-align: center;
+}
+.main-homepage-anima .addons__head .cf-modules__title {
+  margin-bottom: 0;
+}
+.main-homepage-anima .addons__grid {
+  max-width: 1040px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+.main-homepage-anima .addon {
+  display: flex;
+  flex-direction: column;
+  padding: 30px 32px;
+  background: #f4f6f8;
+  border: none;
+  border-radius: 18px;
+  transition: transform 0.4s cubic-bezier(0.22, 0.61, 0.36, 1), box-shadow 0.4s ease;
+}
+.main-homepage-anima .addon:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.06), 0 24px 46px -26px rgba(15, 23, 42, 0.28);
+}
+.main-homepage-anima .addon__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+/* Box de icono blanco (mismo patrón que .icon-2 de producto) */
+.main-homepage-anima .addon__icon {
+  display: inline-flex;
+  align-items: center;
+  padding: 10px;
+  background-color: var(--01-tokens-bg-white-0, #ffffff);
+  border-radius: 14px;
+  box-shadow: var(--colored-shadows-gray);
+}
+.main-homepage-anima .addon__icon img {
+  width: 26px;
+  height: 26px;
+  object-fit: contain;
+  filter: brightness(0) saturate(100%) invert(53%) sepia(94%) saturate(385%)
+    hue-rotate(116deg) brightness(95%) contrast(101%);
+}
+.main-homepage-anima .addon__tag {
+  display: inline-block;
+  padding: 5px 12px;
+  border-radius: 999px;
+  background: rgba(0, 180, 129, 0.1);
+  font-family: "Mont-SemiBold", Helvetica, sans-serif;
+  font-weight: 600;
+  font-size: 0.72rem;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: #00936a;
+}
+.main-homepage-anima .addon__title {
+  margin: 0 0 10px;
+  font-family: "Mont-SemiBold", Helvetica, sans-serif;
+  font-weight: 600;
+  font-size: 1.2rem;
+  line-height: 1.3;
+  color: var(--c-ink, #171717);
+}
+.main-homepage-anima .addon__desc {
+  margin: 0 0 22px;
+  font-family: "Mont-Regular", Helvetica, sans-serif;
+  font-size: 0.97rem;
+  line-height: 1.55;
+  color: var(--c-text-sub, #5c5c5c);
+}
+.main-homepage-anima .addon__foot {
+  margin-top: auto;
+}
+.main-homepage-anima .addon__price {
+  display: inline-block;
+  margin: 0 0 10px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: rgba(0, 180, 129, 0.1);
+  font-family: "Mont-SemiBold", Helvetica, sans-serif;
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: #00936a;
+}
+.main-homepage-anima .addon__fine {
+  margin: 0 0 20px;
+  font-family: "Mont-Regular", Helvetica, sans-serif;
+  font-size: 0.85rem;
+  color: var(--c-text-sub, #5c5c5c);
+}
+.main-homepage-anima .addon__cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 4px 24px;
+  border-radius: 100px;
+  background: #ffffff;
+  border: 1px solid var(--c-stroke, #e1e4ea);
+  font-family: "Mont-SemiBold", Helvetica, sans-serif;
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--c-ink, #171717);
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease, transform 0.2s ease;
+}
+.main-homepage-anima .addon__cta:hover {
+  background: linear-gradient(135deg, #00c98f 0%, #00936a 100%);
+  border-color: transparent;
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+/* ---- Tabla comparativa ---- */
+.main-homepage-anima .compare {
+  padding: 88px var(--container-pad) 24px;
+}
+.main-homepage-anima .compare .cf-modules__title {
+  margin-bottom: 44px;
+}
+/* Minimalista: tabla abierta, monocroma, mucho aire y líneas muy sutiles.
+   La cabecera de planes (nombre + precio + CTA) queda fija (sticky) al hacer
+   scroll por la tabla larga, para no perder la referencia de cada columna. */
+/* La sección se ensancha casi a todo el contenido y la tabla se estructura con
+   columnas reales: la cabecera de planes (nombre + precio) queda fija arriba —
+   por debajo del navbar flotante— y una barra de acción con los botones queda
+   fija al fondo. En móvil la tabla pasa a tarjetas apiladas. */
+.main-homepage-anima .compare__wrap {
+  position: relative;
+  max-width: 1240px;
+  margin: 0 auto;
+  /* overflow visible (no scroll-container) para que el sticky vertical de la
+     cabecera y la barra inferior se anclen al viewport. */
+  overflow: visible;
+}
+.main-homepage-anima .compare__table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+  min-width: 680px;
+}
+/* Anchos de columna fijos para que la cabecera, el cuerpo y la barra inferior
+   queden perfectamente alineados. */
+.main-homepage-anima .compare__col-feat {
+  width: 31%;
+}
+/* Banda continua de la columna recomendada (Growth): el <col> pinta el fondo
+   detrás de todo el cuerpo de esa columna. */
+.main-homepage-anima .compare__col-rec {
+  background: rgba(0, 180, 129, 0.05);
+}
+.main-homepage-anima .compare__table th,
+.main-homepage-anima .compare__table td {
+  padding: 18px 22px;
+  text-align: center;
+  font-family: "Mont-Regular", Helvetica, sans-serif;
+  font-size: 0.98rem;
+  color: var(--c-ink, #171717);
+  border-bottom: 1px solid rgba(17, 17, 17, 0.06);
+}
+/* Separadores verticales sutiles entre columnas de plan */
+.main-homepage-anima .compare__table th + th,
+.main-homepage-anima .compare__table td + td {
+  border-left: 1px solid rgba(17, 17, 17, 0.05);
+}
+/* Cabecera sticky: fila con resumen de cada plan que se fija arriba al
+   scrollear, por debajo del navbar flotante (top: 18px + alto del pill). */
+.main-homepage-anima .compare__table thead th {
+  position: sticky;
+  top: 64px;
+  z-index: 3;
+  padding: 22px 22px 24px;
+  vertical-align: top;
+  background: #ffffff;
+  border-bottom: 1px solid rgba(17, 17, 17, 0.12);
+}
+.main-homepage-anima .compare__table thead th.compare__feat {
+  position: static;
+  vertical-align: bottom;
+  font-family: "Mont-SemiBold", Helvetica, sans-serif;
+  font-weight: 600;
+  font-size: 0.72rem;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: var(--c-text-sub, #5c5c5c);
+}
+/* Cabecera de la columna recomendada: tinte más marcado + acento verde arriba
+   para que se lea como un panel destacado. */
+.main-homepage-anima .compare__table thead th.compare__plan--rec {
+  /* fondo translúcido + blur: al hacer scroll las filas pasan por detrás de la
+     cabecera fija; el frosted evita que se transparenten. */
+  background: rgba(0, 180, 129, 0.08);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+/* Columna de plan en la cabecera */
+.main-homepage-anima .compare__plan-name {
+  display: block;
+  font-family: "Mont-SemiBold", Helvetica, sans-serif;
+  font-weight: 600;
+  font-size: 1.18rem;
+  color: var(--c-ink, #171717);
+}
+.main-homepage-anima .compare__plan-price {
+  display: block;
+  margin-top: 6px;
+  font-family: "Mont-SemiBold", Helvetica, sans-serif;
+  font-weight: 600;
+  font-size: 1.32rem;
+  letter-spacing: -0.01em;
+  color: var(--c-ink, #171717);
+}
+.main-homepage-anima .compare__plan-per {
+  font-family: "Mont-Regular", Helvetica, sans-serif;
+  font-weight: 400;
+  font-size: 0.82rem;
+  color: var(--c-text-sub, #5c5c5c);
+}
+.main-homepage-anima .compare__plan-price--text {
+  font-size: 1.18rem;
+  color: var(--c-text-sub, #5c5c5c);
+}
+/* "Más popular": pill verde bajo el precio de Growth; al ir abajo no descuadra
+   los títulos de las columnas. */
+.main-homepage-anima .compare__rec {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 4px 11px;
+  border-radius: 999px;
+  background: var(--c-green, #00b481);
+  font-family: "Mont-SemiBold", Helvetica, sans-serif;
+  font-weight: 600;
+  font-size: 0.62rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #ffffff;
+}
+.main-homepage-anima .compare__table thead th:first-child,
+.main-homepage-anima .compare__table tbody th[scope="row"] {
+  text-align: left;
+}
+.main-homepage-anima .compare__table tbody th[scope="row"] {
+  font-family: "Mont-Regular", Helvetica, sans-serif;
+  font-weight: 400;
+  color: var(--c-ink, #171717);
+}
+/* Filas de grupo: barra de sección con fondo tenue y etiqueta a la izquierda. */
+.main-homepage-anima .compare__group th[scope="row"] {
+  font-family: "Mont-SemiBold", Helvetica, sans-serif;
+  font-weight: 600;
+  font-size: 0.7rem;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+  color: var(--c-text-sub, #5c5c5c);
+}
+.main-homepage-anima .compare__group th,
+.main-homepage-anima .compare__group td {
+  padding-top: 14px;
+  padding-bottom: 14px;
+  background: rgba(17, 17, 17, 0.028);
+  border-bottom: 1px solid rgba(17, 17, 17, 0.08);
+  border-left: none;
+}
+/* La banda verde de la columna recomendada sigue visible incluso sobre las
+   filas de grupo (el grupo no pinta encima del <col>). */
+.main-homepage-anima .compare__group td:nth-child(3) {
+  background: rgba(0, 180, 129, 0.07);
+}
+/* Hover de fila muy sutil */
+.main-homepage-anima .compare__table tbody tr:not(.compare__group):hover th[scope="row"],
+.main-homepage-anima .compare__table tbody tr:not(.compare__group):hover td {
+  background: rgba(17, 17, 17, 0.022);
+}
+.main-homepage-anima .compare__table tbody tr:not(.compare__group):hover td:nth-child(3) {
+  background: rgba(0, 180, 129, 0.09);
+}
+/* Última fila sin hairline */
+.main-homepage-anima .compare__table tbody tr:last-child th,
+.main-homepage-anima .compare__table tbody tr:last-child td {
+  border-bottom: none;
+}
+/* Check sencillo (sin círculo) y "—" tenue */
+.main-homepage-anima .compare__table .ic-check {
+  width: 19px;
+  height: 19px;
+  color: var(--c-green, #00b481);
+  vertical-align: middle;
+}
+.main-homepage-anima .compare__table .is-no {
+  color: #c1c7d0;
+}
+
+/* ---- Barra de acción fija al fondo: solo los botones de elección ----
+   Grid con las mismas columnas que la tabla, así cada botón queda bajo su
+   plan. Sticky al fondo del viewport mientras la comparativa está a la vista. */
+.main-homepage-anima .compare__cta-bar {
+  position: sticky;
+  bottom: 0;
+  z-index: 4;
+  display: grid;
+  /* mismas columnas que la tabla (table-layout: fixed) y sin gap ni padding
+     lateral, para que cada botón quede centrado bajo su columna. */
+  grid-template-columns: 31% 23% 23% 23%;
+  align-items: center;
+  justify-items: stretch;
+  padding: 14px 0;
+  border-top: 1px solid rgba(17, 17, 17, 0.1);
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+.main-homepage-anima .compare__cta-spacer {
+  display: block;
+}
+/* Los botones de la barra ocupan el ancho de su columna (menos un pequeño
+   margen para no tocar los separadores). */
+.main-homepage-anima .compare__cta-bar .compare__plan-cta {
+  width: auto;
+  margin: 0 14px;
+}
+.main-homepage-anima .compare__plan-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 0 18px;
+  border-radius: 100px;
+  border: 1px solid var(--c-stroke, #e1e4ea);
+  background: #ffffff;
+  font-family: "Mont-SemiBold", Helvetica, sans-serif;
+  font-weight: 600;
+  font-size: 0.88rem;
+  color: var(--c-ink, #171717);
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: border-color 0.2s ease, color 0.2s ease, background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+.main-homepage-anima .compare__plan-cta:hover {
+  border-color: rgba(0, 180, 129, 0.5);
+  color: var(--c-green, #00b481);
+  transform: translateY(-1px);
+}
+.main-homepage-anima .compare__plan-cta--primary {
+  background: var(--c-green, #00b481);
+  border-color: transparent;
+  color: #ffffff;
+}
+.main-homepage-anima .compare__plan-cta--primary:hover {
+  background: #00936a;
+  border-color: transparent;
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+/* ---- FAQ (acordeón nativo <details>) ---- */
+.main-homepage-anima .faq {
+  padding: 88px var(--container-pad) 112px;
+}
+.main-homepage-anima .faq .cf-modules__title {
+  margin-bottom: 40px;
+}
+.main-homepage-anima .faq__list {
+  max-width: 800px;
+  margin: 0 auto;
+}
+/* Acordeón limpio: separadores finos, icono "+" que rota a "×", expansión
+   suave con el truco grid-template-rows 0fr→1fr. */
+.main-homepage-anima .faq__item {
+  border-bottom: 1px solid rgba(17, 17, 17, 0.1);
+}
+.main-homepage-anima .faq__q {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 24px 4px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+}
+.main-homepage-anima .faq__qtext {
+  flex: 1 1 auto;
+  font-family: "Mont-SemiBold", Helvetica, sans-serif;
+  font-weight: 600;
+  font-size: 1.08rem;
+  line-height: 1.4;
+  color: var(--c-ink, #171717);
+  transition: color 0.25s ease;
+}
+.main-homepage-anima .faq__item.is-open .faq__qtext {
+  color: var(--c-green, #00b481);
+}
+/* Icono "+" en círculo, rota 45° (→ "×") al abrir */
+.main-homepage-anima .faq__icon {
+  position: relative;
+  flex: 0 0 auto;
+  width: 30px;
+  height: 30px;
+  border-radius: 999px;
+  background: #f1f3f5;
+  transition: background 0.25s ease, transform 0.35s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+.main-homepage-anima .faq__icon::before,
+.main-homepage-anima .faq__icon::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 12px;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--c-ink, #171717);
+  transform: translate(-50%, -50%);
+  transition: background 0.25s ease;
+}
+.main-homepage-anima .faq__icon::after {
+  transform: translate(-50%, -50%) rotate(90deg);
+}
+.main-homepage-anima .faq__item.is-open .faq__icon {
+  background: var(--c-green, #00b481);
+  transform: rotate(45deg);
+}
+.main-homepage-anima .faq__item.is-open .faq__icon::before,
+.main-homepage-anima .faq__item.is-open .faq__icon::after {
+  background: #ffffff;
+}
+/* Panel colapsable */
+.main-homepage-anima .faq__panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.4s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+.main-homepage-anima .faq__item.is-open .faq__panel {
+  grid-template-rows: 1fr;
+}
+.main-homepage-anima .faq__panelinner {
+  overflow: hidden;
+}
+.main-homepage-anima .faq__a {
+  margin: 0;
+  padding: 0 52px 26px 4px;
+  font-family: "Mont-Regular", Helvetica, sans-serif;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--c-text-sub, #5c5c5c);
+  opacity: 0;
+  transform: translateY(-4px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+.main-homepage-anima .faq__item.is-open .faq__a {
+  opacity: 1;
+  transform: none;
+  transition-delay: 0.12s;
+}
+@media (prefers-reduced-motion: reduce) {
+  .main-homepage-anima .faq__panel,
+  .main-homepage-anima .faq__a,
+  .main-homepage-anima .faq__icon {
+    transition: none;
+  }
+}
+
+@media (max-width: 980px) {
+  .main-homepage-anima .pricing-grid {
+    grid-template-columns: 1fr;
+    max-width: 520px;
+  }
+  .main-homepage-anima .plan--featured {
+    order: -1;
+    transform: none;
+  }
+}
+@media (max-width: 760px) {
+  .main-homepage-anima .addons__grid {
+    grid-template-columns: 1fr;
+  }
+  /* Toggle Mensual/Anual: permitir que el ahorro baje de línea en pantallas
+     estrechas en vez de desbordar la pill. */
+  .main-homepage-anima .pricing-toggle {
+    flex-wrap: wrap;
+    justify-content: center;
+    row-gap: 8px;
+  }
+}
+
+/* ---- Tabla comparativa en móvil: tarjetas apiladas (sin scroll lateral) ----
+   Cada función se vuelve una mini-tarjeta con su nombre arriba y los tres
+   planes en filas etiquetadas (data-plan). Las filas de grupo actúan como
+   encabezado de sección. */
+@media (max-width: 680px) {
+  .main-homepage-anima .compare__wrap {
+    overflow: visible;
+  }
+  /* En móvil (tarjetas apiladas) no hay columnas: oculta la barra de botones
+     para no duplicar los CTA que ya están en las tarjetas de precio de arriba. */
+  .main-homepage-anima .compare__cta-bar {
+    display: none;
+  }
+  .main-homepage-anima .compare__table {
+    min-width: 0;
+    display: block;
+  }
+  .main-homepage-anima .compare__table thead {
+    /* accesible pero oculto: las etiquetas de plan van en cada celda */
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
+  .main-homepage-anima .compare__table tbody,
+  .main-homepage-anima .compare__table tr,
+  .main-homepage-anima .compare__table th,
+  .main-homepage-anima .compare__table td {
+    display: block;
+  }
+  /* Fila de grupo = encabezado de sección */
+  .main-homepage-anima .compare__table tr.compare__group {
+    margin: 28px 0 12px;
+  }
+  .main-homepage-anima .compare__group th[scope="row"] {
+    padding: 0 0 8px;
+    background: transparent;
+    border-left: none;
+    border-bottom: 1px solid rgba(17, 17, 17, 0.12);
+  }
+  .main-homepage-anima .compare__group td {
+    display: none;
+  }
+  /* Fila de función = tarjeta */
+  .main-homepage-anima .compare__table tbody tr:not(.compare__group) {
+    margin-bottom: 12px;
+    padding: 16px 18px;
+    border: 1px solid rgba(17, 17, 17, 0.1);
+    border-radius: 14px;
+    background: #ffffff;
+  }
+  .main-homepage-anima .compare__table tbody tr:not(.compare__group) th[scope="row"] {
+    padding: 0 0 10px;
+    margin-bottom: 6px;
+    font-family: "Mont-SemiBold", Helvetica, sans-serif;
+    font-weight: 600;
+    font-size: 1rem;
+    border-bottom: 1px solid rgba(17, 17, 17, 0.06);
+  }
+  .main-homepage-anima .compare__table tbody tr:not(.compare__group) td {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 0;
+    text-align: right;
+    border-left: none;
+    border-bottom: none;
+  }
+  .main-homepage-anima .compare__table tbody tr:not(.compare__group) td::before {
+    content: attr(data-plan);
+    font-family: "Mont-SemiBold", Helvetica, sans-serif;
+    font-weight: 600;
+    font-size: 0.82rem;
+    color: var(--c-text-sub, #5c5c5c);
+  }
+  /* Anula el hover de escritorio y la banda de la columna recomendada dentro
+     de las tarjetas (en móvil cada celda es una fila etiquetada). */
+  .main-homepage-anima .compare__table tbody tr:not(.compare__group):hover th[scope="row"],
+  .main-homepage-anima .compare__table tbody tr:not(.compare__group):hover td,
+  .main-homepage-anima .compare__table tbody td:nth-child(3) {
+    background: transparent;
+  }
+}
+
+/* ===================================================================
+   MODAL DE CONTACTO "Reserva tu demo" (fuera de .main-homepage-anima)
+   =================================================================== */
+.demo-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+.demo-modal[hidden] {
+  display: none;
+}
+.demo-modal__overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(7, 14, 11, 0.62);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.demo-modal.is-open .demo-modal__overlay {
+  opacity: 1;
+}
+.demo-modal__dialog {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 960px;
+  max-height: 92vh;
+  overflow: hidden;
+  background: #e9ebee;
+  border-radius: 24px;
+  box-shadow: 0 40px 90px -30px rgba(0, 0, 0, 0.6);
+  opacity: 0;
+  transform: translateY(16px) scale(0.98);
+  transition: opacity 0.35s ease, transform 0.35s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+.demo-modal.is-open .demo-modal__dialog {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+.demo-modal__close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  z-index: 2;
+  width: 38px;
+  height: 38px;
+  display: grid;
+  place-items: center;
+  border: none;
+  border-radius: 999px;
+  background: #f1f3f5;
+  color: #171717;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.16);
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+.demo-modal__close svg {
+  width: 18px;
+  height: 18px;
+}
+.demo-modal__close:hover {
+  background: #ffffff;
+  transform: rotate(90deg);
+}
+.demo-modal__grid {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: 0.85fr 1fr;
+  grid-template-rows: minmax(0, 1fr);
+  gap: 6px;
+  padding: 6px;
+}
+.demo-modal__aside {
+  min-height: 0;
+  overflow-y: auto;
+  padding: 44px 40px;
+  border-radius: 18px;
+  background:
+    radial-gradient(120% 120% at 0% 0%, rgba(0, 180, 129, 0.28) 0%, rgba(0, 180, 129, 0) 52%),
+    linear-gradient(150deg, #0f221c 0%, #06110d 100%);
+  color: #ffffff;
+}
+.demo-modal__eyebrow {
+  display: block;
+  margin-bottom: 18px;
+  font-family: "Mont-SemiBold", Helvetica, sans-serif;
+  font-weight: 600;
+  font-size: 0.76rem;
+  letter-spacing: 1.6px;
+  text-transform: uppercase;
+  color: #9ff5d8;
+}
+.demo-modal__headline {
+  margin: 0 0 16px;
+  font-family: "Mont-SemiBold", Helvetica, sans-serif;
+  font-weight: 600;
+  font-size: 1.85rem;
+  line-height: 1.18;
+  text-wrap: balance;
+}
+.demo-modal__sub {
+  margin: 0 0 28px;
+  font-family: "Mont-Regular", Helvetica, sans-serif;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.74);
+}
+.demo-modal__list {
+  list-style: none;
+  margin: 0 0 28px;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.demo-modal__list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-family: "Mont-Regular", Helvetica, sans-serif;
+  font-size: 0.96rem;
+  line-height: 1.45;
+  color: rgba(255, 255, 255, 0.9);
+}
+.demo-modal__check {
+  flex: 0 0 auto;
+  width: 22px;
+  height: 22px;
+  margin-top: 1px;
+  display: grid;
+  place-items: center;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #00c98f 0%, #00936a 100%);
+  color: #ffffff;
+}
+.demo-modal__check svg {
+  width: 12px;
+  height: 12px;
+}
+.demo-modal__meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0;
+  padding-top: 22px;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  font-family: "Mont-Regular", Helvetica, sans-serif;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.72);
+}
+.demo-modal__meta svg {
+  width: 18px;
+  height: 18px;
+  color: #9ff5d8;
+}
+.demo-modal__main {
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  background: #ffffff;
+  border-radius: 18px;
+  overflow: hidden;
+}
+/* Vista del formulario: cabecera fija + cuerpo scrollable + footer fijo */
+.demo-modal__formview {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+.demo-modal__formview[hidden] {
+  display: none;
+}
+.demo-modal__head {
+  flex: 0 0 auto;
+  padding: 36px 40px 20px;
+}
+.demo-modal__title {
+  margin: 0 0 6px;
+  font-family: "Mont-SemiBold", Helvetica, sans-serif;
+  font-weight: 600;
+  font-size: 1.5rem;
+  color: #171717;
+}
+.demo-modal__lead {
+  margin: 0;
+  font-family: "Mont-Regular", Helvetica, sans-serif;
+  font-size: 0.98rem;
+  line-height: 1.55;
+  color: #5c5c5c;
+}
+.demo-form {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+.demo-form__body {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  padding: 2px 40px 10px;
+}
+.demo-form__footer {
+  flex: 0 0 auto;
+  padding: 16px 40px 26px;
+  border-top: 1px solid var(--c-stroke, #e1e4ea);
+  background: #ffffff;
+}
+.demo-foot[hidden] {
+  display: none;
+}
+.demo-form__row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+.demo-field {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+.demo-field--full {
+  margin-bottom: 16px;
+}
+.demo-field__label {
+  font-family: "Mont-SemiBold", Helvetica, sans-serif;
+  font-weight: 600;
+  font-size: 0.85rem;
+  color: #171717;
+}
+.demo-field__req {
+  color: #00b481;
+}
+.demo-field input,
+.demo-field select,
+.demo-field textarea {
+  width: 100%;
+  padding: 12px 14px;
+  font-family: "Mont-Regular", Helvetica, sans-serif;
+  font-size: 0.96rem;
+  color: #171717;
+  background: #f6f7f9;
+  border: 1px solid transparent;
+  border-radius: 12px;
+  transition: border-color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+}
+.demo-field textarea {
+  resize: vertical;
+  min-height: 84px;
+}
+.demo-field input::placeholder,
+.demo-field textarea::placeholder {
+  color: #9aa3af;
+}
+.demo-field input:focus,
+.demo-field select:focus,
+.demo-field textarea:focus {
+  outline: none;
+  background: #ffffff;
+  border-color: #00b481;
+  box-shadow: 0 0 0 3px rgba(0, 180, 129, 0.16);
+}
+.demo-form__consent {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin: 4px 0 20px;
+  font-family: "Mont-Regular", Helvetica, sans-serif;
+  font-size: 0.88rem;
+  line-height: 1.45;
+  color: #5c5c5c;
+}
+.demo-form__consent input {
+  margin-top: 2px;
+  width: 16px;
+  height: 16px;
+  accent-color: #00b481;
+  flex: 0 0 auto;
+}
+.demo-form__consent a {
+  color: #00b481;
+}
+.demo-form__submit {
+  width: 100%;
+  min-height: 52px;
+  border: none;
+  border-radius: 100px;
+  background: linear-gradient(135deg, #00c98f 0%, #00936a 100%);
+  color: #ffffff;
+  font-family: "Mont-SemiBold", Helvetica, sans-serif;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: filter 0.2s ease, background 0.2s ease;
+}
+.demo-form__submit:hover {
+  filter: brightness(0.95); /* sin glow */
+}
+.demo-form__note {
+  margin: 12px 0 0;
+  text-align: center;
+  font-family: "Mont-Regular", Helvetica, sans-serif;
+  font-size: 0.85rem;
+  color: #5c5c5c;
+}
+
+/* ---- Pantalla de gracias: ocupa todo el panel derecho, centrada ---- */
+.demo-modal__success {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 44px 40px;
+  gap: 6px;
+  background:
+    radial-gradient(120% 80% at 50% 0%, rgba(0, 180, 129, 0.07) 0%, rgba(0, 180, 129, 0) 60%),
+    #ffffff;
+  animation: demoStepIn 0.45s ease both;
+}
+.demo-modal__success[hidden] {
+  display: none;
+}
+.demo-modal__success-ic {
+  display: grid;
+  place-items: center;
+  width: 76px;
+  height: 76px;
+  margin-bottom: 22px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #00c98f 0%, #00936a 100%);
+  color: #ffffff;
+  box-shadow: 0 14px 30px -10px rgba(0, 180, 129, 0.5);
+}
+.demo-modal__success-ic svg {
+  width: 34px;
+  height: 34px;
+}
+.demo-modal__success-title {
+  margin: 0;
+  font-family: "Mont-SemiBold", Helvetica, sans-serif;
+  font-weight: 600;
+  font-size: 1.5rem;
+  line-height: 1.2;
+  color: #171717;
+  text-wrap: balance;
+}
+.demo-modal__success-text {
+  margin: 8px 0 0;
+  max-width: 380px;
+  font-family: "Mont-Regular", Helvetica, sans-serif;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #5c5c5c;
+}
+.demo-modal__success-text strong {
+  color: #171717;
+  font-family: "Mont-SemiBold", Helvetica, sans-serif;
+  font-weight: 600;
+}
+.demo-modal__success-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 20px;
+  padding: 8px 16px;
+  border-radius: 999px;
+  background: rgba(0, 180, 129, 0.1);
+  font-family: "Mont-SemiBold", Helvetica, sans-serif;
+  font-weight: 600;
+  font-size: 0.85rem;
+  color: #00936a;
+}
+.demo-modal__success-chip svg {
+  width: 16px;
+  height: 16px;
+}
+.demo-modal__success-btn {
+  margin-top: 28px;
+  min-width: 180px;
+  min-height: 50px;
+  padding: 0 28px;
+  border: 1px solid var(--c-stroke, #e1e4ea);
+  border-radius: 100px;
+  background: #ffffff;
+  color: var(--c-ink, #171717);
+  font-family: "Mont-SemiBold", Helvetica, sans-serif;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+.demo-modal__success-btn:hover {
+  border-color: rgba(0, 180, 129, 0.45);
+  color: #00936a;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .demo-modal__overlay,
+  .demo-modal__dialog {
+    transition: none;
+  }
+}
+@media (max-width: 800px) {
+  /* En móvil se apilan y scrollea el conjunto; el footer queda pegado abajo
+     (sticky) para que el CTA sea siempre alcanzable. */
+  .demo-modal__grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    overflow-y: auto;
+  }
+  .demo-modal__aside {
+    overflow: visible;
+    padding: 28px 28px;
+  }
+  .demo-modal__headline {
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+  }
+  .demo-modal__sub {
+    margin-bottom: 4px;
+  }
+  .demo-modal__main,
+  .demo-modal__formview,
+  .demo-form,
+  .demo-form__body {
+    overflow: visible;
+    min-height: 0;
+  }
+  .demo-modal__head {
+    padding: 28px 28px 18px;
+  }
+  .demo-form__body {
+    padding: 2px 28px 8px;
+  }
+  .demo-form__footer {
+    position: sticky;
+    bottom: 0;
+    padding: 14px 28px 18px;
+    box-shadow: 0 -10px 20px -12px rgba(15, 23, 42, 0.18);
+  }
+  .demo-modal__success {
+    padding: 36px 28px;
+  }
+}
+@media (max-width: 520px) {
+  .demo-modal {
+    padding: 12px;
+  }
+  .demo-form__row {
+    grid-template-columns: 1fr;
+  }
+  /* El panel oscuro se compacta: solo eyebrow + titular (sin lista/meta/sub)
+     para que el formulario sea lo primero que se ve. */
+  .demo-modal__sub,
+  .demo-modal__list,
+  .demo-modal__meta {
+    display: none;
+  }
+  .demo-modal__aside {
+    padding: 22px 24px;
+  }
+  .demo-modal__headline {
+    margin-bottom: 0;
+  }
+  /* Inputs a 16px para evitar el auto-zoom de Safari iOS al enfocar. */
+  .demo-field input,
+  .demo-field select,
+  .demo-field textarea {
+    font-size: 16px;
+  }
+}
+
+/* ---- Modal: barra de progreso + pasos + iconos en campos ---- */
+/* Stepper etiquetado: dos pasos numerados con su nombre, unidos por una línea.
+   Activo = verde; completado = verde con check; pendiente = gris. */
+.demo-steps {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 0 0 22px;
+  padding: 0;
+  list-style: none;
+}
+.demo-steps__item {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+}
+.demo-steps__num {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 999px;
+  border: 1.5px solid #cfd5dd;
+  background: #ffffff;
+  color: #9aa3af;
+  font-family: "Mont-SemiBold", Helvetica, sans-serif;
+  font-weight: 600;
+  font-size: 0.85rem;
+  transition: background 0.25s ease, border-color 0.25s ease, color 0.25s ease;
+}
+.demo-steps__check {
+  width: 15px;
+  height: 15px;
+  display: none;
+}
+.demo-steps__label {
+  font-family: "Mont-SemiBold", Helvetica, sans-serif;
+  font-weight: 600;
+  font-size: 0.85rem;
+  color: #9aa3af;
+  transition: color 0.25s ease;
+}
+.demo-steps__line {
+  flex: 1 1 auto;
+  height: 2px;
+  border-radius: 999px;
+  background: #e1e4ea;
+  transition: background 0.35s ease;
+}
+/* Activo y completado: número/borde verde y etiqueta en tinta */
+.demo-steps__item.is-active .demo-steps__num,
+.demo-steps__item.is-done .demo-steps__num {
+  background: var(--c-green, #00b481);
+  border-color: var(--c-green, #00b481);
+  color: #ffffff;
+}
+.demo-steps__item.is-active .demo-steps__label,
+.demo-steps__item.is-done .demo-steps__label {
+  color: var(--c-ink, #171717);
+}
+/* Completado: muestra el check en vez del número */
+.demo-steps__item.is-done .demo-steps__n {
+  display: none;
+}
+.demo-steps__item.is-done .demo-steps__check {
+  display: block;
+}
+.demo-steps__line.is-on {
+  background: var(--c-green, #00b481);
+}
+.demo-step {
+  animation: demoStepIn 0.4s ease both;
+}
+.demo-step[hidden] {
+  display: none;
+}
+@keyframes demoStepIn {
+  from { opacity: 0; transform: translateX(12px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+/* Iconos dentro de los campos */
+.demo-field__control {
+  position: relative;
+  display: block;
+}
+.demo-field__ic {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 18px;
+  height: 18px;
+  color: #9aa3af;
+  pointer-events: none;
+  transition: color 0.2s ease;
+}
+.demo-field__control input,
+.demo-field__control select {
+  padding-left: 42px;
+}
+.demo-field__control:focus-within .demo-field__ic {
+  color: #00b481;
+}
+/* Acciones del paso 2 (Atrás + Reservar) */
+.demo-form__actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.demo-form__actions .demo-form__submit {
+  flex: 1 1 auto;
+  width: auto;
+}
+.demo-form__back {
+  flex: 0 0 auto;
+  min-height: 52px;
+  padding: 0 22px;
+  border: 1px solid var(--c-stroke, #e1e4ea);
+  border-radius: 100px;
+  background: #ffffff;
+  color: var(--c-ink, #171717);
+  font-family: "Mont-SemiBold", Helvetica, sans-serif;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+.demo-form__back:hover {
+  border-color: rgba(0, 180, 129, 0.45);
+  color: #00936a;
+}
+@media (prefers-reduced-motion: reduce) {
+  .demo-step {
+    animation: none;
+  }
+  .demo-form__bar-fill {
+    transition: none;
+  }
+}

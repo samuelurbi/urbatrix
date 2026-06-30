@@ -1,5 +1,14 @@
+{# Estado activo del nav según la URL de la página actual #}
+{%- set u = page.url -%}
+{%- set productoUrls = ["/producto/", "/producto/como-funciona/", "/producto/captacion-crm/", "/producto/pago-reservas/", "/producto/capa-legal/", "/producto/post-venta/", "/producto/portal-brokers/"] -%}
+{%- set isProducto = u in productoUrls -%}
+{%- set solucionesUrls = ["/soluciones/", "/soluciones/para-desarrolladores/", "/soluciones/para-compradores/"] -%}
+{%- set isSoluciones = u in solucionesUrls -%}
+{%- set isCasos = "/casos-exito/" in u -%}
+{%- set isPrecios = u == "/precios/" -%}
+{%- set isHome = u == "/" -%}
       <header class="header">
-        <a href="#" class="header-logo" aria-label="Urbatrix inicio">
+        <a href="/" class="header-logo" aria-label="Urbatrix inicio">
           <img loading="lazy" decoding="async"
             class="div-left"
             src="/assets/div-left.svg"
@@ -26,7 +35,7 @@
           </span>
         </button>
         <nav class="div-menu-navbar" aria-label="Navegación principal">
-          <a href="#" class="navbar-brand" aria-label="Urbatrix inicio">
+          <a href="/" class="navbar-brand" aria-label="Urbatrix inicio">
             <img
               class="navbar-brand-ico"
               src="/assets/isotipo-white.svg"
@@ -36,10 +45,10 @@
           <span class="navbar-sep" aria-hidden="true"></span>
           <div class="nav-items">
             <a
-              href="#"
+              href="/"
               class="container-bg-active nav-item"
               aria-label="Inicio"
-              aria-current="page"
+              {% if isHome %}aria-current="page"{% endif %}
             >
               <div class="icon-home">
                 <img loading="lazy" decoding="async"
@@ -51,13 +60,14 @@
               </div>
             </a>
             <div class="menu">
-            <button
+            <a
+              href="/producto/"
               class="tab nav-item"
-              type="button"
               aria-haspopup="true"
               aria-expanded="false"
               data-mega="producto"
               aria-controls="mega-producto"
+              {% if isProducto %}aria-current="page"{% endif %}
             >
               <span class="text-wrapper">Producto</span>
               <img loading="lazy" decoding="async"
@@ -66,14 +76,15 @@
                 alt=""
                 aria-hidden="true"
               />
-            </button>
-            <button
+            </a>
+            <a
+              href="/soluciones/"
               class="tab nav-item"
-              type="button"
               aria-haspopup="true"
               aria-expanded="false"
               data-mega="soluciones"
               aria-controls="mega-soluciones"
+              {% if isSoluciones %}aria-current="page"{% endif %}
             >
               <span class="text-wrapper">Soluciones</span>
               <img loading="lazy" decoding="async"
@@ -82,11 +93,11 @@
                 alt=""
                 aria-hidden="true"
               />
-            </button>
-            <a href="#" class="div-wrapper nav-item"
+            </a>
+            <a href="/casos-exito/" class="div-wrapper nav-item"{% if isCasos %} aria-current="page"{% endif %}
               ><span class="text-wrapper">Casos de éxito</span></a
             >
-            <a href="#" class="div-wrapper nav-item"
+            <a href="/precios/" class="div-wrapper nav-item"{% if isPrecios %} aria-current="page"{% endif %}
               ><span class="text-wrapper">Precios</span></a
             >
             </div>
@@ -104,7 +115,7 @@
             hidden
           >
             <div class="mega-grid mega-grid--3">
-              <a href="#" class="mega-card">
+              <a href="/producto/como-funciona/" class="mega-card"{% if u == "/producto/como-funciona/" %} aria-current="page"{% endif %}>
                 <div class="mega-card__left">
                   <img class="mega-card__icon" src="/assets/route-fill-1.svg" alt="" aria-hidden="true" />
                 </div>
@@ -113,7 +124,7 @@
                   <span class="mega-card__desc">De la inversión en marketing a la entrega de llaves.</span>
                 </div>
               </a>
-              <a href="#" class="mega-card">
+              <a href="/producto/captacion-crm/" class="mega-card"{% if u == "/producto/captacion-crm/" %} aria-current="page"{% endif %}>
                 <div class="mega-card__left">
                   <img class="mega-card__icon" src="/assets/megaphone-line-1.svg" alt="" aria-hidden="true" />
                 </div>
@@ -122,7 +133,7 @@
                   <span class="mega-card__desc">Cada lead calificado y asignado solo.</span>
                 </div>
               </a>
-              <a href="#" class="mega-card">
+              <a href="/producto/pago-reservas/" class="mega-card"{% if u == "/producto/pago-reservas/" %} aria-current="page"{% endif %}>
                 <div class="mega-card__left">
                   <img class="mega-card__icon" src="/assets/bank-card-line-1.svg" alt="" aria-hidden="true" />
                 </div>
@@ -131,7 +142,7 @@
                   <span class="mega-card__desc">Cobra reservas de cualquier país en minutos.</span>
                 </div>
               </a>
-              <a href="#" class="mega-card">
+              <a href="/producto/capa-legal/" class="mega-card"{% if u == "/producto/capa-legal/" %} aria-current="page"{% endif %}>
                 <div class="mega-card__left">
                   <img class="mega-card__icon" src="/assets/shield-user-fill-1.svg" alt="" aria-hidden="true" />
                 </div>
@@ -140,7 +151,7 @@
                   <span class="mega-card__desc">Contratos, CONFOTUR y fideicomiso integrados.</span>
                 </div>
               </a>
-              <a href="#" class="mega-card">
+              <a href="/producto/post-venta/" class="mega-card"{% if u == "/producto/post-venta/" %} aria-current="page"{% endif %}>
                 <div class="mega-card__left">
                   <img class="mega-card__icon" src="/assets/key-2-line-1.svg" alt="" aria-hidden="true" />
                 </div>
@@ -149,7 +160,7 @@
                   <span class="mega-card__desc">Del cierre a las llaves y la renta.</span>
                 </div>
               </a>
-              <a href="#" class="mega-card">
+              <a href="/producto/portal-brokers/" class="mega-card"{% if u == "/producto/portal-brokers/" %} aria-current="page"{% endif %}>
                 <div class="mega-card__left">
                   <img class="mega-card__icon" src="/assets/stackshare-line-5.svg" alt="" aria-hidden="true" />
                 </div>
@@ -170,7 +181,7 @@
             hidden
           >
             <div class="mega-grid mega-grid--2">
-              <a href="#" class="mega-card">
+              <a href="/soluciones/para-desarrolladores/" class="mega-card"{% if u == "/soluciones/para-desarrolladores/" %} aria-current="page"{% endif %}>
                 <div class="mega-card__left">
                   <img class="mega-card__icon" src="/assets/bank-fill-1.svg" alt="" aria-hidden="true" />
                 </div>
@@ -179,7 +190,7 @@
                   <span class="mega-card__desc">Urbatrix te da la infraestructura completa de venta que un proyecto de lujo internacional necesita.</span>
                 </div>
               </a>
-              <a href="#" class="mega-card">
+              <a href="/soluciones/para-compradores/" class="mega-card"{% if u == "/soluciones/para-compradores/" %} aria-current="page"{% endif %}>
                 <div class="mega-card__left">
                   <img class="mega-card__icon" src="/assets/home-fill-1.svg" alt="" aria-hidden="true" />
                 </div>
@@ -191,7 +202,7 @@
             </div>
           </div>
         <div class="div-right">
-          <a href="#" class="a-link-login"
+          <a href="https://urbatrix.com" class="a-link-login" target="_blank" rel="noopener"
             ><span class="div">Iniciar Sesión</span></a
           >
           <a href="#" class="a-link-demo"
@@ -203,56 +214,62 @@
             class="mobile-menu-links"
             aria-label="Navegación principal móvil"
           >
-            <a href="#" class="mobile-menu-link" aria-current="page">Inicio</a>
+            <a href="/" class="mobile-menu-link"{% if isHome %} aria-current="page"{% endif %}>Inicio</a>
             <div class="mobile-menu-group">
-              <button
-                class="mobile-menu-link mobile-menu-parent"
-                type="button"
-                aria-expanded="false"
-                aria-controls="m-sub-producto"
-              >
-                <span>Producto</span>
-                <img loading="lazy" decoding="async"
-                  class="img"
-                  src="/assets/arrow-down-s-line-2.svg"
-                  alt=""
-                  aria-hidden="true"
-                />
-              </button>
+              <div class="mobile-menu-prow">
+                <a href="/producto/" class="mobile-menu-link mobile-menu-prow__link"{% if isProducto %} aria-current="page"{% endif %}>Producto</a>
+                <button
+                  class="mobile-menu-parent mobile-menu-prow__chevron"
+                  type="button"
+                  aria-expanded="false"
+                  aria-controls="m-sub-producto"
+                  aria-label="Mostrar subpáginas de Producto"
+                >
+                  <img loading="lazy" decoding="async"
+                    class="img"
+                    src="/assets/arrow-down-s-line-2.svg"
+                    alt=""
+                    aria-hidden="true"
+                  />
+                </button>
+              </div>
               <div class="mobile-menu-sub" id="m-sub-producto">
-                <a href="#" class="mobile-menu-sublink">Cómo funciona</a>
-                <a href="#" class="mobile-menu-sublink">Captación y CRM</a>
-                <a href="#" class="mobile-menu-sublink">Pagos y Reservas</a>
-                <a href="#" class="mobile-menu-sublink">Capa Legal y Confianza</a>
-                <a href="#" class="mobile-menu-sublink">Post-venta y Entregas</a>
-                <a href="#" class="mobile-menu-sublink">Portal de Brokers</a>
+                <a href="/producto/como-funciona/" class="mobile-menu-sublink"{% if u == "/producto/como-funciona/" %} aria-current="page"{% endif %}>Cómo funciona</a>
+                <a href="/producto/captacion-crm/" class="mobile-menu-sublink"{% if u == "/producto/captacion-crm/" %} aria-current="page"{% endif %}>Captación y CRM</a>
+                <a href="/producto/pago-reservas/" class="mobile-menu-sublink"{% if u == "/producto/pago-reservas/" %} aria-current="page"{% endif %}>Pagos y Reservas</a>
+                <a href="/producto/capa-legal/" class="mobile-menu-sublink"{% if u == "/producto/capa-legal/" %} aria-current="page"{% endif %}>Capa Legal y Confianza</a>
+                <a href="/producto/post-venta/" class="mobile-menu-sublink"{% if u == "/producto/post-venta/" %} aria-current="page"{% endif %}>Post-venta y Entregas</a>
+                <a href="/producto/portal-brokers/" class="mobile-menu-sublink"{% if u == "/producto/portal-brokers/" %} aria-current="page"{% endif %}>Portal de Brokers</a>
               </div>
             </div>
             <div class="mobile-menu-group">
-              <button
-                class="mobile-menu-link mobile-menu-parent"
-                type="button"
-                aria-expanded="false"
-                aria-controls="m-sub-soluciones"
-              >
-                <span>Soluciones</span>
-                <img loading="lazy" decoding="async"
-                  class="img"
-                  src="/assets/arrow-down-s-line-2.svg"
-                  alt=""
-                  aria-hidden="true"
-                />
-              </button>
+              <div class="mobile-menu-prow">
+                <a href="/soluciones/" class="mobile-menu-link mobile-menu-prow__link"{% if isSoluciones %} aria-current="page"{% endif %}>Soluciones</a>
+                <button
+                  class="mobile-menu-parent mobile-menu-prow__chevron"
+                  type="button"
+                  aria-expanded="false"
+                  aria-controls="m-sub-soluciones"
+                  aria-label="Mostrar subpáginas de Soluciones"
+                >
+                  <img loading="lazy" decoding="async"
+                    class="img"
+                    src="/assets/arrow-down-s-line-2.svg"
+                    alt=""
+                    aria-hidden="true"
+                  />
+                </button>
+              </div>
               <div class="mobile-menu-sub" id="m-sub-soluciones">
-                <a href="#" class="mobile-menu-sublink">Para Desarrolladores</a>
-                <a href="#" class="mobile-menu-sublink">Para Compradores</a>
+                <a href="/soluciones/para-desarrolladores/" class="mobile-menu-sublink"{% if u == "/soluciones/para-desarrolladores/" %} aria-current="page"{% endif %}>Para Desarrolladores</a>
+                <a href="/soluciones/para-compradores/" class="mobile-menu-sublink"{% if u == "/soluciones/para-compradores/" %} aria-current="page"{% endif %}>Para Compradores</a>
               </div>
             </div>
-            <a href="#" class="mobile-menu-link">Casos de éxito</a>
-            <a href="#" class="mobile-menu-link">Precios</a>
+            <a href="/casos-exito/" class="mobile-menu-link"{% if isCasos %} aria-current="page"{% endif %}>Casos de éxito</a>
+            <a href="/precios/" class="mobile-menu-link"{% if isPrecios %} aria-current="page"{% endif %}>Precios</a>
           </nav>
           <div class="mobile-menu-actions">
-            <a href="#" class="mobile-menu-login">Iniciar Sesión</a>
+            <a href="https://urbatrix.com" class="mobile-menu-login" target="_blank" rel="noopener">Iniciar Sesión</a>
             <a href="#" class="mobile-menu-demo">Solicitar Demo</a>
           </div>
         </div>

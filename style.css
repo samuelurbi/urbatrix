@@ -2014,7 +2014,7 @@
       rgba(24, 37, 31, 0.86) 0%,
       rgba(24, 37, 31, 0.86) 100%
     ),
-    url(assets/content.svg) 50% 50% / cover;
+    url(assets/content.webp) 50% 50% / cover;
   display: flex;
   position: relative;
   width: 100%;
@@ -2141,7 +2141,7 @@
   align-self: stretch;
   width: 100%;
   flex: 0 0 auto;
-  background-image: url(assets/cta-sections--landing-.png);
+  background-image: url(assets/cta-sections--landing-.webp);
   background-size: cover;
   background-position: 50% 50%;
 }

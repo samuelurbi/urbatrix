@@ -1154,12 +1154,30 @@
       cfTimeline.querySelectorAll('.cf-tl-item')
     );
     const N = items.length;
+    const nodes = items.map((it) => it.querySelector('.cf-tl-node'));
     const setProgress = (p) => {
       const c = Math.max(0, Math.min(1, p));
-      cfTimeline.style.setProperty('--tl-progress', (c * 100).toFixed(2) + '%');
+      // Anclamos la línea al PRIMER y ÚLTIMO nodo (sin sobrantes): medimos el
+      // centro real de cada nodo respecto al timeline y exponemos a CSS dónde
+      // empieza la línea (--tl-top), cuánto mide (--tl-len) y cuánto va rellena
+      // (--tl-fill). Cada nodo se enciende cuando el relleno alcanza su centro,
+      // por lo que línea y puntos quedan en sincronía en desktop y móvil.
+      const tl = cfTimeline.getBoundingClientRect();
+      const centers = nodes.map((n) => {
+        if (!n) return null;
+        const r = n.getBoundingClientRect();
+        return r.top + r.height / 2 - tl.top;
+      });
+      const first = centers[0] != null ? centers[0] : 0;
+      const last = centers[N - 1] != null ? centers[N - 1] : tl.height || 1;
+      const len = Math.max(1, last - first);
+      cfTimeline.style.setProperty('--tl-top', first.toFixed(2) + 'px');
+      cfTimeline.style.setProperty('--tl-len', len.toFixed(2) + 'px');
+      cfTimeline.style.setProperty('--tl-fill', (len * c).toFixed(2) + 'px');
       items.forEach((it, i) => {
-        const nodeFrac = N > 0 ? (i + 0.5) / N : 1;
-        it.classList.toggle('is-reached', c >= nodeFrac - 0.0001);
+        const ctr = centers[i];
+        const frac = ctr != null ? (ctr - first) / len : N > 0 ? i / (N - 1) : 1;
+        it.classList.toggle('is-reached', c >= frac - 0.0001);
       });
     };
 

@@ -4871,18 +4871,21 @@
 .main-homepage-anima .cf-timeline::after {
   content: "";
   position: absolute;
-  top: 10px;
+  top: var(--tl-top, 10px);
   left: 50%;
   width: 3px;
   transform: translateX(-50%);
   border-radius: 3px;
 }
+/* base gris: del primer al último nodo. Solo top + height (sin bottom) para que
+   no se sobre-restrinja y se estire a todo el timeline. Fallback sin JS. */
 .main-homepage-anima .cf-timeline::before {
-  bottom: 10px;
+  bottom: auto;
+  height: var(--tl-len, calc(100% - 20px));
   background: var(--c-stroke, #e1e4ea);
 }
 .main-homepage-anima .cf-timeline::after {
-  height: var(--tl-progress, 0%);
+  height: var(--tl-fill, 0px);
   background: linear-gradient(180deg, #52d8b2 0%, #00b481 100%);
 }
 
@@ -4948,8 +4951,10 @@
   background: #ffffff;
   border: 3px solid var(--c-stroke, #e1e4ea);
   z-index: 1;
-  transition: border-color 0.35s ease, background 0.35s ease,
-    box-shadow 0.35s ease, transform 0.35s ease;
+  /* color casi inmediato para que el encendido siga al relleno; el pop de
+     escala/glow algo más lento, solo como detalle. */
+  transition: border-color 0.12s ease, background 0.12s ease,
+    box-shadow 0.3s ease, transform 0.3s ease;
 }
 .main-homepage-anima .cf-tl-item.is-reached .cf-tl-node {
   background: var(--c-green, #00b481); /* was: linear-gradient(160deg, #52d8b2 0%, #00b481 100%) */
@@ -4998,11 +5003,11 @@
   }
   .main-homepage-anima .cf-timeline::before,
   .main-homepage-anima .cf-timeline::after {
-    top: 6px;
+    top: var(--tl-top, 6px);
     left: 32px; /* 20px de padding + 12px hacia dentro del contenido */
   }
   .main-homepage-anima .cf-timeline::before {
-    bottom: 6px;
+    bottom: auto;
   }
   .main-homepage-anima .cf-tl-item,
   .main-homepage-anima .cf-tl-item:nth-of-type(even) {

@@ -1292,53 +1292,67 @@
   }
 }
 @media (max-width: 800px) {
-  /* En móvil se apilan y scrollea el conjunto; el footer queda pegado abajo
-     (sticky) para que el CTA sea siempre alcanzable. */
+  /* En móvil el diálogo ocupa casi toda la pantalla y conserva la estructura
+     cabecera fija · cuerpo scrollable · footer fijo. El scroll vive SOLO en
+     .demo-form__body (no en todo el grid), así en el paso 2 se alcanzan todos
+     los campos y el footer nunca tapa un input. */
+  .demo-modal {
+    padding: 14px;
+  }
+  .demo-modal__dialog {
+    max-height: 92vh;
+    max-height: 94dvh;
+  }
   .demo-modal__grid {
-    grid-template-columns: 1fr;
-    grid-template-rows: auto;
-    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
   }
   .demo-modal__aside {
+    flex: 0 0 auto;
     overflow: visible;
-    padding: 28px 28px;
+    padding: 20px 26px;
+  }
+  .demo-modal__eyebrow {
+    margin-bottom: 12px;
   }
   .demo-modal__headline {
-    font-size: 1.4rem;
-    margin-bottom: 10px;
+    font-size: 1.3rem;
+    margin-bottom: 8px;
   }
   .demo-modal__sub {
     margin-bottom: 4px;
   }
-  .demo-modal__main,
-  .demo-modal__formview,
-  .demo-form,
-  .demo-form__body {
-    overflow: visible;
+  .demo-modal__main {
+    flex: 1 1 auto;
     min-height: 0;
   }
   .demo-modal__head {
-    padding: 28px 28px 18px;
+    padding: 20px 26px 12px;
   }
   .demo-form__body {
-    padding: 2px 28px 8px;
+    padding: 2px 26px 10px;
   }
   .demo-form__footer {
-    position: sticky;
-    bottom: 0;
-    padding: 14px 28px 18px;
-    box-shadow: 0 -10px 20px -12px rgba(15, 23, 42, 0.18);
+    padding: 12px 26px 16px;
+    box-shadow: 0 -10px 20px -12px rgba(15, 23, 42, 0.12);
   }
   .demo-modal__success {
-    padding: 36px 28px;
+    padding: 32px 26px;
   }
 }
 @media (max-width: 520px) {
   .demo-modal {
-    padding: 12px;
+    padding: 10px;
+  }
+  .demo-modal__dialog {
+    max-height: 94vh;
+    max-height: 96dvh;
   }
   .demo-form__row {
     grid-template-columns: 1fr;
+    gap: 12px;
+    margin-bottom: 12px;
   }
   /* El panel oscuro se compacta: solo eyebrow + titular (sin lista/meta/sub)
      para que el formulario sea lo primero que se ve. */
@@ -1348,16 +1362,48 @@
     display: none;
   }
   .demo-modal__aside {
-    padding: 22px 24px;
+    padding: 16px 22px;
   }
   .demo-modal__headline {
+    font-size: 1.18rem;
     margin-bottom: 0;
   }
-  /* Inputs a 16px para evitar el auto-zoom de Safari iOS al enfocar. */
+  .demo-modal__eyebrow {
+    margin-bottom: 8px;
+  }
+  .demo-modal__head {
+    padding: 16px 22px 10px;
+  }
+  /* Stepper y lead más compactos (el título basta como contexto). */
+  .demo-steps {
+    margin-bottom: 14px;
+  }
+  .demo-modal__lead {
+    display: none;
+  }
+  .demo-form__body {
+    padding: 2px 22px 8px;
+  }
+  .demo-field--full {
+    margin-bottom: 12px;
+  }
+  .demo-field textarea {
+    min-height: 62px;
+  }
+  .demo-form__consent {
+    margin: 2px 0 12px;
+  }
+  .demo-form__footer {
+    padding: 10px 22px 14px;
+  }
+  /* Inputs a 16px para evitar el auto-zoom de Safari iOS al enfocar; padding
+     vertical algo menor para ganar altura. */
   .demo-field input,
   .demo-field select,
   .demo-field textarea {
     font-size: 16px;
+    padding-top: 10px;
+    padding-bottom: 10px;
   }
 }
 

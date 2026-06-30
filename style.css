@@ -5259,7 +5259,9 @@
   color: var(--c-text-sub, #5c5c5c);
 }
 .main-homepage-anima .case-card__link {
-  margin-top: 18px;
+  /* siempre al fondo del card (coherencia entre cards de distinto alto) */
+  margin-top: auto;
+  padding-top: 18px;
   font-family: "Mont-SemiBold", Helvetica, sans-serif;
   font-weight: 600;
   font-size: 0.95rem;

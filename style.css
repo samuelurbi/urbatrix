@@ -2441,6 +2441,30 @@
 .main-homepage-anima .text-wrapper-31,
 .main-homepage-anima .text-wrapper-32 {
   justify-content: flex-start;
+  transition: color 0.2s ease;
+}
+/* Hover de los enlaces del footer: verde de marca */
+.main-homepage-anima .text-wrapper-31:hover,
+.main-homepage-anima .text-wrapper-32:hover {
+  color: var(--c-green, #00b481);
+}
+
+/* Iconos de redes: leve elevación + tinte verde al pasar el cursor */
+.main-homepage-anima .footer-sections .div-3 > a {
+  display: inline-flex;
+  transition: transform 0.2s ease;
+}
+.main-homepage-anima .footer-sections .div-3 > a img {
+  transition: filter 0.2s ease, opacity 0.2s ease;
+  opacity: 0.85;
+}
+.main-homepage-anima .footer-sections .div-3 > a:hover {
+  transform: translateY(-2px);
+}
+.main-homepage-anima .footer-sections .div-3 > a:hover img {
+  opacity: 1;
+  filter: brightness(0) saturate(100%) invert(53%) sepia(94%) saturate(385%)
+    hue-rotate(116deg) brightness(95%) contrast(101%);
 }
 
 .main-homepage-anima .item {
@@ -3673,6 +3697,7 @@
     flex-basis: 100%;
     width: 100%;
     margin: 4px 0 0;
+    justify-content: center;
     text-align: center;
   }
   /* wordmark "Urbatrix": decorativo, cortado (~50% del nombre visible) */
